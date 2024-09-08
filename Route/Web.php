@@ -28,13 +28,13 @@ Flight::group("/panel", function () {
     });
 
     Flight::group("/result", function () {
-        Flight::route("POST /login", [new PostController, "panel_result_login"]);
+        Flight::route("POST /login", [new UserController, "panel_result_login"]);
         Flight::route("POST /create-post", [new UserController, "panel_result_create_post"]);
         Flight::route("GET /delete-post/@id", [new UserController, "panel_result_delete_post"]);
         Flight::route("POST /update-post/@id", [new UserController, "panel_result_update_post"]);
-        Flight::route("POST /create-user", [new UserController, "panel_result_create_user"]);
-        Flight::route("GET /delete-user/@id", [new UserController, "panel_result_delete_user"]);
-        Flight::route("POST /update-user/@id", [new UserController, "panel_result_update_user"]);
+        Flight::route("POST /create-user", [new PostController, "panel_result_create_user"]);
+        Flight::route("GET /delete-user/@id", [new PostController, "panel_result_delete_user"]);
+        Flight::route("POST /update-user/@id", [new PostController, "panel_result_update_user"]);
     });
 });
 
