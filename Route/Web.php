@@ -9,6 +9,7 @@ Flight::group("/panel", function () {
     Flight::route("GET /", [new IndexController, "panel_index"]);
     Flight::route("GET /right", [new IndexController, "panel_index_right"]);
     Flight::route("GET /login", [new UserController, "panel_login"]);
+    Flight::route("GET /signup", [new UserController, "panel_signup"]);
     Flight::route("GET /logout", [new UserController, "panel_logout"]);
 
     Flight::group("/manage", function () {

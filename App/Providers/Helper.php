@@ -3,6 +3,7 @@
 use App\Actions\Settings\GetByKeySetting;
 use App\Actions\Posts\CountPost;
 use App\Actions\Users\CountUser;
+use App\Actions\Users\GetByIdUser;
 function directory_separator(string $folder, string $file_name)
 {
     $path = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.$folder.DIRECTORY_SEPARATOR.$file_name;
@@ -35,6 +36,26 @@ function tools()
     //     'users' => $users,
     //     'settings' => $settings,
     // ];
+}
+function session_admin()
+{
+    if (isset($_SESSION['admin_id'])) {
+
+        $admin = GetByIdUser::execute($_SESSION['admin_id']);
+        $state = true;
+
+        if ($admin['state'] === 0) {
+            $state = false;
+        }
+    } else {
+        $state = false;
+    }
+
+    if ($state === false) {
+        return false;
+    } else {
+        return $admin;
+    }
 }
 
 function panel_index(?string $dir = "ltr")
