@@ -1,0 +1,19 @@
+{
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files" : [
+            "App/providers/helper.php" ,
+            "Config/info.php" 
+        ]
+    },
+    "require": {
+        "flightphp/core": "^3.11",
+      "ext-pdo": "*",
+      "ext-json": "*",
+        "geekgroveofficial/php-smart-validator": "^1.0",
+        "laravel/pint": "^1.17"
+    }
+    
+}
