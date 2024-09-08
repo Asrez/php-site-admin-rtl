@@ -70,3 +70,13 @@ function panel_manage_setting()
 {
     Flight::render(directory_separator("Panel", "setting.php"));
 }
+
+function panel_login()
+{
+    Flight::render(directory_separator("Panel", "login.php"));
+}
+
+function panel_signup()
+{
+    Flight::render(directory_separator("Panel", "signup.php"));
+}

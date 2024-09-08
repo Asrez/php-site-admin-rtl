@@ -19,7 +19,7 @@ class Connect
 
             $db = "mysql:host={$info['host']};dbname={$info['dbname']}";
 
-            $this->connect = new PDO($db, $info['username'], $DBinfo['password']);
+            $this->connect = new PDO($db, $info['username'], $info['password']);
             $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         } catch (PDOException $e) {

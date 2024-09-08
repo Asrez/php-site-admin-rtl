@@ -567,3 +567,51 @@
     });
 </script>
 <script src="../dist/js/demo-theme.min.js?1668287865"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+
+        // log out
+        $("#logout_panel").click(function () {
+
+            const xhttp = new XMLHttpRequest();
+            result = window.confirm("do you want to log out of your account?");
+            if (result) {
+                xhttp.onload = function () {
+                    window.confirm("you got out");
+                    location.reload();
+                }
+
+                xhttp.open("GET", "/panel/logout", true);
+                xhttp.send();
+            }
+        })
+
+        let data = window.location.search.substring(1).trim();
+
+        console.log(data)
+        if (data === "login=true") {
+            window.alert("welcome");
+            location.replace("/panel");
+        }
+        else if (data === "login=false") {
+            window.alert("info is incorrect");
+            location.replace("/panel/login");
+        }
+        else if (data === "login=nofill") {
+            window.alert("some fildes are not set yet");
+        }
+        else if (data === "signup=true") {
+            window.alert("welcome");
+            location.replace("/panel");
+        }
+        else if (data === "signup=false") {
+            window.alert("change username");
+            location.replace("/panel/signup");
+        }
+        else if (data === "signup=nofill") {
+            window.alert("some fildes are not set yet");
+        }
+    })
+</script>

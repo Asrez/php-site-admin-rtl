@@ -31,6 +31,7 @@ Flight::group("/panel", function () {
 
     Flight::group("/result", function () {
         Flight::route("POST /login", [new UserController, "panel_result_login"]);
+        Flight::route("POST /signup", [new UserController, "panel_result_signup"]);
         Flight::route("POST /create-post", [new UserController, "panel_result_create_post"]);
         Flight::route("GET /delete-post/@id", [new UserController, "panel_result_delete_post"]);
         Flight::route("POST /update-post/@id", [new UserController, "panel_result_update_post"]);
