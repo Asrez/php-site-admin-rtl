@@ -2,7 +2,7 @@
 
 namespace App\Modals;
 
-class Posts
+class Settings
 {
     public static function Delete(int $id)
     {
@@ -14,17 +14,12 @@ class Posts
         
     }
 
-    public static function Create(array $data)
-    {
-        
-    }
-    
-    public static function GetById(int $id)
+    public static function GetByKey(string $key)
     {
         
     }
 
-    public static function GetBySlug(string $slug)
+    public static function GetByState(string $state)
     {
         
     }
