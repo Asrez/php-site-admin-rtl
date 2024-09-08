@@ -1,9 +1,9 @@
-<script src="./dist/libs/apexcharts/dist/apexcharts.min.js?1668287865" defer></script>
-<script src="./dist/libs/jsvectormap/dist/js/jsvectormap.min.js?1668287865" defer></script>
-<script src="./dist/libs/jsvectormap/dist/maps/world.js?1668287865" defer></script>
-<script src="./dist/libs/jsvectormap/dist/maps/world-merc.js?1668287865" defer></script>
-<script src="./dist/js/tabler.min.js?1668287865" defer></script>
-<script src="./dist/js/demo.min.js?1668287865" defer></script>
+<script src="../dist/libs/apexcharts/dist/apexcharts.min.js?1668287865" defer></script>
+<script src="../dist/libs/jsvectormap/dist/js/jsvectormap.min.js?1668287865" defer></script>
+<script src="../dist/libs/jsvectormap/dist/maps/world.js?1668287865" defer></script>
+<script src="../dist/libs/jsvectormap/dist/maps/world-merc.js?1668287865" defer></script>
+<script src="../dist/js/tabler.min.js?1668287865" defer></script>
+<script src="../dist/js/demo.min.js?1668287865" defer></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         window.ApexCharts && (new ApexCharts(document.getElementById('chart-revenue-bg'), {
@@ -566,4 +566,4 @@
         })).render();
     });
 </script>
-<script src="./dist/js/demo-theme.min.js?1668287865"></script>
+<script src="../dist/js/demo-theme.min.js?1668287865"></script>

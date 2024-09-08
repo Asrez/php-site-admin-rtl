@@ -8,6 +8,10 @@ class IndexController
     {
         return panel_index();
     }
+    public function panel_index_right()
+    {
+        return panel_index("rtl");
+    }
 
     public function panel_manage_setting()
     {

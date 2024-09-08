@@ -4,7 +4,7 @@
     <title>Dashboard - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
     <?php include "Init/style.php"; ?>
   </head>
-  <body >
+  <body dir="<?= $dir ?>">
     <div class="page">
 
     <?php include "Includes/header.php"; ?>

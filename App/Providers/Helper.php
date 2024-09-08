@@ -12,34 +12,37 @@ function directory_separator(string $folder, string $file_name)
 function tools()
 {
 
-    $logo = GetByKeySetting::execute('logo');
-    $logo_footer = GetByKeySetting::execute('logo_footer');
-    $footer = GetByKeySetting::execute('footer');
-    $title = GetByKeySetting::execute('title');
-    $posts = GetAllPost::execute();
-    $countadmin = CountUser::execute()['count'];
-    $countpost = CountPost::execute()['count'];
-    $countuser = CountUser::execute()['count'];
-    $users = GetAllUser::execute();
-    $settings = Settings::execute();
+    // $logo = GetByKeySetting::execute('logo');
+    // $logo_footer = GetByKeySetting::execute('logo_footer');
+    // $footer = GetByKeySetting::execute('footer');
+    // $title = GetByKeySetting::execute('title');
+    // $posts = GetAllPost::execute();
+    // $countadmin = CountUser::execute()['count'];
+    // $countpost = CountPost::execute()['count'];
+    // $countuser = CountUser::execute()['count'];
+    // $users = GetAllUser::execute();
+    // $settings = Settings::execute();
 
-    return [
-        'logo' => $logo,
-        'logo_footer' => $logo_footer,
-        'footer' => $footer,
-        'title' => $title,
-        'countadmin' => $countadmin,
-        'countpost' => $countpost,
-        'countuser' => $countuser,
-        'posts' => $posts,
-        'users' => $users,
-        'settings' => $settings,
-    ];
+    // return [
+    //     'logo' => $logo,
+    //     'logo_footer' => $logo_footer,
+    //     'footer' => $footer,
+    //     'title' => $title,
+    //     'countadmin' => $countadmin,
+    //     'countpost' => $countpost,
+    //     'countuser' => $countuser,
+    //     'posts' => $posts,
+    //     'users' => $users,
+    //     'settings' => $settings,
+    // ];
 }
 
-function panel_index()
+function panel_index(?string $dir = "ltr")
 {
-    Flight::render(directory_separator("Panel", "index.php"));
+    Flight::render(directory_separator("Panel", "index.php"),
+    [
+        "dir" => $dir    
+    ]);
 }
 
 function panel_manage_setting()
