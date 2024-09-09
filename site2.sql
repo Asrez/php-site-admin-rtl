@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2024 at 12:34 PM
+-- Generation Time: Sep 09, 2024 at 04:59 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,42 @@ SET time_zone = "+00:00";
 --
 -- Database: `site2`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(5000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `key_setting` varchar(5000) NOT NULL,
+  `value_setting` varchar(5000) NOT NULL,
+  `link` varchar(5000) NOT NULL,
+  `title` varchar(5000) NOT NULL,
+  `text` text NOT NULL,
+  `type` varchar(500) NOT NULL DEFAULT 'setting'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`id`, `key_setting`, `value_setting`, `link`, `title`, `text`, `type`) VALUES
+(1, 'logo', 'logo.svg', '/', 'logo img', '', 'setting'),
+(2, 'footer', 'Asrez', 'https://asrez.ir', 'footer', '', 'setting'),
+(3, 'title', 'Tabler', '/', 'title', '', 'setting');
 
 -- --------------------------------------------------------
 
@@ -48,6 +84,18 @@ INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `state`) VAL
 --
 
 --
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -57,6 +105,18 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
