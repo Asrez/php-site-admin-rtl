@@ -16,7 +16,7 @@
             <h2 class="h2 text-center mb-4">Sign Up</h2>
             <form action="/panel/result/signup" method="post">
               <div class="mb-3">
-                <label class="form-label">name</label>
+                <label class="form-label">Name</label>
                 <input type="text" class="form-control" name="name" placeholder="your name" autocomplete="off">
               </div>
               <div class="mb-3">
@@ -24,7 +24,7 @@
                 <input type="text" class="form-control" name="username" placeholder="your username" autocomplete="off">
               </div>
               <div class="mb-3">
-                <label class="form-label">email</label>
+                <label class="form-label">Email</label>
                 <input type="email" class="form-control" name="email" placeholder="your email" autocomplete="off">
               </div>
               <div class="mb-2">
