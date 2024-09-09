@@ -39,6 +39,9 @@
                 <button type="submit" class="btn btn-primary w-100" name="btnsignup">Sign Up</button>
               </div>
             </form>
+            <div class="text-center text-muted mt-3">
+              Already have account? <a href="/panel/login" tabindex="-1">Log In</a>
+            </div>
           </div>
         </div>
       </div>
