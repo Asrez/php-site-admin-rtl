@@ -26,7 +26,7 @@
                 <ul class="list-inline list-inline-dots mb-0">
                     <li class="list-inline-item">
                         Copyright &copy; 2022
-                        <a href="." class="link-secondary">Tabler</a>.
+                        <a href="." class="link-secondary"><?= $footer['value_setting']; ?></a>.
                         All rights reserved.
                     </li>
                     <li class="list-inline-item">

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" dir="rtl" >
   <head>
-    <title>RTL mode - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+    <title><?= $title['value_setting']; ?></title>
     <?php include "Init/style.php"; ?>
   </head>
   <body >
@@ -16,7 +16,7 @@
                   Overview
                 </div>
                 <h2 class="page-title">
-                  RTL mode
+                <?= $title['value_setting']; ?>
                 </h2>
               </div>
               <div class="col-auto ms-auto d-print-none">

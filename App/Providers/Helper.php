@@ -13,10 +13,9 @@ function directory_separator(string $folder, string $file_name)
 function tools()
 {
 
-    // $logo = GetByKeySetting::execute('logo');
-    // $logo_footer = GetByKeySetting::execute('logo_footer');
-    // $footer = GetByKeySetting::execute('footer');
-    // $title = GetByKeySetting::execute('title');
+    $logo = GetByKeySetting::execute('logo');
+    $footer = GetByKeySetting::execute('footer');
+    $title = GetByKeySetting::execute('title');
     // $posts = GetAllPost::execute();
     // $countadmin = CountUser::execute()['count'];
     // $countpost = CountPost::execute()['count'];
@@ -24,18 +23,18 @@ function tools()
     // $users = GetAllUser::execute();
     // $settings = Settings::execute();
 
-    // return [
-    //     'logo' => $logo,
+    return [
+        'logo' => $logo,
     //     'logo_footer' => $logo_footer,
-    //     'footer' => $footer,
-    //     'title' => $title,
+        'footer' => $footer,
+        'title' => $title
     //     'countadmin' => $countadmin,
     //     'countpost' => $countpost,
     //     'countuser' => $countuser,
     //     'posts' => $posts,
     //     'users' => $users,
     //     'settings' => $settings,
-    // ];
+    ];
 }
 
 function session_admin()
@@ -61,9 +60,12 @@ function session_admin()
 
 function panel_index(?string $dir = "ltr")
 {
+    $tool = tools();
     Flight::render(directory_separator("Panel", "index.php"),
     [
-        "dir" => $dir    
+        "logo" => $tool['logo'],
+        "footer" => $tool['footer'],
+        "title" => $tool['title']    
     ]);
 }
 
