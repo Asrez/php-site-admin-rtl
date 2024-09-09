@@ -3,10 +3,11 @@
 namespace App\Actions\Users;
 
 use App\Modals\Users;
+
 class GetByIdUser
 {
     public static function execute(int $id)
     {
-        Users::GetById($id);
+        return Users::GetById($id);
     }
 }

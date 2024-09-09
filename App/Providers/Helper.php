@@ -37,6 +37,7 @@ function tools()
     //     'settings' => $settings,
     // ];
 }
+
 function session_admin()
 {
     if (isset($_SESSION['admin_id'])) {
