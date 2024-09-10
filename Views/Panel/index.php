@@ -370,102 +370,31 @@
               <div class="col-md-12 col-lg-8">
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Most Visited Pages</h3>
+                    <h3 class="card-title">Most Visited Posts</h3>
                   </div>
                   <div class="card-table table-responsive">
                     <table class="table table-vcenter">
                       <thead>
                         <tr>
-                          <th>Page name</th>
+                          <th>Post Address</th>
+                          <th>Post Name</th>
                           <th>Visitors</th>
-                          <th>Unique</th>
-                          <th colspan="2">Bounce rate</th>
+                          <th>Date</th>
                         </tr>
                       </thead>
                       <tr>
+                        <?php foreach ($most_visit_pages as $page) { ?>
                         <td>
-                          /
-                          <a href="#" class="ms-1" aria-label="Open website">
+                          /panel/post/<?= $page['id'] ?>
+                          <a href="/panel/post/<?= $page['id'] ?>" class="ms-1" aria-label="Open website">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" /><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" /></svg>
                           </a>
                         </td>
-                        <td class="text-muted">4,896</td>
-                        <td class="text-muted">3,654</td>
-                        <td class="text-muted">82.54%</td>
-                        <td class="text-end w-1">
-                          <div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-1"></div>
-                        </td>
+                        <td class="text-muted"><?= $page['title'] ?></td>
+                        <td class="text-muted"><?= $page['viewcount'] ?></td>
+                        <td class="text-muted"><?= date($page['date']) ?></td>
                       </tr>
-                      <tr>
-                        <td>
-                          /form-elements.html
-                          <a href="#" class="ms-1" aria-label="Open website">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" /><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" /></svg>
-                          </a>
-                        </td>
-                        <td class="text-muted">3,652</td>
-                        <td class="text-muted">3,215</td>
-                        <td class="text-muted">76.29%</td>
-                        <td class="text-end w-1">
-                          <div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-2"></div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          /index.html
-                          <a href="#" class="ms-1" aria-label="Open website">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" /><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" /></svg>
-                          </a>
-                        </td>
-                        <td class="text-muted">3,256</td>
-                        <td class="text-muted">2,865</td>
-                        <td class="text-muted">72.65%</td>
-                        <td class="text-end w-1">
-                          <div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-3"></div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          /icons.html
-                          <a href="#" class="ms-1" aria-label="Open website">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" /><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" /></svg>
-                          </a>
-                        </td>
-                        <td class="text-muted">986</td>
-                        <td class="text-muted">865</td>
-                        <td class="text-muted">44.89%</td>
-                        <td class="text-end w-1">
-                          <div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-4"></div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          /docs/
-                          <a href="#" class="ms-1" aria-label="Open website">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" /><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" /></svg>
-                          </a>
-                        </td>
-                        <td class="text-muted">912</td>
-                        <td class="text-muted">822</td>
-                        <td class="text-muted">41.12%</td>
-                        <td class="text-end w-1">
-                          <div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-5"></div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          /accordion.html
-                          <a href="#" class="ms-1" aria-label="Open website">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" /><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" /></svg>
-                          </a>
-                        </td>
-                        <td class="text-muted">855</td>
-                        <td class="text-muted">798</td>
-                        <td class="text-muted">32.65%</td>
-                        <td class="text-end w-1">
-                          <div class="chart-sparkline chart-sparkline-sm" id="sparkline-bounce-rate-6"></div>
-                        </td>
-                      </tr>
+                      <?php } ?>
                     </table>
                   </div>
                 </div>
