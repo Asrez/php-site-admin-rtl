@@ -28,6 +28,19 @@ class Comments
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function Count() : int
+    {
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = "SELECT Count(*) as count FROM `comments` ;";
+
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $stmt = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $stmt['count'];
+    }
+
     public static function Creat(array $data)
     {
         
