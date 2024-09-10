@@ -7,6 +7,8 @@ use App\Actions\Users\AllUsers;
 use App\Actions\Posts\Mostvisit;
 use App\Actions\Posts\NotConfirmed;
 use App\Actions\Comments\NotConfirmedComment;
+use App\Actions\Comments\CountComment;
+use App\Actions\Views\CountView;
 use App\Actions\Users\CountUser;
 use App\Actions\Users\GetByIdUser;
 function directory_separator(string $folder, string $file_name)
@@ -21,24 +23,21 @@ function tools()
     $logo = GetByKeySetting::execute('logo');
     $footer = GetByKeySetting::execute('footer');
     $title = GetByKeySetting::execute('title');
-    // $posts = GetAllPost::execute();
-    // $countadmin = CountUser::execute()['count'];
-    // $countpost = CountPost::execute()['count'];
-    // $countuser = CountUser::execute()['count'];
-    // $users = GetAllUser::execute();
-    // $settings = Settings::execute();
+    $admincount = CountUser::execute()['count_user'];
+    $usercount = CountUser::execute()['count_user'];
+    $postcount = CountPost::execute();
+    $commentcount = CountComment::execute();
+    $viewcount = CountView::execute();
 
     return [
         'logo' => $logo,
-    //     'logo_footer' => $logo_footer,
         'footer' => $footer,
-        'title' => $title
-    //     'countadmin' => $countadmin,
-    //     'countpost' => $countpost,
-    //     'countuser' => $countuser,
-    //     'posts' => $posts,
-    //     'users' => $users,
-    //     'settings' => $settings,
+        'title' => $title,
+        'admincount' => $admincount,
+        'usercount' => $usercount,
+        'postcount' => $postcount,
+        'viewcount' => $viewcount,
+        'commentcount' => $commentcount
     ];
 }
 
@@ -77,6 +76,11 @@ function panel_index(array $admin)
         "logo" => $tool['logo'],
         "footer" => $tool['footer'],
         "title" => $tool['title'],
+        'admin_count' => $tool['admincount'],
+        'user_count' => $tool['usercount'],
+        'post_count' => $tool['postcount'],
+        'view_count' => $tool['viewcount'],
+        'comment_count' => $tool['commentcount'],
         "admin" => $admin,
         "admin_activity" => $admin_activity,
         "users" => $Users,

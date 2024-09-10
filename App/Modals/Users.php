@@ -99,17 +99,23 @@ class Users
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function Count() : int
+    public static function Count() : array
     {
         $db = Connect::getInstance()->getConnection();
 
-        $sql = "SELECT Count(*) as count FROM `users` ;";
+        $sql = "SELECT Count(*) as count FROM `users` WHERE `state` = 0;";
 
         $stmt = $db->prepare($sql);
         $stmt->execute();
         $stmt = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return $stmt['count'];
+        $sql1 = "SELECT Count(*) as count FROM `users` WHERE `state` = 1;";
+
+        $stmt1 = $db->prepare($sql);
+        $stmt1->execute();
+        $stmt1 = $stmt1->fetch(PDO::FETCH_ASSOC);
+
+        return ["count_user" => $stmt['count'] , "count_admin" => $stmt1['count']];
     }
 
 }
