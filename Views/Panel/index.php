@@ -491,162 +491,63 @@
                   </div>
                   <div class="table-responsive">
                     <table class="table card-table table-vcenter">
+                      <?php foreach ($not_confirmed_pages as $page) { ?>
                       <tr>
+                      <td class="text-nowrap" title="Post">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 6v12a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2z" /><path d="M10 16h6" /><circle cx="13" cy="11" r="2" /><path d="M4 8h3" /><path d="M4 12h3" /><path d="M4 16h3" /></svg>
+                      </td>
                         <td class="w-1 pe-0">
-                          <input type="checkbox" class="form-check-input m-0 align-middle" aria-label="Select task" checked >
+                        <span class="dropdown">
+                              <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
+                              <div class="dropdown-menu">
+                                  <a class="dropdown-item" href="/panel/result/post/confirm/<?= $page['id'] ?>" >
+                                    Confirm
+                                  </a>
+                                  <a class="dropdown-item" href="/panel/result/post/delete/<?= $page['id'] ?>">
+                                    Delete
+                                  </a>
+                              </div>
+                            </span>
                         </td>
                         <td class="w-100">
-                          <a href="#" class="text-reset">Extend the data model.</a>
+                          <a href="/panel/post/<?= $page['id'] ?>" class="text-reset">Show Post <?= $page['title'] ?></a>
                         </td>
                         <td class="text-nowrap text-muted">
                           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="5" width="16" height="16" rx="2" /><line x1="16" y1="3" x2="16" y2="7" /><line x1="8" y1="3" x2="8" y2="7" /><line x1="4" y1="11" x2="20" y2="11" /><line x1="11" y1="15" x2="12" y2="15" /><line x1="12" y1="15" x2="12" y2="18" /></svg>
-                          August 04, 2021
-                        </td>
-                        <td class="text-nowrap">
-                          <a href="#" class="text-muted">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>
-                            2/7
-                          </a>
-                        </td>
-                        <td class="text-nowrap">
-                          <a href="#" class="text-muted">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" /><line x1="8" y1="9" x2="16" y2="9" /><line x1="8" y1="13" x2="14" y2="13" /></svg>
-                            3</a>
+                          <?= date($page['date']) ?>
                         </td>
                         <td>
-                          <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                          <span class="avatar avatar-sm" style="background-image: url(./static/photos/<?= $page['image'] ?>)"></span>
                         </td>
                       </tr>
+                      <?php } ?>
+                      <?php foreach ($Not_Confirmed_Comment as $comment) { ?>
                       <tr>
-                        <td class="w-1 pe-0">
-                          <input type="checkbox" class="form-check-input m-0 align-middle" aria-label="Select task" >
+                        <td class="text-nowrap" title="Comment">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" /><line x1="8" y1="9" x2="16" y2="9" /><line x1="8" y1="13" x2="14" y2="13" /></svg>
                         </td>
-                        <td class="w-100">
-                          <a href="#" class="text-reset">Verify the event flow.</a>
+                        <td class="w-1 pe-0">
+                            <span class="dropdown">
+                              <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
+                              <div class="dropdown-menu">
+                                  <a class="dropdown-item" href="/panel/result/comment/confirm/<?= $comment['id'] ?>" >
+                                    Confirm
+                                  </a>
+                                  <a class="dropdown-item" href="/panel/result/comment/delete/<?= $comment['id'] ?>">
+                                    Delete
+                                  </a>
+                              </div>
+                            </span>
+                        </td>
+                        <td class="w-100"><?= $comment['comment'] ?>
                         </td>
                         <td class="text-nowrap text-muted">
                           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="5" width="16" height="16" rx="2" /><line x1="16" y1="3" x2="16" y2="7" /><line x1="8" y1="3" x2="8" y2="7" /><line x1="4" y1="11" x2="20" y2="11" /><line x1="11" y1="15" x2="12" y2="15" /><line x1="12" y1="15" x2="12" y2="18" /></svg>
-                          January 03, 2019
+                          <?= date($comment['date']) ?>
                         </td>
-                        <td class="text-nowrap">
-                          <a href="#" class="text-muted">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>
-                            3/10
-                          </a>
-                        </td>
-                        <td class="text-nowrap">
-                          <a href="#" class="text-muted">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" /><line x1="8" y1="9" x2="16" y2="9" /><line x1="8" y1="13" x2="14" y2="13" /></svg>
-                            6</a>
-                        </td>
-                        <td>
-                          <span class="avatar avatar-sm">JL</span>
-                        </td>
+                        <td></td>
                       </tr>
-                      <tr>
-                        <td class="w-1 pe-0">
-                          <input type="checkbox" class="form-check-input m-0 align-middle" aria-label="Select task" >
-                        </td>
-                        <td class="w-100">
-                          <a href="#" class="text-reset">Database backup and maintenance</a>
-                        </td>
-                        <td class="text-nowrap text-muted">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="5" width="16" height="16" rx="2" /><line x1="16" y1="3" x2="16" y2="7" /><line x1="8" y1="3" x2="8" y2="7" /><line x1="4" y1="11" x2="20" y2="11" /><line x1="11" y1="15" x2="12" y2="15" /><line x1="12" y1="15" x2="12" y2="18" /></svg>
-                          December 28, 2018
-                        </td>
-                        <td class="text-nowrap">
-                          <a href="#" class="text-muted">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>
-                            0/6
-                          </a>
-                        </td>
-                        <td class="text-nowrap">
-                          <a href="#" class="text-muted">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" /><line x1="8" y1="9" x2="16" y2="9" /><line x1="8" y1="13" x2="14" y2="13" /></svg>
-                            1</a>
-                        </td>
-                        <td>
-                          <span class="avatar avatar-sm" style="background-image: url(./static/avatars/002m.jpg)"></span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="w-1 pe-0">
-                          <input type="checkbox" class="form-check-input m-0 align-middle" aria-label="Select task" checked >
-                        </td>
-                        <td class="w-100">
-                          <a href="#" class="text-reset">Identify the implementation team.</a>
-                        </td>
-                        <td class="text-nowrap text-muted">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="5" width="16" height="16" rx="2" /><line x1="16" y1="3" x2="16" y2="7" /><line x1="8" y1="3" x2="8" y2="7" /><line x1="4" y1="11" x2="20" y2="11" /><line x1="11" y1="15" x2="12" y2="15" /><line x1="12" y1="15" x2="12" y2="18" /></svg>
-                          November 07, 2020
-                        </td>
-                        <td class="text-nowrap">
-                          <a href="#" class="text-muted">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>
-                            6/10
-                          </a>
-                        </td>
-                        <td class="text-nowrap">
-                          <a href="#" class="text-muted">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" /><line x1="8" y1="9" x2="16" y2="9" /><line x1="8" y1="13" x2="14" y2="13" /></svg>
-                            12</a>
-                        </td>
-                        <td>
-                          <span class="avatar avatar-sm" style="background-image: url(./static/avatars/003m.jpg)"></span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="w-1 pe-0">
-                          <input type="checkbox" class="form-check-input m-0 align-middle" aria-label="Select task" >
-                        </td>
-                        <td class="w-100">
-                          <a href="#" class="text-reset">Define users and workflow</a>
-                        </td>
-                        <td class="text-nowrap text-muted">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="5" width="16" height="16" rx="2" /><line x1="16" y1="3" x2="16" y2="7" /><line x1="8" y1="3" x2="8" y2="7" /><line x1="4" y1="11" x2="20" y2="11" /><line x1="11" y1="15" x2="12" y2="15" /><line x1="12" y1="15" x2="12" y2="18" /></svg>
-                          November 23, 2021
-                        </td>
-                        <td class="text-nowrap">
-                          <a href="#" class="text-muted">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>
-                            3/7
-                          </a>
-                        </td>
-                        <td class="text-nowrap">
-                          <a href="#" class="text-muted">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" /><line x1="8" y1="9" x2="16" y2="9" /><line x1="8" y1="13" x2="14" y2="13" /></svg>
-                            5</a>
-                        </td>
-                        <td>
-                          <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000f.jpg)"></span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="w-1 pe-0">
-                          <input type="checkbox" class="form-check-input m-0 align-middle" aria-label="Select task" checked >
-                        </td>
-                        <td class="w-100">
-                          <a href="#" class="text-reset">Check Pull Requests</a>
-                        </td>
-                        <td class="text-nowrap text-muted">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="5" width="16" height="16" rx="2" /><line x1="16" y1="3" x2="16" y2="7" /><line x1="8" y1="3" x2="8" y2="7" /><line x1="4" y1="11" x2="20" y2="11" /><line x1="11" y1="15" x2="12" y2="15" /><line x1="12" y1="15" x2="12" y2="18" /></svg>
-                          January 14, 2021
-                        </td>
-                        <td class="text-nowrap">
-                          <a href="#" class="text-muted">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>
-                            2/9
-                          </a>
-                        </td>
-                        <td class="text-nowrap">
-                          <a href="#" class="text-muted">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" /><line x1="8" y1="9" x2="16" y2="9" /><line x1="8" y1="13" x2="14" y2="13" /></svg>
-                            3</a>
-                        </td>
-                        <td>
-                          <span class="avatar avatar-sm" style="background-image: url(./static/avatars/001f.jpg)"></span>
-                        </td>
-                      </tr>
+                      <?php } ?>
                     </table>
                   </div>
                 </div>
