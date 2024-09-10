@@ -597,7 +597,6 @@
         }
         else if (data === "login=false") {
             window.alert("info is incorrect");
-            location.replace("/panel/login");
         }
         else if (data === "login=nofill") {
             window.alert("some fildes are not set yet");
@@ -608,7 +607,6 @@
         }
         else if (data === "signup=false") {
             window.alert("change username");
-            location.replace("/panel/signup");
         }
         else if (data === "signup=nofill") {
             window.alert("some fildes are not set yet");

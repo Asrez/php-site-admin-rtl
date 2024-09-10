@@ -2,6 +2,8 @@
 
 namespace App\Modals;
 
+use PDO;
+use App\Database\Connect;
 class Settings
 {
     public static function Delete(int $id)
@@ -16,7 +18,15 @@ class Settings
 
     public static function GetByKey(string $key)
     {
-        
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = "SELECT * FROM `settings` WHERE `key_setting`= :key";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("key", $key);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public static function GetByState(string $state)

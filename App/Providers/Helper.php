@@ -58,7 +58,7 @@ function session_admin()
     }
 }
 
-function panel_index(?string $dir = "ltr")
+function panel_index()
 {
     $tool = tools();
     Flight::render(directory_separator("Panel", "index.php"),
