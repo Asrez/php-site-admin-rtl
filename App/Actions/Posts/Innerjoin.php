@@ -2,10 +2,12 @@
 
 namespace App\Actions\Posts;
 
+use App\Modals\Posts;
+
 class Innerjoin
 {
-    public static function execute(int $id)
+    public static function execute()
     {
-        
+        return Posts::Innerjoin();
     }
 }

@@ -568,17 +568,20 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <?php foreach() { ?>
+                        <?php foreach($admin_activity as $activity) { ?>
                         <tr>
                           <td class="w-1">
-                            <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                            <span class="avatar avatar-sm" style="background-image: url(./static/avatars/<?= $activity['userimage'] ?>)"></span>
+                            <?= $activity['username'] ?>
                           </td>
                           <td class="td-truncate">
+                            <a href="/panel/post/<?= $activity['post_id'] ?>">
                             <div class="text-truncate">
-                              Fix dart Sass compatibility (#29755)
+                            <?= $activity['title'] ?>
                             </div>
+                            </a>
                           </td>
-                          <td class="text-nowrap text-muted">28 Nov 2019</td>
+                          <td class="text-nowrap text-muted"><?= date($activity['date']) ?></td>
                         </tr>
                         <?php } ?>
                       </tbody>

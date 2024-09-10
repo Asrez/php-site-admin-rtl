@@ -32,16 +32,16 @@ class Posts
         
     }
     
-    public static function Innerjoin(string $slug)
+    public static function Innerjoin()
     {
         $db = Connect::getInstance()->getConnection();
 
         $sql = 'SELECT `users`.`id` ,
-        `users`.`image` as userimage ,
+        `users`.`image` as `userimage` ,
         `users`.`username` ,
         `posts`.`title` ,
-        `posts`.`id` ,
-        `posts`.`date` ,
+        `posts`.`id` as `post_id`,
+        `posts`.`date`
         FROM `posts`
         INNER JOIN `users` ON `posts`.`admin_id` = `users`.`id` ;';
 

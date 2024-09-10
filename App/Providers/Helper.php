@@ -2,6 +2,7 @@
 
 use App\Actions\Settings\GetByKeySetting;
 use App\Actions\Posts\CountPost;
+use App\Actions\Posts\Innerjoin;
 use App\Actions\Users\CountUser;
 use App\Actions\Users\GetByIdUser;
 function directory_separator(string $folder, string $file_name)
@@ -58,14 +59,17 @@ function session_admin()
     }
 }
 
-function panel_index()
+function panel_index(array $admin)
 {
     $tool = tools();
+    $admin_activity = Innerjoin::execute();
     Flight::render(directory_separator("Panel", "index.php"),
     [
         "logo" => $tool['logo'],
         "footer" => $tool['footer'],
-        "title" => $tool['title']    
+        "title" => $tool['title'],
+        "admin" => $admin,
+        "admin_activity" => $admin_activity   
     ]);
 }
 

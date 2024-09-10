@@ -15,7 +15,7 @@ class IndexController
             return panel_login();
         }
         else
-            return panel_index();
+            return panel_index($admin);
     }
 
     public function panel_manage_setting()
