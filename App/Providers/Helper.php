@@ -25,7 +25,7 @@ function tools()
     $title = GetByKeySetting::execute('title');
     $admincount = CountUser::execute()['count_user'];
     $usercount = CountUser::execute()['count_user'];
-    $postcount = CountPost::execute();
+    $postcount = CountPost::execute()['count_all'];
     $commentcount = CountComment::execute();
     $viewcount = CountView::execute();
 
@@ -71,6 +71,10 @@ function panel_index(array $admin)
     $Not_confirmed = NotConfirmed::execute();
     $Not_Confirmed_Comment = NotConfirmedComment::execute();
 
+    $postcount = CountPost::execute()['count_all'];
+    $postnoconfirmed = CountPost::execute()['count_no_confirmed'];
+    
+    $not_confirmed_percent = ($postnoconfirmed*100)/$postcount;
     Flight::render(directory_separator("Panel", "index.php"),
     [
         "logo" => $tool['logo'],
@@ -86,7 +90,8 @@ function panel_index(array $admin)
         "users" => $Users,
         "most_visit_pages" => $MostVisit,
         "not_confirmed_pages" => $Not_confirmed,
-        "Not_Confirmed_Comment" => $Not_Confirmed_Comment
+        "Not_Confirmed_Comment" => $Not_Confirmed_Comment ,
+        "not_confirmed_percent" => $not_confirmed_percent
     ]);
 }
 

@@ -75,7 +75,7 @@ class Posts
         return $stms->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function Count() : int
+    public static function Count() : array
     {
         $db = Connect::getInstance()->getConnection();
 
@@ -85,6 +85,12 @@ class Posts
         $stmt->execute();
         $stmt = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return $stmt['count'];
+        $sql1 = "SELECT Count(*) as count FROM `posts` WHERE `state` = 0 ;";
+
+        $stmt1 = $db->prepare($sql1);
+        $stmt1->execute();
+        $stmt1= $stmt1->fetch(PDO::FETCH_ASSOC);
+
+        return ["count_all" => $stmt['count'], "count_no_confirmed" => $stmt1['count']];
     }
 }
