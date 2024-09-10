@@ -13,7 +13,7 @@
             <div class="row g-2 align-items-center">
               <div class="col">
                 <div class="page-pretitle">
-                  Overview
+                  Dashboard
                 </div>
                 <h2 class="page-title">
                 <?= $title['value_setting']; ?>
@@ -21,14 +21,9 @@
               </div>
               <div class="col-auto ms-auto d-print-none">
                 <div class="btn-list">
-                  <span class="d-none d-sm-inline">
-                    <a href="#" class="btn">
-                      New view
-                    </a>
-                  </span>
                   <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
-                    Create new report
+                    Create New Post
                   </a>
                   <a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report" aria-label="Create new report">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
@@ -545,7 +540,7 @@
               <div class="col-lg-6">
                 <div class="card">
                   <div class="card-header border-0">
-                    <div class="card-title">Development activity</div>
+                    <div class="card-title">Admins activity</div>
                   </div>
                   <div class="position-relative">
                     <div class="position-absolute top-0 left-0 px-3 mt-1 w-75">
@@ -567,12 +562,13 @@
                     <table class="table table-vcenter">
                       <thead>
                         <tr>
-                          <th>User</th>
-                          <th>Commit</th>
+                          <th>Admin</th>
+                          <th>Post</th>
                           <th>Date</th>
                         </tr>
                       </thead>
                       <tbody>
+                        <?php foreach() { ?>
                         <tr>
                           <td class="w-1">
                             <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
@@ -584,50 +580,7 @@
                           </td>
                           <td class="text-nowrap text-muted">28 Nov 2019</td>
                         </tr>
-                        <tr>
-                          <td class="w-1">
-                            <span class="avatar avatar-sm">JL</span>
-                          </td>
-                          <td class="td-truncate">
-                            <div class="text-truncate">
-                              Change deprecated html tags to text decoration classes (#29604)
-                            </div>
-                          </td>
-                          <td class="text-nowrap text-muted">27 Nov 2019</td>
-                        </tr>
-                        <tr>
-                          <td class="w-1">
-                            <span class="avatar avatar-sm" style="background-image: url(./static/avatars/002m.jpg)"></span>
-                          </td>
-                          <td class="td-truncate">
-                            <div class="text-truncate">
-                              justify-content:between ⇒ justify-content:space-between (#29734)
-                            </div>
-                          </td>
-                          <td class="text-nowrap text-muted">26 Nov 2019</td>
-                        </tr>
-                        <tr>
-                          <td class="w-1">
-                            <span class="avatar avatar-sm" style="background-image: url(./static/avatars/003m.jpg)"></span>
-                          </td>
-                          <td class="td-truncate">
-                            <div class="text-truncate">
-                              Update change-version.js (#29736)
-                            </div>
-                          </td>
-                          <td class="text-nowrap text-muted">26 Nov 2019</td>
-                        </tr>
-                        <tr>
-                          <td class="w-1">
-                            <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000f.jpg)"></span>
-                          </td>
-                          <td class="td-truncate">
-                            <div class="text-truncate">
-                              Regenerate package-lock.json (#29730)
-                            </div>
-                          </td>
-                          <td class="text-nowrap text-muted">25 Nov 2019</td>
-                        </tr>
+                        <?php } ?>
                       </tbody>
                     </table>
                   </div>
