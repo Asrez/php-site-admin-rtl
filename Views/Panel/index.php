@@ -297,9 +297,6 @@
                                 </div>
                                 <div class="text-muted"><?= date($user['date']) ?></div>
                               </div>
-                              <div class="col-auto align-self-center">
-                                <div class="badge bg-primary"></div>
-                              </div>
                             </div>
                           </div>
                           <?php } ?>
