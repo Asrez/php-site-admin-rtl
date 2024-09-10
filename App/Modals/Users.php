@@ -73,4 +73,29 @@ class Users
         return $result;
 
     }
+
+    public static function GetAllUsers() : array
+    {
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = "SELECT * FROM `users` WHERE `state`= 0";
+
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function GetAllAdmins() : array
+    {
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = "SELECT * FROM `users` WHERE `id`= :id";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("id", $id);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
