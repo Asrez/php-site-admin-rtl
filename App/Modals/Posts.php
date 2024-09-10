@@ -50,4 +50,16 @@ class Posts
 
         return $stms->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public static function Mostvisit()
+    {
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = 'SELECT * FROM `posts` ORDER BY `viewcount` DESC;';
+
+        $stms = $db->prepare($sql);
+        $stms->execute();
+
+        return $stms->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
