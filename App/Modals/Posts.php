@@ -62,4 +62,16 @@ class Posts
 
         return $stms->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public static function NotConfirmed()
+    {
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = 'SELECT * FROM `posts` WHERE `state` = 0;';
+
+        $stms = $db->prepare($sql);
+        $stms->execute();
+
+        return $stms->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
