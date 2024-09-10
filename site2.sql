@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2024 at 04:59 PM
+-- Generation Time: Sep 10, 2024 at 12:00 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,13 +24,50 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(5000) NOT NULL,
+  `comment` text NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
+  `state` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_persian_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `title`, `comment`, `user_id`, `date`, `state`) VALUES
+(1, 'my comment', 'thanks', 2, '2024-09-20', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `posts`
 --
 
 CREATE TABLE `posts` (
   `id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(5000) NOT NULL
+  `title` varchar(5000) NOT NULL,
+  `content` text NOT NULL,
+  `image` mediumtext NOT NULL,
+  `admin_id` bigint(20) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
+  `viewcount` bigint(20) NOT NULL DEFAULT 0,
+  `state` int(11) NOT NULL DEFAULT 0,
+  `slug` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `title`, `content`, `image`, `admin_id`, `date`, `viewcount`, `state`, `slug`) VALUES
+(1, 'hello', '.....', 'color-palette-guide-sample-colors-catalog-.jpg', 1, '2024-09-10', 0, 1, 'dddd'),
+(2, 'bye', '....', 'group-of-people-brainstorming-and-taking-notes-4.jpg', 1, '2024-09-12', 3, 0, 'fff');
 
 -- --------------------------------------------------------
 
@@ -69,6 +106,8 @@ CREATE TABLE `users` (
   `username` varchar(5000) NOT NULL,
   `email` mediumtext NOT NULL,
   `password` mediumtext NOT NULL,
+  `image` mediumtext NOT NULL DEFAULT 'default.png',
+  `date` date DEFAULT NULL,
   `state` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_persian_ci;
 
@@ -76,12 +115,31 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `state`) VALUES
-(1, 'zahra', 'zahra', 'zahra@gmail.com', '202cb962ac59075b964b07152d234b70', 1);
+INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`, `image`, `date`, `state`) VALUES
+(1, 'zahra', 'zahra', 'zahra@gmail.com', '202cb962ac59075b964b07152d234b70', 'default.png', '2024-09-04', 1),
+(2, 'ali', 'ali', 'ali@gmail.com', '202cb962ac59075b964b07152d234b70', 'default.png', '2024-09-18', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `views`
+--
+
+CREATE TABLE `views` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `ip` varchar(5000) NOT NULL,
+  `post_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_persian_ci;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `posts`
@@ -103,14 +161,26 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `username` (`username`) USING HASH;
 
 --
+-- Indexes for table `views`
+--
+ALTER TABLE `views`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -122,7 +192,13 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `views`
+--
+ALTER TABLE `views`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
