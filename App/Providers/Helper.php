@@ -5,6 +5,7 @@ use App\Actions\Posts\CountPost;
 use App\Actions\Posts\Innerjoin;
 use App\Actions\Users\AllUsers;
 use App\Actions\Posts\Mostvisit;
+use App\Actions\Posts\NotConfirmed;
 use App\Actions\Users\CountUser;
 use App\Actions\Users\GetByIdUser;
 function directory_separator(string $folder, string $file_name)
@@ -67,6 +68,7 @@ function panel_index(array $admin)
     $admin_activity = Innerjoin::execute();
     $Users = AllUsers::execute();
     $MostVisit = Mostvisit::execute();
+    $Not_confirmed = NotConfirmed::execute();
     Flight::render(directory_separator("Panel", "index.php"),
     [
         "logo" => $tool['logo'],
@@ -75,7 +77,8 @@ function panel_index(array $admin)
         "admin" => $admin,
         "admin_activity" => $admin_activity,
         "users" => $Users,
-        "most_visit_pages" => $MostVisit
+        "most_visit_pages" => $MostVisit,
+        "not_confirmed_pages" => $Not_confirmed
     ]);
 }
 
