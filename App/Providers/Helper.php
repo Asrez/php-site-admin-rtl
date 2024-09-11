@@ -106,7 +106,7 @@ function panel_index(array $admin)
         $AllComments["comment_user_id"][] = $comment['user_id'];
     }
 
-    
+
     Flight::render(
         directory_separator("Panel", "index.php"),
         [
@@ -149,4 +149,25 @@ function panel_login()
 function panel_signup()
 {
     Flight::render(directory_separator("Panel", "signup.php"));
+}
+
+function panel_users(array $admin)
+{
+    $tool = tools();
+    $Users = AllUsers::execute();
+    Flight::render(
+        directory_separator("Panel", "users.php"),
+        [
+            "logo" => $tool['logo'],
+            "footer" => $tool['footer'],
+            "title" => $tool['title'],
+            'admin_count' => $tool['admincount'],
+            'user_count' => $tool['usercount'],
+            'post_count' => $tool['postcount'],
+            'view_count' => $tool['viewcount'],
+            'comment_count' => $tool['commentcount'],
+            "admin" => $admin,
+            "users" => $Users,
+        ]
+    );
 }

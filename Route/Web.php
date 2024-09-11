@@ -24,7 +24,7 @@ Flight::group("/panel", function () {
     });
 
     Flight::group("/users", function () {
-        Flight::route("GET /", [new PostController, "panel_users"]);
+        Flight::route("GET /", [new UserController, "panel_users"]);
         Flight::route("GET /@id", [new UserController, "panel_show_user"]);
     });
 

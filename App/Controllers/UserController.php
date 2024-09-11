@@ -75,4 +75,15 @@ class UserController
         }
         else Flight::redirect("/panel/signup?signup=nofill");
     }
+
+    public function panel_users()
+    {
+        $admin = session_admin();
+        
+        if ($admin === false) {
+            return panel_login();
+        }
+        else
+            return panel_users($admin);
+    }
 }
