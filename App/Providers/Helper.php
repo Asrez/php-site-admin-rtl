@@ -106,6 +106,7 @@ function panel_index(array $admin)
         $AllComments["comment_user_id"][] = $comment['user_id'];
     }
 
+    
     Flight::render(
         directory_separator("Panel", "index.php"),
         [
@@ -129,7 +130,8 @@ function panel_index(array $admin)
             "view_count_chart" => $view_count_chart,
             "title_chart" => $title_chart,
             "not_confirmed_comment_percent" => $not_confirmed_comment_percent,
-            "AllComments" => $AllComments
+            "AllComments" => $AllComments ,
+            "posts" => $All_post
         ]
     );
 }
