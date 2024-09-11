@@ -31,7 +31,18 @@ class Posts
     {
         
     }
-    
+
+    public static function GetAll()
+    {
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = 'SELECT * FROM `posts`;';
+
+        $stms = $db->prepare($sql);
+        $stms->execute();
+
+        return $stms->fetchAll(PDO::FETCH_ASSOC);
+    }
     public static function Innerjoin()
     {
         $db = Connect::getInstance()->getConnection();

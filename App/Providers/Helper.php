@@ -2,6 +2,7 @@
 
 use App\Actions\Settings\GetByKeySetting;
 use App\Actions\Posts\CountPost;
+use App\Actions\Posts\AllPosts;
 use App\Actions\Posts\Innerjoin;
 use App\Actions\Users\AllUsers;
 use App\Actions\Posts\Mostvisit;
@@ -78,6 +79,11 @@ function panel_index(array $admin)
         $user_chart_count[] = $array2;
         $user_chart_date[] = $filed['date'];
     }
+    $All_post = AllPosts::execute();
+    foreach ($All_post as $view){
+        $view_count_chart[] = $view['viewcount'];
+        $title_chart[] = $view['title'];
+    }
 
     $tool = tools();
     $admin_activity = Innerjoin::execute();
@@ -108,7 +114,9 @@ function panel_index(array $admin)
         "Not_Confirmed_Comment" => $Not_Confirmed_Comment ,
         "not_confirmed_percent" => $not_confirmed_percent ,
         "user_chart_date" => $user_chart_date ,
-        "user_chart_count" => $user_chart_count 
+        "user_chart_count" => $user_chart_count ,
+        "view_count_chart" => $view_count_chart ,
+        "title_chart" => $view_count_chart
     ]);
 }
 
