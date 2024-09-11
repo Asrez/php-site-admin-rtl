@@ -10,6 +10,8 @@ use App\Actions\Comments\NotConfirmedComment;
 use App\Actions\Comments\CountComment;
 use App\Actions\Views\CountView;
 use App\Actions\Users\CountUser;
+use App\Actions\Users\Get_In_MonthUser;
+use App\Actions\Users\Count_Date_User;
 use App\Actions\Users\GetByIdUser;
 function directory_separator(string $folder, string $file_name)
 {
@@ -64,6 +66,19 @@ function session_admin()
 
 function panel_index(array $admin)
 {
+    $year = date("Y");
+    $day = date("d");
+    $month = date("m");
+    $last_month = $month-1;
+    $date1 = date($year.$day.$last_month);
+    $array = Get_In_MonthUser::execute($date1);
+    
+    foreach($array as $filed){
+        $array2 = Count_Date_User::execute($filed['date']);
+        $user_chart_count[] = $array2;
+        $user_chart_date[] = $filed['date'];
+    }
+
     $tool = tools();
     $admin_activity = Innerjoin::execute();
     $Users = AllUsers::execute();
@@ -91,7 +106,9 @@ function panel_index(array $admin)
         "most_visit_pages" => $MostVisit,
         "not_confirmed_pages" => $Not_confirmed,
         "Not_Confirmed_Comment" => $Not_Confirmed_Comment ,
-        "not_confirmed_percent" => $not_confirmed_percent
+        "not_confirmed_percent" => $not_confirmed_percent ,
+        "user_chart_date" => $user_chart_date ,
+        "user_chart_count" => $user_chart_count 
     ]);
 }
 

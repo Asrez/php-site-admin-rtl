@@ -118,4 +118,29 @@ class Users
         return ["count_user" => $stmt['count'] , "count_admin" => $stmt1['count']];
     }
 
+    public static function Get_In_Month(string $date) : array
+    {
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = "SELECT `date` FROM `users` WHERE `date` >= :date;";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("date", $date);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public static function Count_Date(string $date) : int
+    {
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = "SELECT Count(*) as count FROM `users` WHERE `date` = :date;";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("date", $date);
+        $stmt->execute();
+        $stmt = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt['count'];
+    }
 }
