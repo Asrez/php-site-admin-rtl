@@ -8,6 +8,7 @@ use App\Actions\Users\AllUsers;
 use App\Actions\Posts\Mostvisit;
 use App\Actions\Posts\NotConfirmed;
 use App\Actions\Comments\NotConfirmedComment;
+use App\Actions\Comments\AllComments;
 use App\Actions\Comments\CountComment;
 use App\Actions\Views\CountView;
 use App\Actions\Users\CountUser;
@@ -82,7 +83,7 @@ function panel_index(array $admin)
     $All_post = AllPosts::execute();
     foreach ($All_post as $view){
         $view_count_chart[] = $view['viewcount'];
-        $title_chart[] = $view['title'];
+        $title_chart[] = $view['id'];
     }
 
     $tool = tools();
@@ -92,10 +93,18 @@ function panel_index(array $admin)
     $Not_confirmed = NotConfirmed::execute();
     $Not_Confirmed_Comment = NotConfirmedComment::execute();
 
-    $postcount = CountPost::execute()['count_all'];
     $postnoconfirmed = CountPost::execute()['count_no_confirmed'];
     
-    $not_confirmed_percent = ($postnoconfirmed*100)/$postcount;
+    $not_confirmed_percent = ($postnoconfirmed*100)/$tool['postcount'];
+
+    $not_confirmed_comment_percent = (count($Not_Confirmed_Comment)*100)/$tool['commentcount'];
+
+    $AllCommentss = AllComments::execute();
+    foreach ($AllCommentss as $comment){
+        $AllComments["comment_post_id"][] = $comment['post_id'];
+        $AllComments["comment_title"][] = $comment['title'];
+        $AllComments["comment_user_id"][] = $comment['user_id'];
+    }
     Flight::render(directory_separator("Panel", "index.php"),
     [
         "logo" => $tool['logo'],
@@ -116,7 +125,9 @@ function panel_index(array $admin)
         "user_chart_date" => $user_chart_date ,
         "user_chart_count" => $user_chart_count ,
         "view_count_chart" => $view_count_chart ,
-        "title_chart" => $view_count_chart
+        "title_chart" => $title_chart ,
+        "not_confirmed_comment_percent" => $not_confirmed_comment_percent ,
+        "AllComments" => $AllComments
     ]);
 }
 

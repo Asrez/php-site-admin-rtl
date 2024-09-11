@@ -28,6 +28,18 @@ class Comments
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function GetAll() : array
+    {
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = "SELECT * FROM `comments` ;";
+
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public static function Count() : int
     {
         $db = Connect::getInstance()->getConnection();
