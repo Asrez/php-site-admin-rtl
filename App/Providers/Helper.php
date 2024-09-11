@@ -17,8 +17,8 @@ use App\Actions\Users\Count_Date_User;
 use App\Actions\Users\GetByIdUser;
 function directory_separator(string $folder, string $file_name)
 {
-    $path = __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.$folder.DIRECTORY_SEPARATOR.$file_name;
-    
+    $path = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . $file_name;
+
     return $path;
 }
 function tools()
@@ -27,7 +27,7 @@ function tools()
     $logo = GetByKeySetting::execute('logo');
     $footer = GetByKeySetting::execute('footer');
     $title = GetByKeySetting::execute('title');
-    $admincount = CountUser::execute()['count_user'];
+    $admincount = CountUser::execute()['count_admin'];
     $usercount = CountUser::execute()['count_user'];
     $postcount = CountPost::execute()['count_all'];
     $commentcount = CountComment::execute();
@@ -71,17 +71,17 @@ function panel_index(array $admin)
     $year = date("Y");
     $day = date("d");
     $month = date("m");
-    $last_month = $month-1;
-    $date1 = date($year.$day.$last_month);
+    $last_month = $month - 1;
+    $date1 = date($year . $day . $last_month);
     $array = Get_In_MonthUser::execute($date1);
-    
-    foreach($array as $filed){
+
+    foreach ($array as $filed) {
         $array2 = Count_Date_User::execute($filed['date']);
         $user_chart_count[] = $array2;
         $user_chart_date[] = $filed['date'];
     }
     $All_post = AllPosts::execute();
-    foreach ($All_post as $view){
+    foreach ($All_post as $view) {
         $view_count_chart[] = $view['viewcount'];
         $title_chart[] = $view['id'];
     }
@@ -94,41 +94,44 @@ function panel_index(array $admin)
     $Not_Confirmed_Comment = NotConfirmedComment::execute();
 
     $postnoconfirmed = CountPost::execute()['count_no_confirmed'];
-    
-    $not_confirmed_percent = ($postnoconfirmed*100)/$tool['postcount'];
 
-    $not_confirmed_comment_percent = (count($Not_Confirmed_Comment)*100)/$tool['commentcount'];
+    $not_confirmed_percent = ($postnoconfirmed * 100) / $tool['postcount'];
+
+    $not_confirmed_comment_percent = (count($Not_Confirmed_Comment) * 100) / $tool['commentcount'];
 
     $AllCommentss = AllComments::execute();
-    foreach ($AllCommentss as $comment){
+    foreach ($AllCommentss as $comment) {
         $AllComments["comment_post_id"][] = $comment['post_id'];
         $AllComments["comment_title"][] = $comment['title'];
         $AllComments["comment_user_id"][] = $comment['user_id'];
     }
-    Flight::render(directory_separator("Panel", "index.php"),
-    [
-        "logo" => $tool['logo'],
-        "footer" => $tool['footer'],
-        "title" => $tool['title'],
-        'admin_count' => $tool['admincount'],
-        'user_count' => $tool['usercount'],
-        'post_count' => $tool['postcount'],
-        'view_count' => $tool['viewcount'],
-        'comment_count' => $tool['commentcount'],
-        "admin" => $admin,
-        "admin_activity" => $admin_activity,
-        "users" => $Users,
-        "most_visit_pages" => $MostVisit,
-        "not_confirmed_pages" => $Not_confirmed,
-        "Not_Confirmed_Comment" => $Not_Confirmed_Comment ,
-        "not_confirmed_percent" => $not_confirmed_percent ,
-        "user_chart_date" => $user_chart_date ,
-        "user_chart_count" => $user_chart_count ,
-        "view_count_chart" => $view_count_chart ,
-        "title_chart" => $title_chart ,
-        "not_confirmed_comment_percent" => $not_confirmed_comment_percent ,
-        "AllComments" => $AllComments
-    ]);
+
+    Flight::render(
+        directory_separator("Panel", "index.php"),
+        [
+            "logo" => $tool['logo'],
+            "footer" => $tool['footer'],
+            "title" => $tool['title'],
+            'admin_count' => $tool['admincount'],
+            'user_count' => $tool['usercount'],
+            'post_count' => $tool['postcount'],
+            'view_count' => $tool['viewcount'],
+            'comment_count' => $tool['commentcount'],
+            "admin" => $admin,
+            "admin_activity" => $admin_activity,
+            "users" => $Users,
+            "most_visit_pages" => $MostVisit,
+            "not_confirmed_pages" => $Not_confirmed,
+            "Not_Confirmed_Comment" => $Not_Confirmed_Comment,
+            "not_confirmed_percent" => $not_confirmed_percent,
+            "user_chart_date" => $user_chart_date,
+            "user_chart_count" => $user_chart_count,
+            "view_count_chart" => $view_count_chart,
+            "title_chart" => $title_chart,
+            "not_confirmed_comment_percent" => $not_confirmed_comment_percent,
+            "AllComments" => $AllComments
+        ]
+    );
 }
 
 function panel_manage_setting()

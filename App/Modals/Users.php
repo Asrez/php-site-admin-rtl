@@ -111,7 +111,7 @@ class Users
 
         $sql1 = "SELECT Count(*) as count FROM `users` WHERE `state` = 1;";
 
-        $stmt1 = $db->prepare($sql);
+        $stmt1 = $db->prepare($sql1);
         $stmt1->execute();
         $stmt1 = $stmt1->fetch(PDO::FETCH_ASSOC);
 

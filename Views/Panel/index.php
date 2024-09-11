@@ -190,40 +190,6 @@
               <div class="col-lg-6">
                 <div class="row row-cards">
                   <div class="col-12">
-                    <div class="card">
-                      <div class="card-body">
-                        <p class="mb-3">Using Storage <strong>6854.45 MB </strong>of 8 GB</p>
-                        <div class="progress progress-separated mb-3">
-                          <div class="progress-bar bg-primary" role="progressbar" style="width: 44%" aria-label="Regular"></div>
-                          <div class="progress-bar bg-info" role="progressbar" style="width: 19%" aria-label="System"></div>
-                          <div class="progress-bar bg-success" role="progressbar" style="width: 9%" aria-label="Shared"></div>
-                        </div>
-                        <div class="row">
-                          <div class="col-auto d-flex align-items-center pe-2">
-                            <span class="legend me-2 bg-primary"></span>
-                            <span>Regular</span>
-                            <span class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-muted">915MB</span>
-                          </div>
-                          <div class="col-auto d-flex align-items-center px-2">
-                            <span class="legend me-2 bg-info"></span>
-                            <span>System</span>
-                            <span class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-muted">415MB</span>
-                          </div>
-                          <div class="col-auto d-flex align-items-center px-2">
-                            <span class="legend me-2 bg-success"></span>
-                            <span>Shared</span>
-                            <span class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-muted">201MB</span>
-                          </div>
-                          <div class="col-auto d-flex align-items-center ps-2">
-                            <span class="legend me-2"></span>
-                            <span>Free</span>
-                            <span class="d-none d-md-inline d-lg-none d-xxl-inline ms-2 text-muted">612MB</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12">
                     <div class="card" style="height: 28rem">
                       <div class="card-body card-body-scrollable card-body-scrollable-shadow">
                         <div class="divide-y">
@@ -349,76 +315,49 @@
               <div class="col-md-6 col-lg-4">
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Social Media Traffic</h3>
+                    <h3 class="card-title">Tables</h3>
                   </div>
                   <table class="table card-table table-vcenter">
                     <thead>
                       <tr>
-                        <th>Network</th>
-                        <th colspan="2">Visitors</th>
+                        <th>Table</th>
+                        <th colspan="2">Count</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Instagram</td>
-                        <td>3,550</td>
+                        <td>Posts</td>
+                        <td><?= $post_count ?></td>
                         <td class="w-50">
                           <div class="progress progress-xs">
-                            <div class="progress-bar bg-primary" style="width: 71.0%"></div>
+                            <div class="progress-bar bg-primary" style="width: <?= $post_count ?>%"></div>
                           </div>
                         </td>
                       </tr>
                       <tr>
-                        <td>Twitter</td>
-                        <td>1,798</td>
+                        <td>Users</td>
+                        <td><?= $user_count ?></td>
                         <td class="w-50">
                           <div class="progress progress-xs">
-                            <div class="progress-bar bg-primary" style="width: 35.96%"></div>
+                            <div class="progress-bar bg-primary" style="width: <?= $user_count ?>%"></div>
                           </div>
                         </td>
                       </tr>
                       <tr>
-                        <td>Facebook</td>
-                        <td>1,245</td>
+                        <td>Admins</td>
+                        <td><?= $admin_count ?></td>
                         <td class="w-50">
                           <div class="progress progress-xs">
-                            <div class="progress-bar bg-primary" style="width: 24.9%"></div>
+                            <div class="progress-bar bg-primary" style="width: <?= $admin_count ?>%"></div>
                           </div>
                         </td>
                       </tr>
                       <tr>
-                        <td>TikTok</td>
-                        <td>986</td>
+                        <td>Comments</td>
+                        <td><?= $comment_count ?></td>
                         <td class="w-50">
                           <div class="progress progress-xs">
-                            <div class="progress-bar bg-primary" style="width: 19.72%"></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Pinterest</td>
-                        <td>854</td>
-                        <td class="w-50">
-                          <div class="progress progress-xs">
-                            <div class="progress-bar bg-primary" style="width: 17.08%"></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>VK</td>
-                        <td>650</td>
-                        <td class="w-50">
-                          <div class="progress progress-xs">
-                            <div class="progress-bar bg-primary" style="width: 13.0%"></div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Pinterest</td>
-                        <td>420</td>
-                        <td class="w-50">
-                          <div class="progress progress-xs">
-                            <div class="progress-bar bg-primary" style="width: 8.4%"></div>
+                            <div class="progress-bar bg-primary" style="width: <?= $comment_count ?>%"></div>
                           </div>
                         </td>
                       </tr>
