@@ -481,9 +481,11 @@
                                 <a class="dropdown-item" href="#">
                                   Delete
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                  Update
-                                </a>
+                                <?php if($post['state'] === 1) { ?>
+                                  <a class="dropdown-item" href="#">
+                                    Update
+                                  </a>
+                                <?php } ?>
                                 <?php if($post['state'] === 0) { ?>
                                   <a class="dropdown-item" href="#">
                                   Confirm
