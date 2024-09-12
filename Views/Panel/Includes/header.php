@@ -131,8 +131,8 @@
                                     <a class="dropdown-item" href="/panel/manage/advertisings">
                                         Advertising
                                     </a>
-                                    <a class="dropdown-item" href="./panel/manage/admins">
-                                        Admins
+                                    <a class="dropdown-item" href="./panel/manage/account">
+                                        My account
                                     </a>
                                 </div>
                             </div>
