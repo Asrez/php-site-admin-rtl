@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Manage Users</title>
+    <title>Manage Posts</title>
     <?php include "Init/style.php"; ?>
   </head>
   <body >
@@ -13,14 +13,14 @@
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                  Users
+                  Manage Posts
                 </h2>
               </div>
               <div class="col-auto ms-auto d-print-none">
                 <div class="d-flex">
                   <a href="#" class="btn btn-primary">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
-                    New User
+                    New Post
                   </a>
                 </div>
               </div>
@@ -33,23 +33,24 @@
               <div class="col-lg-8">
                 <div class="card">
                   <div class="list-group card-list-group">
-                    <?php foreach ($users as $user) { ?>
+                    <?php foreach ($posts as $post) { ?>
                     <div class="list-group-item">
                       <div class="row g-2 align-items-center">
                         <div class="col-auto fs-3">
-                          <?= $user['id'] ?>
+                          <?= $post['id'] ?>
                         </div>
                         <div class="col-auto">
-                          <img src="../../static/avatars/<?= $user['image'] ?>" class="rounded" alt="<?= $user['username'] ?>" width="40" height="40">
+                          <img src="../../static/photos/<?= $post['image'] ?>" class="rounded" alt="<?= $post['title'] ?>" width="40" height="40">
                         </div>
                         <div class="col">
-                        <?= $user['username'] ?>
+                        <?= $post['title'] ?>
                           <div class="text-muted">
-                          <?= $user['name'] ?>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="2" /><path d="M12 19c-4 0 -7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7c-.42 .736 -.858 1.414 -1.311 2.033" /><path d="M15 19l2 2l4 -4" /></svg>
+                          <?= $post['viewcount'] ?>
                           </div>
                         </div>
                         <div class="col-auto text-muted">
-                        <?= date($user['date']) ?>
+                        <?= date($post['date']) ?>
                         </div>
                         <div class="col-auto">
                           <a href="#" class="link-secondary">
@@ -67,11 +68,16 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                               <a class="dropdown-item" href="#">
-                                Delete
+                                Update
                               </a>
                               <a class="dropdown-item" href="#">
-                                Set As Admin
+                                Delete
                               </a>
+                              <?php if ($post['state'] === 0) { ?>
+                                <a class="dropdown-item" href="#">
+                                    Confirm
+                                </a>
+                              <?php } ?>
                             </div>
                           </div>
                         </div>
@@ -79,41 +85,6 @@
                     </div>
                     <?php } ?>
                   </div>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <h3 class="mb-3">Admins</h3>
-                <div class="row row-cards">
-                  <?php foreach ($admins as $adminn) { ?>
-                  <div class="col-md-6 col-lg-12">
-                    <div class="card" <?php if ($adminn === $admin) { ?> style="background-color : lightblue;" <?php } ?>>
-                      <div class="row row-0">
-                        <div class="col-auto">
-                          <img src="../../static/avatars/<?= $adminn['image'] ?>" class="rounded-start" alt="<?= $adminn['username'] ?>" width="80" height="80">
-                        </div>
-                        <div class="col">
-                          <div class="card-body">
-                          <?= $adminn['username'] ?>
-                            <div class="text-muted">
-                            <?= $adminn['name'] ?>
-                            </div>
-                          </div>
-                        </div>
-                        <?php if ($adminn === $admin) { ?>
-                        <div class="col-auto">
-                          <a href="/panel/setting" class="link-secondary">
-                            <button class="switch-icon" >
-                              <span class="text-muted">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 15l8.385 -8.415a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3z" /><path d="M16 5l3 3" /><path d="M9 7.07a7.002 7.002 0 0 0 1 13.93a7.002 7.002 0 0 0 6.929 -5.999" /></svg>
-                              </span>
-                            </button>
-                          </a>
-                        </div>
-                        <?php } ?>
-                      </div>
-                    </div>
-                  </div>
-                  <?php } ?>
                 </div>
               </div>
             </div>
