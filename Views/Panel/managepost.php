@@ -34,13 +34,13 @@
                 <div class="card">
                   <div class="list-group card-list-group">
                     <?php foreach ($posts as $post) { ?>
-                    <div class="list-group-item">
+                    <div class="list-group-item" <?php if ($post['admin_id'] === $admin['id']) { echo "style='background-color:lightblue;'";}?>>
                       <div class="row g-2 align-items-center">
                         <div class="col-auto fs-3">
                           <?= $post['id'] ?>
                         </div>
                         <div class="col-auto">
-                          <img src="../../static/photos/<?= $post['image'] ?>" class="rounded" alt="<?= $post['title'] ?>" width="40" height="40">
+                          <img src="../../static/photos/<?= $post['image'] ?>" class="rounded" alt="<?= $post['title'] ?>" width="60" height="60">
                         </div>
                         <div class="col">
                         <?= $post['title'] ?>
@@ -54,10 +54,10 @@
                         </div>
                         <div class="col-auto">
                           <a href="#" class="link-secondary">
-                            <button class="switch-icon" data-bs-toggle="switch-icon">
-                              <span class="switch-icon-a text-muted">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="7" r="4" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
-                              </span>
+                            <button class="switch-icon" >
+                              <span class="text-muted">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M7 8h10" /><path d="M7 12h10" /><path d="M7 16h10" /></svg>
+                                </span>
                             </button>
                           </a>
                         </div>
