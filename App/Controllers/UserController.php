@@ -110,4 +110,21 @@ class UserController
         }
 
     }
+
+    public function panel_manage_account()
+    {
+        $admin = session_admin();
+     
+        try {
+            if ($admin === false) {
+                return panel_login();
+            }
+            else
+                return panel_manage_account($admin);
+            
+        } catch (Exception $exception) {
+            var_dump($exception->getMessage());exit;
+        }
+
+    }
 }

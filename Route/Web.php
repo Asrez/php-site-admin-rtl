@@ -38,6 +38,7 @@ Flight::group("/panel", function () {
         Flight::route("POST /create-user", [new PostController, "panel_result_create_user"]);
         Flight::route("GET /delete-user/@id", [new PostController, "panel_result_delete_user"]);
         Flight::route("POST /update-user/@id", [new PostController, "panel_result_update_user"]);
+        Flight::route("POST /account", [new UserController, "panel_result_account"]);
     });
 });
 

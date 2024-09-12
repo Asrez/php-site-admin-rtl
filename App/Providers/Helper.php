@@ -217,6 +217,25 @@ function panel_manage_users(array $admin)
     );
 }
 
+function panel_manage_account(array $admin)
+{
+    $tool = tools();
+    $Users = AllUsers::execute();
+    $Admins = AllUsers::execute3();
+    Flight::render(
+        directory_separator("Panel", "manageuser.php"),
+        [
+            "logo" => $tool['logo'],
+            "footer" => $tool['footer'],
+            "title" => $tool['title'],
+            'admin_count' => $tool['admincount'],
+            'user_count' => $tool['usercount'],
+            "admin" => $admin,
+            "users" => $Users,
+            "admins" => $Admins
+        ]
+    );
+}
 function panel_posts(array $admin)
 {
     $tool = tools();
