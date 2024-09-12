@@ -15,4 +15,9 @@ class AllUsers
     {
         return Users::GetAll();
     }
+
+    public static function execute3()
+    {
+        return Users::GetAllAdmins();
+    }
 }

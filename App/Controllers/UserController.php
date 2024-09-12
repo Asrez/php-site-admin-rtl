@@ -93,4 +93,21 @@ class UserController
         }
 
     }
+
+    public function panel_manage_users()
+    {
+        $admin = session_admin();
+     
+        try {
+            if ($admin === false) {
+                return panel_login();
+            }
+            else
+                return panel_manage_users($admin);
+            
+        } catch (Exception $exception) {
+            var_dump($exception->getMessage());exit;
+        }
+
+    }
 }
