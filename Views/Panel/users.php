@@ -1,13 +1,13 @@
 <!doctype html>
 
-<html lang="en">
+<html lang="en" dir="rtl">
   <head>
     <title>Users list</title>
     <?php include "Init/style.php"; ?>
   </head>
   <body >
-  <?php include "Includes/header.php"; ?>
     <div class="page">
+    <?php include "Includes/header.php"; ?>
       <div class="page-wrapper">
         <div class="page-header d-print-none">
           <div class="container-xl">
