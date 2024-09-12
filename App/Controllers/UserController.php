@@ -92,5 +92,5 @@ class UserController
             var_dump($exception->getMessage());exit;
         }
 
-        }
+    }
 }
