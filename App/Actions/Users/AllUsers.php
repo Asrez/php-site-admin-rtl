@@ -10,4 +10,9 @@ class AllUsers
     {
         return Users::GetAllUsers();
     }
+    
+    public static function execute2()
+    {
+        return Users::GetAll();
+    }
 }

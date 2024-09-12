@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html lang="en">
   <head>
     <title>Users list</title>
@@ -15,7 +16,7 @@
                 <h2 class="page-title">
                   Users
                 </h2>
-                <div class="text-muted mt-1"> <?= $user_count ?> Users , <?= $admins_count ?> Admins</div>
+                <div class="text-muted mt-1"> <?= $user_count ?> Users , <?= $admin_count ?> Admins</div>
               </div>
               <div class="col-auto ms-auto d-print-none">
                 <div class="d-flex">
@@ -36,7 +37,7 @@
               <div class="col-md-6 col-lg-3">
                 <div class="card">
                   <div class="card-body p-4 text-center">
-                    <span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(./static/avatars/<?= $user['image'] ?>)"></span>
+                    <span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(../../static/avatars/<?= $user['image'] ?>)"></span>
                     <h3 class="m-0 mb-1"><a href="#"><?= $user['name'] ?></a></h3>
                     <div class="text-muted"><?= $user['username'] ?></div>
                     <div class="mt-3">
@@ -44,9 +45,9 @@
                     </div>
                   </div>
                   <div class="d-flex">
-                    <a href="<?= $user['email'] ?>" class="card-btn">
+                    <a class="card-btn">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="3" y="5" width="18" height="14" rx="2" /><polyline points="3 7 12 13 21 7" /></svg>
-                      Email</a>
+                      <?= $user['email'] ?></a>
                     <a href="#" class="card-btn">
                     <?php if($user['state'] === 0) {?>
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="7" r="4" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
@@ -66,7 +67,5 @@
     </div>
     <?php include "Init/modals.php"; ?>
     <?php include "Init/script.php"; ?>
-    <script src="./dist/js/tabler.min.js?1668287865" defer></script>
-    <script src="./dist/js/demo.min.js?1668287865" defer></script>
   </body>
 </html>

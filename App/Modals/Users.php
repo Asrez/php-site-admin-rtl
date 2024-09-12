@@ -78,7 +78,19 @@ class Users
     {
         $db = Connect::getInstance()->getConnection();
 
-        $sql = "SELECT * FROM `users` WHERE `state`= 0";
+        $sql = "SELECT * FROM `users` WHERE `state`= 0;";
+
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function GetAll() : array
+    {
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = "SELECT * FROM `users` ;";
 
         $stmt = $db->prepare($sql);
         $stmt->execute();
@@ -90,13 +102,12 @@ class Users
     {
         $db = Connect::getInstance()->getConnection();
 
-        $sql = "SELECT * FROM `users` WHERE `id`= :id";
+        $sql = "SELECT * FROM `users` WHERE `state`= 1";
 
         $stmt = $db->prepare($sql);
-        $stmt->bindParam("id", $id);
         $stmt->execute();
 
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public static function Count() : array

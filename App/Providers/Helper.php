@@ -154,7 +154,7 @@ function panel_signup()
 function panel_users(array $admin)
 {
     $tool = tools();
-    $Users = AllUsers::execute();
+    $Users = AllUsers::execute2();
     Flight::render(
         directory_separator("Panel", "users.php"),
         [
@@ -163,11 +163,8 @@ function panel_users(array $admin)
             "title" => $tool['title'],
             'admin_count' => $tool['admincount'],
             'user_count' => $tool['usercount'],
-            'post_count' => $tool['postcount'],
-            'view_count' => $tool['viewcount'],
-            'comment_count' => $tool['commentcount'],
             "admin" => $admin,
-            "users" => $Users,
+            "users" => $Users
         ]
     );
 }
