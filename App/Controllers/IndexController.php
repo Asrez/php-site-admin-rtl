@@ -38,4 +38,20 @@ class IndexController
             var_dump($exception->getMessage());exit;
         }
     }
+    
+    public function panel_manage_advers()
+    {
+        $admin = session_admin();
+        
+        
+        try {
+            if ($admin === false) {
+                return panel_login();
+            }
+            else
+                return panel_manage_advers($admin);
+        } catch (Exception $exception) {
+            var_dump($exception->getMessage());exit;
+        }
+    }
 }

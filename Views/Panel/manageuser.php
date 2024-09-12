@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="rtl">
   <head>
     <title>Manage Users</title>
     <?php include "Init/style.php"; ?>

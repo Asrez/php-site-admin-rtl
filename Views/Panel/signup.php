@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="rtl">
   <head>
     <title>Sign UP</title>
     <?php include 'init/style.php'; ?>

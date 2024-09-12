@@ -141,7 +141,6 @@ function panel_manage_setting(array $admin)
 {
     $tool = tools();
     $settings = GetByStateSetting::execute("setting");
-    $advers = GetByStateSetting::execute("adver");
     Flight::render(
         directory_separator("Panel", "managesetting.php"),
         [
@@ -149,8 +148,23 @@ function panel_manage_setting(array $admin)
             "footer" => $tool['footer'],
             "title" => $tool['title'],
             "admin" => $admin,
-            "settings" => $settings,
-            "advers" => $advers,
+            "settings" => $settings
+        ]
+    );;
+}
+
+function panel_manage_advers(array $admin)
+{
+    $tool = tools();
+    $advers = GetByStateSetting::execute("adver");
+    Flight::render(
+        directory_separator("Panel", "manageadvers.php"),
+        [
+            "logo" => $tool['logo'],
+            "footer" => $tool['footer'],
+            "title" => $tool['title'],
+            "admin" => $admin,
+            "advers" => $advers
         ]
     );;
 }
