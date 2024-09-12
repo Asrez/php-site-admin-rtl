@@ -208,3 +208,19 @@ function panel_posts(array $admin)
         ]
     );
 }
+
+function panel_manage_posts(array $admin)
+{
+    $tool = tools();
+    $All_post = AllPosts::execute();
+    Flight::render(
+        directory_separator("Panel", "managepost.php"),
+        [
+            "logo" => $tool['logo'],
+            "footer" => $tool['footer'],
+            "title" => $tool['title'],
+            "admin" => $admin,
+            "posts" => $All_post
+        ]
+    );
+}
