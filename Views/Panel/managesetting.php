@@ -22,22 +22,22 @@
         <div class="page-body">
           <div class="container-xl">
             <div class="row">
-              <div class="col-lg-8">
+              <div class="col-lg-20">
                 <div class="card">
                   <div class="list-group card-list-group">
                     <?php foreach ($settings as $setting) { ?>
                     <div class="list-group-item">
                       <div class="row g-2 align-items-center">
                         <div class="col-auto fs-3">
-                          <?= $setting['key_setting'] ?>
+                          <?= $setting['title'] ?>
                         </div>
                         <div class="col-auto">
-                          <img src="../../static/photos/<?= $setting['image'] ?>" class="rounded" alt="<?= $setting['title'] ?>" width="60" height="60">
+                          <img src="../../static/<?= $setting['value_setting'] ?>" class="rounded" alt="<?= $setting['title'] ?>" width="60" height="60">
                         </div>
                         <div class="col">
-                        <?= $setting['value_setting'] ?>
+                        <b><?= $setting['value_setting'] ?></b>
                           <div class="text-muted">
-                          <?= $post['content'] ?>
+                          <?= $setting['text'] ?>
                           </div>
                         </div>
                         <div class="col-auto text-muted">
@@ -87,7 +87,7 @@
         <div class="page-body">
           <div class="container-xl">
             <div class="row">
-              <div class="col-lg-8">
+              <div class="col-lg-20">
                 <div class="card">
                   <div class="list-group card-list-group">
                     <?php foreach ($advers as $adver) { ?>
@@ -97,12 +97,11 @@
                           <?= $adver['id'] ?>
                         </div>
                         <div class="col-auto">
-                          <img src="../../static/photos/<?= $adver['image'] ?>" class="rounded" alt="<?= $adver['title'] ?>" width="60" height="60">
+                          <img src="../../static/photos/<?= $adver['value_setting'] ?>" class="rounded" alt="<?= $adver['title'] ?>" width="60" height="60">
                         </div>
                         <div class="col">
-                        <?= $adver['value_setting'] ?>
                           <div class="text-muted">
-                          <?= $post['content'] ?>
+                          <?= $adver['text'] ?>
                           </div>
                         </div>
                         <div class="col-auto text-muted">

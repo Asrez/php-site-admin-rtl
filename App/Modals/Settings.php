@@ -31,6 +31,14 @@ class Settings
 
     public static function GetByState(string $state)
     {
-        
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = "SELECT * FROM `settings` WHERE `type`= :state";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("state", $state);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

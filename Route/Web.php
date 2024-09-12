@@ -14,7 +14,7 @@ Flight::group("/panel", function () {
     Flight::group("/manage", function () {
         Flight::route("GET /posts", [new PostController, "panel_manage_posts"]);
         Flight::route("GET /users", [new UserController, "panel_manage_users"]);
-        Flight::route("GET /setting", [new IndexController, "panel_manage_setting"]);
+        Flight::route("GET /settings", [new IndexController, "panel_manage_setting"]);
         Flight::route("GET /account", [new PostController, "panel_manage_account"]);
     });
 

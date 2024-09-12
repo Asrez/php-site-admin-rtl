@@ -1,6 +1,7 @@
 <?php
 
 use App\Actions\Settings\GetByKeySetting;
+use App\Actions\Settings\GetByStateSetting;
 use App\Actions\Posts\CountPost;
 use App\Actions\Posts\AllPosts;
 use App\Actions\Posts\Innerjoin;
@@ -136,9 +137,22 @@ function panel_index(array $admin)
     );
 }
 
-function panel_manage_setting()
+function panel_manage_setting(array $admin)
 {
-    Flight::render(directory_separator("Panel", "setting.php"));
+    $tool = tools();
+    $settings = GetByStateSetting::execute("setting");
+    $advers = GetByStateSetting::execute("adver");
+    Flight::render(
+        directory_separator("Panel", "managesetting.php"),
+        [
+            "logo" => $tool['logo'],
+            "footer" => $tool['footer'],
+            "title" => $tool['title'],
+            "admin" => $admin,
+            "settings" => $settings,
+            "advers" => $advers,
+        ]
+    );;
 }
 
 function panel_login()

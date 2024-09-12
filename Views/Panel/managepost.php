@@ -30,7 +30,7 @@
         <div class="page-body">
           <div class="container-xl">
             <div class="row">
-              <div class="col-lg-8">
+              <div class="col-lg-20">
                 <div class="card">
                   <div class="list-group card-list-group">
                     <?php foreach ($posts as $post) { ?>
