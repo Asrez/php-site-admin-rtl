@@ -188,3 +188,23 @@ function panel_manage_users(array $admin)
         ]
     );
 }
+
+function panel_posts(array $admin)
+{
+    $tool = tools();
+    $All_post = AllPosts::execute();
+    $Not_confirmed = count(NotConfirmed::execute());
+    Flight::render(
+        directory_separator("Panel", "posts.php"),
+        [
+            "logo" => $tool['logo'],
+            "footer" => $tool['footer'],
+            "title" => $tool['title'],
+            'post_count' => $tool['postcount'],
+            'user_count' => $tool['usercount'],
+            "not_confirmed_pages" => $Not_confirmed,
+            "admin" => $admin,
+            "posts" => $All_post
+        ]
+    );
+}

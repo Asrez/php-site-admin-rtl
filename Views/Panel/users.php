@@ -2,7 +2,7 @@
 
 <html lang="en" dir="rtl">
   <head>
-    <title>Users list</title>
+    <title>Users</title>
     <?php include "Init/style.php"; ?>
   </head>
   <body >
