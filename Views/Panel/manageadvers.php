@@ -21,12 +21,12 @@
         <div class="page-body">
           <div class="container-xl">
             <div class="row">
-              <div class="col-lg-20">
+              <div class="col-lg-13">
                 <div class="card">
                   <div class="list-group card-list-group">
                     <?php foreach ($advers as $adver) { ?>
                     <div class="list-group-item">
-                      <div class="row g-2 align-items-center">
+                      <div class="row g-6 align-items-center">
                         <div class="col-auto fs-3">
                           <?= $adver['id'] ?>
                         </div>
