@@ -19,6 +19,7 @@ use App\Actions\Users\GetByIdUser;
 use App\Actions\Search\SearchAll;
 use App\Actions\Search\SearchPost;
 use App\Actions\Search\SearchUser;
+use App\Actions\Search\SearchAdmin;
 function directory_separator(string $folder, string $file_name)
 {
     $path = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . $file_name;
@@ -200,11 +201,17 @@ function panel_users(array $admin)
     );
 }
 
-function panel_manage_users(array $admin)
+function panel_manage_users(array $admin, string $title = null)
 {
     $tool = tools();
     $Users = AllUsers::execute();
     $Admins = AllUsers::execute3();
+
+    if ($title !== null) {
+        $Users = SearchUser::execute2($title);
+        $Admins = SearchAdmin::execute($title);
+    }
+
     Flight::render(
         directory_separator("Panel", "manageuser.php"),
         [
@@ -257,10 +264,12 @@ function panel_posts(array $admin)
     );
 }
 
-function panel_manage_posts(array $admin)
+function panel_manage_posts(array $admin, string $title = null)
 {
     $tool = tools();
     $All_post = AllPosts::execute();
+    if ($title !== null)
+        $All_post = SearchPost::execute(title: $title);
     Flight::render(
         directory_separator("Panel", "managepost.php"),
         [

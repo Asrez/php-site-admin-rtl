@@ -59,4 +59,34 @@ class Search
 
         return $posts;
     }
+
+    public static function SearchAdmin(string $title): array
+    {
+        $db = Connect::getInstance()->getConnection();
+
+        $users_sql = 'SELECT * FROM `users` WHERE `users`.`username` LIKE :title And `state` = 1;';
+
+        $title = '%'.$title.'%';
+        $users = $db->prepare($users_sql);
+        $users->bindParam('title', $title);
+        $users->execute();
+        $admins = $users->fetchAll(PDO::FETCH_ASSOC);
+
+        return $admins;
+    }
+
+    public static function SearchUser2(string $title): array
+    {
+        $db = Connect::getInstance()->getConnection();
+
+        $users_sql = 'SELECT * FROM `users` WHERE `users`.`username` LIKE :title And `users`.`state` = 0;';
+
+        $title = '%'.$title.'%';
+        $users = $db->prepare($users_sql);
+        $users->bindParam('title', $title);
+        $users->execute();
+        $users = $users->fetchAll(PDO::FETCH_ASSOC);
+
+        return $users;
+    }
 }

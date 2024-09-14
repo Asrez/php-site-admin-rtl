@@ -103,7 +103,12 @@ class UserController
                 return panel_login();
             }
             else
-                return panel_manage_users($admin);
+            {
+                if (isset($_GET['search']))
+                    return panel_manage_users($admin, $_GET['search']);
+                else
+                    return panel_manage_users($admin);
+            }
             
         } catch (Exception $exception) {
             var_dump($exception->getMessage());exit;

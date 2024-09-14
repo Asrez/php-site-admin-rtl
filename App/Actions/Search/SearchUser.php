@@ -10,4 +10,9 @@ class SearchUser
     {
         return Search::SearchUser($title);
     }
+
+    public static function execute2(string $title)
+    {
+        return Search::SearchUser2($title);
+    }
 }

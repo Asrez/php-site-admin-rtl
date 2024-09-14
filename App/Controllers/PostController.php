@@ -36,7 +36,13 @@ class PostController
                 return panel_login();
             }
             else
-                return panel_manage_posts($admin);
+            {
+                if (isset($_GET['search']))
+                    return panel_manage_posts($admin, $_GET['search']);
+                else
+                    return panel_manage_posts($admin);
+
+            }
             
         } catch (Exception $exception) {
             var_dump($exception->getMessage());exit;
