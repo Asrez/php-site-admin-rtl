@@ -162,7 +162,7 @@
                     </li>
                 </ul>
                 <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
-                    <form action="./" method="get" autocomplete="off" novalidate>
+                    <form action="/panel/search/" method="get">
                         <div class="input-icon">
                             <span class="input-icon-addon">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -173,8 +173,7 @@
                                     <line x1="21" y1="21" x2="15" y2="15" />
                                 </svg>
                             </span>
-                            <input type="text" value="" class="form-control" placeholder="Search…"
-                                aria-label="Search in website">
+                            <input type="text" name="search" class="form-control" placeholder="Search…">
                         </div>
                     </form>
                 </div>

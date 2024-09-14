@@ -16,6 +16,7 @@ use App\Actions\Users\CountUser;
 use App\Actions\Users\Get_In_MonthUser;
 use App\Actions\Users\Count_Date_User;
 use App\Actions\Users\GetByIdUser;
+use App\Actions\Search\SearchAll;
 function directory_separator(string $folder, string $file_name)
 {
     $path = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . $file_name;
@@ -266,6 +267,23 @@ function panel_manage_posts(array $admin)
             "title" => $tool['title'],
             "admin" => $admin,
             "posts" => $All_post
+        ]
+    );
+}
+
+function panel_search_all(array $admin, string $title)
+{
+    $tool = tools();
+    $All = SearchAll::execute($title);
+    Flight::render(
+        directory_separator("Panel", "search-results.php"),
+        [
+            "logo" => $tool['logo'],
+            "footer" => $tool['footer'],
+            "title" => $tool['title'],
+            "admin" => $admin,
+            "posts" => $All['posts'] ,
+            "users" => $All['users']
         ]
     );
 }

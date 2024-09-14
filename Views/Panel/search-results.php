@@ -2,11 +2,10 @@
 <html lang="en">
   <head>
     <title>Result</title>
-    <?php include 'init/style.php'; ?>
+    <?php include 'Init/style.php'; ?>
   </head>
   <body >
-    <?php include 'includes/header.php' ?>
-
+    <?php include 'Includes/header.php' ?>
       <div class="page-wrapper">
         <div class="page-header d-print-none">
           <div class="container-xl">
@@ -31,7 +30,7 @@
                   <?php foreach ($posts as $post) { ?>
                     <div class="col-sm-6 col-lg-4">
                       <div class="card card-sm">
-                        <a href="/posts/<?= $post['id'] ?>" class="d-block"><img src="../static/photos/<?= $post['image'] ?>" class="card-img-top"></a>
+                        <a href="/panel/post/<?= $post['id'] ?>" class="d-block"><img src="../../static/photos/<?= $post['image'] ?>" class="card-img-top"></a>
                         <div class="card-body">
                           <div class="d-flex align-items-center">
                             <div>
@@ -51,7 +50,7 @@
                   <?php foreach ($users as $user) { ?>
                     <div class="col-sm-6 col-lg-4">
                       <div class="card card-sm">
-                        <a href="<?= $user['id'] ?>" class="d-block"><img src="../static/avatars/<?= $user['image'] ?>" class="card-img-top"></a>
+                        <a href="/panel/user/<?= $user['id'] ?>" class="d-block"><img src="../../static/avatars/<?= $user['image'] ?>" class="card-img-top"></a>
                         <div class="card-body">
                           <div class="d-flex align-items-center">
                             <div>
@@ -69,8 +68,9 @@
           </div>
         </div>
 
-    <?php include 'includes/footer.php' ?>
+    <?php include 'Includes/footer.php' ?>
     
-    <?php include 'init/script.php'; ?>
+    <?php include 'Init/script.php'; ?>
+    <?php include 'Init/modals.php'; ?>
   </body>
 </html>
