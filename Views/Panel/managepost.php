@@ -55,7 +55,7 @@
                         <?= date($post['date']) ?>
                         </div>
                         <div class="col-auto">
-                          <a href="#" class="link-secondary">
+                          <a data-bs-toggle="modal" data-bs-target="#modal-simple" class="link-secondary">
                             <button class="switch-icon" >
                               <span class="text-muted">
                               <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M7 8h10" /><path d="M7 12h10" /><path d="M7 16h10" /></svg>
@@ -81,6 +81,22 @@
                                 </a>
                               <?php } ?>
                             </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal modal-blur fade" id="modal-simple" tabindex="-1" role="dialog" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title"><?= $post['title'] ?></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                          <?= $post['content'] ?>
+                        </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
                           </div>
                         </div>
                       </div>
