@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="rtl">
 
 <head>
   <title>My Account</title>
@@ -22,7 +22,6 @@
           </div>
         </div>
       </div>
-      <!-- Page body -->
       <div class="page-body">
         <div class="container-xl">
           <div class="card">
