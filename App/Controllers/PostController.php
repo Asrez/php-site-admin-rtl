@@ -43,4 +43,25 @@ class PostController
         }
 
     }
+
+    public function panel_search_all()
+    {
+        $admin = session_admin();
+        
+        try {
+            if ($admin === false) {
+                return panel_login();
+            }
+            else
+            {
+                if (isset($_GET['search']))
+                    return panel_search_posts($admin, $_GET['search']);
+                else
+                    return panel_manage_posts($admin);
+            }
+                
+        } catch (Exception $exception) {
+            var_dump($exception->getMessage());exit;
+        }
+    }
 }

@@ -127,4 +127,25 @@ class UserController
         }
 
     }
+
+    public function panel_search_all()
+    {
+        $admin = session_admin();
+        
+        try {
+            if ($admin === false) {
+                return panel_login();
+            }
+            else
+            {
+                if (isset($_GET['search']))
+                    return panel_search_user($admin, $_GET['search']);
+                else
+                    return panel_manage_users($admin);
+            }
+                
+        } catch (Exception $exception) {
+            var_dump($exception->getMessage());exit;
+        }
+    }
 }

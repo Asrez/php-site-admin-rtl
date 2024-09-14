@@ -290,7 +290,7 @@ function panel_search_all(array $admin, string $title)
     );
 }
 
-function panel_search_post(array $admin, string $title)
+function panel_search_posts(array $admin, string $title)
 {
     $tool = tools();
     $Posts = SearchPost::execute($title);
@@ -306,7 +306,7 @@ function panel_search_post(array $admin, string $title)
     );
 }
 
-function panel_search_user(array $admin, string $title)
+function panel_search_users(array $admin, string $title)
 {
     $tool = tools();
     $Users = SearchUser::execute($title);
