@@ -30,7 +30,8 @@ Flight::group("/panel", function () {
     });
 
         Flight::route("GET /search", [new IndexController, "panel_search_all"]);
-        // Flight::route("GET /posts/", [new UserController, "panel_show_user"]);
+        Flight::route("GET /search/users", [new UserController, "panel_search_users"]);
+        Flight::route("GET /search/posts", [new PostController, "panel_search_posts"]);
 
     Flight::group("/result", function () {
         Flight::route("POST /login", [new UserController, "panel_result_login"]);

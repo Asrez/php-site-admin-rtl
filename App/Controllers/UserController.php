@@ -128,7 +128,7 @@ class UserController
 
     }
 
-    public function panel_search_all()
+    public function panel_search_users()
     {
         $admin = session_admin();
         
@@ -139,7 +139,7 @@ class UserController
             else
             {
                 if (isset($_GET['search']))
-                    return panel_search_user($admin, $_GET['search']);
+                    return panel_search_users($admin, $_GET['search']);
                 else
                     return panel_manage_users($admin);
             }

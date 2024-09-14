@@ -295,7 +295,7 @@ function panel_search_posts(array $admin, string $title)
     $tool = tools();
     $Posts = SearchPost::execute($title);
     Flight::render(
-        directory_separator("Panel", "search-results.php"),
+        directory_separator("Panel", "search-result-post.php"),
         [
             "logo" => $tool['logo'],
             "footer" => $tool['footer'],
@@ -311,7 +311,7 @@ function panel_search_users(array $admin, string $title)
     $tool = tools();
     $Users = SearchUser::execute($title);
     Flight::render(
-        directory_separator("Panel", "search-results.php"),
+        directory_separator("Panel", "search-result-users.php"),
         [
             "logo" => $tool['logo'],
             "footer" => $tool['footer'],

@@ -44,7 +44,7 @@ class PostController
 
     }
 
-    public function panel_search_all()
+    public function panel_search_posts()
     {
         $admin = session_admin();
         
