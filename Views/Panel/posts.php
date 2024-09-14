@@ -48,7 +48,7 @@
                     </div>
                   </div>
                   <div class="d-flex">
-                    <a class="card-btn" data-bs-toggle="modal" data-bs-target="#modal-simple">
+                    <a class="card-btn" data-bs-toggle="modal" data-bs-target="#modal-simple<?= $post['id'] ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M7 8h10" /><path d="M7 12h10" /><path d="M7 16h10" /></svg>
                     Content</a>
                     <a class="card-btn">
@@ -60,7 +60,7 @@
                   </div>
                 </div>
               </div>
-              <div class="modal modal-blur fade" id="modal-simple" tabindex="-1" role="dialog" aria-hidden="true">
+              <div class="modal modal-blur fade" id="modal-simple<?= $post['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">

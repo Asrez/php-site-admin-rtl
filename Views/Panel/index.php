@@ -374,7 +374,7 @@
                     <table class="table card-table table-vcenter">
                       <?php foreach ($not_confirmed_pages as $page) { ?>
                       <tr>
-                      <td class="text-nowrap" title="Post">
+                      <td class="text-nowrap" title="Post" data-bs-toggle="modal" data-bs-target="#modal-simple<?= $page['id'] ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M20 6v12a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2z" /><path d="M10 16h6" /><circle cx="13" cy="11" r="2" /><path d="M4 8h3" /><path d="M4 12h3" /><path d="M4 16h3" /></svg>
                       </td>
                         <td class="w-1 pe-0">
@@ -391,7 +391,7 @@
                             </span>
                         </td>
                         <td class="w-100">
-                          <a href="/panel/post/<?= $page['id'] ?>" class="text-reset">Show Post <?= $page['title'] ?></a>
+                          <a href="/panel/post/<?= $page['id'] ?>" class="text-reset"><?= $page['title'] ?></a>
                         </td>
                         <td class="text-nowrap text-muted">
                           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="5" width="16" height="16" rx="2" /><line x1="16" y1="3" x2="16" y2="7" /><line x1="8" y1="3" x2="8" y2="7" /><line x1="4" y1="11" x2="20" y2="11" /><line x1="11" y1="15" x2="12" y2="15" /><line x1="12" y1="15" x2="12" y2="18" /></svg>
@@ -404,7 +404,7 @@
                       <?php } ?>
                       <?php foreach ($Not_Confirmed_Comment as $comment) { ?>
                       <tr>
-                        <td class="text-nowrap" title="Comment">
+                        <td class="text-nowrap" title="Comment" >
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" /><line x1="8" y1="9" x2="16" y2="9" /><line x1="8" y1="13" x2="14" y2="13" /></svg>
                         </td>
                         <td class="w-1 pe-0">
@@ -466,7 +466,7 @@
                         <?php foreach ($posts as $post) { ?>
                         <tr>
                           <td><span class="text-muted"><?= $post['id'] ?></span></td>
-                          <td><a href="invoice.html" class="text-reset" tabindex="-1"><?= $post['title'] ?></a></td>
+                          <td><a  class="text-reset" tabindex="-1" data-bs-toggle="modal" data-bs-target="#modal-simple<?= $post['id'] ?>"><?= $post['title'] ?></a></td>
                           <td>
                             <span class="flag " style="background-image:url(../static/photos/<?= $post['image'] ?>)"></span>
                           </td>
@@ -495,6 +495,22 @@
                             </span>
                           </td>
                         </tr>
+                        <div class="modal modal-blur fade" id="modal-simple<?= $post['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title"><?= $post['title'] ?></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                          <?= $post['content'] ?>
+                        </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                         <?php } ?>
                       </tbody>
                     </table>

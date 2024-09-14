@@ -69,13 +69,41 @@
                               <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="5" cy="12" r="1" /><circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /></svg>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                              <a class="dropdown-item" href="#">
+                              <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-small<?= $user['id'] ?>">
                                 Delete
                               </a>
-                              <a class="dropdown-item" href="#">
+                              <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-small2<?= $user['id'] ?>">
                                 Set As Admin
                               </a>
                             </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal modal-blur fade" id="modal-small<?= $user['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            <div class="modal-title">Delete User <?= $user['username'] ?></div>
+                            <div>Are you sure?</div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-link link-secondary me-auto" data-bs-dismiss="modal">Cancel</button>
+                            <a href="/panel/result/user/delete/<?= $user['id'] ?>" class="btn btn-danger" data-bs-dismiss="modal">Yes, delete</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal modal-blur fade" id="modal-small2<?= $user['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            <div class="modal-title">Set Admin User <?= $user['username'] ?></div>
+                            <div>Are you sure?</div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-link link-secondary me-auto" data-bs-dismiss="modal">Cancel</button>
+                            <a href="/panel/result/user/admin/<?= $user['id'] ?>" class="btn btn-success" data-bs-dismiss="modal">Yes, Set as admin</a>
                           </div>
                         </div>
                       </div>
