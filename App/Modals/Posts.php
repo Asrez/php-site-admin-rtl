@@ -37,12 +37,9 @@ class Posts
         $stms->bindParam('slug', $slug);
         $stms->execute();
 
-        if ($stms->fetch(PDO::FETCH_ASSOC)) {
-            return true;
-        } else {
-            return false;
-        }
-
+        $stms->fetch(PDO::FETCH_ASSOC);
+        
+        return true;
     }
 
     public static function GetById(int $id)

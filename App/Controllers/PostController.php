@@ -82,6 +82,11 @@ class PostController
                     $image = "1.jpg";
                 }
 
+                $target_file = "./static/photos/" . $image;
+                if (!file_exists($target_file)) {
+                    move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+                }
+
                 $data = [
                     'title' => $title,
                     'content' => $content,
@@ -92,8 +97,6 @@ class PostController
 
                 if ($result) {
                     Flight::redirect("/panel/manage/posts?postadd=true");
-                } else {
-                    Flight::redirect("/panel/manage/posts?postadd=false");
                 }
 
             }
