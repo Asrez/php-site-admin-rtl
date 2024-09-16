@@ -6,8 +6,8 @@ use App\Actions\Posts\AllPosts;
 use App\Actions\Posts\CreatePost;
 use App\Actions\Posts\GetByIdPost;
 use App\Actions\Posts\NotConfirmed;
+use App\Actions\Posts\co;
 use App\Actions\Search\SearchPost;
-use App\Actions\Users\GetByIdUser;
 use Flight;
 use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
 
@@ -138,7 +138,7 @@ class PostController
                     'title' => $title,
                     'content' => $content,
                     'image' => $image,
-                    'id' => $id
+                    'id' => $id,
                 ];
 
                 $result = CreatePost::execute($data);
@@ -151,6 +151,12 @@ class PostController
         } else {
             Flight::redirect("/panel/manage/posts?postadd=nofill");
         }
+
+    }
+
+    public function panel_result_confirm_post(int $id)
+    {
+        return 
 
     }
 }
