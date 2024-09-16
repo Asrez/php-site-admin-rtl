@@ -253,7 +253,7 @@
                             <div class="row">
                               <div class="col-auto">
                                 <span class="avatar"
-                                  style="background-image: url(./static/avatars/<?= $user['image'] ?>)"></span>
+                                  style="background-image: url(../../static/avatars/<?= $user['image'] ?>)"></span>
                               </div>
                               <div class="col">
                                 <div class="text-truncate">
@@ -274,7 +274,7 @@
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-header border-0">
-                  <div class="card-title">Your activity in this Month</div>
+                  <div class="card-title">Your activities in this recent month</div>
                 </div>
                 <div class="position-relative" >
                   <div class="position-absolute top-0 left-0 px-3 mt-1 w-75">
@@ -302,7 +302,7 @@
                         <tr>
                           <td class="w-1">
                             <span class="avatar avatar-sm"
-                              style="background-image: url(./static/avatars/<?= $activity['userimage'] ?>)"></span>
+                              style="background-image: url(../../static/avatars/<?= $activity['userimage'] ?>)"></span>
                             <?= $activity['username'] ?>
                           </td>
                           <td class="td-truncate">
@@ -976,7 +976,7 @@
           }
         },
         colors: [tabler.getColor("blue")],
-        series: [35],
+        series: [<?php echo json_encode($all_my_post); ?>],
       })).render();
     });
   </script>
@@ -1008,7 +1008,7 @@
         },
         series: [{
           name: "Purchases",
-          data: [3, 5, 4, 6, 7, 5, 6, 8, 24, 7, 12, 5, 6, 3, 8, 4, 14, 30, 17, 19, 15, 14, 25, 32, 40, 55, 60, 48, 52, 70]
+          data: <?php print_r(json_encode($post_chart_count)); ?>
         }],
         tooltip: {
           theme: 'dark'
@@ -1033,9 +1033,7 @@
             padding: 4
           },
         },
-        labels: [
-          '2020-06-20', '2020-06-21', '2020-06-22', '2020-06-23', '2020-06-24', '2020-06-25', '2020-06-26', '2020-06-27', '2020-06-28', '2020-06-29', '2020-06-30', '2020-07-01', '2020-07-02', '2020-07-03', '2020-07-04', '2020-07-05', '2020-07-06', '2020-07-07', '2020-07-08', '2020-07-09', '2020-07-10', '2020-07-11', '2020-07-12', '2020-07-13', '2020-07-14', '2020-07-15', '2020-07-16', '2020-07-17', '2020-07-18', '2020-07-19'
-        ],
+        labels: <?php print_r(json_encode($post_chart_date)); ?>,
         colors: [tabler.getColor("primary")],
         legend: {
           show: false,

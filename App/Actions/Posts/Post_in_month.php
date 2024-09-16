@@ -3,10 +3,11 @@
 namespace App\Actions\Posts;
 
 use App\Modals\Posts;
-class Count_Post_Admin
+
+class Post_in_month
 {
     public static function execute(string $date)
     {
-        return Posts::Count_in_date($date);
+        return Posts::Post_in_month($date);
     }
 }

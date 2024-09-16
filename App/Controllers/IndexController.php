@@ -12,6 +12,8 @@ use App\Actions\Settings\GetByStateSetting;
 use App\Actions\Posts\CountPost;
 use App\Actions\Posts\AllPosts;
 use App\Actions\Posts\Innerjoin;
+use App\Actions\Posts\Count_Post_In_Day;
+use App\Actions\Posts\Post_in_month;
 use App\Actions\Users\AllUsers;
 use App\Actions\Posts\Mostvisit;
 use App\Actions\Posts\NotConfirmed;
@@ -45,13 +47,16 @@ class IndexController
             $user_chart_count[] = $array2;
             $user_chart_date[] = $filed['date'];
         }
-        $array2 = Get_In_MonthUser::execute($date1);
 
-        foreach ($array2 as $filed) {
-            $array22 = Count_Date_User::execute($filed['date']);
-            $user_chart_count[] = $array22;
-            $user_chart_date[] = $filed['date'];
+        $array22 = Post_in_month::execute($date1);
+
+        $all_my_post = 0;
+        foreach ($array22 as $filed1) {
+            $post_chart_count[] = $filed1['count'];
+            $post_chart_date[] = $filed1['date'];
+            $all_my_post += $filed1['count'];
         }
+
         $All_post = AllPosts::execute();
         foreach ($All_post as $view) {
             $view_count_chart[] = $view['viewcount'];
@@ -84,11 +89,11 @@ class IndexController
                 "logo" => $tool['logo'],
                 "footer" => $tool['footer'],
                 "title" => $tool['title'],
-                'admin_count' => $tool['admincount'],
-                'user_count' => $tool['usercount'],
-                'post_count' => $tool['postcount'],
-                'view_count' => $tool['viewcount'],
-                'comment_count' => $tool['commentcount'],
+                "admin_count" => $tool['admincount'],
+                "user_count" => $tool['usercount'],
+                "post_count" => $tool['postcount'],
+                "view_count" => $tool['viewcount'],
+                "comment_count" => $tool['commentcount'],
                 "admin" => $tool['admin'],
                 "admin_activity" => $admin_activity,
                 "users" => $Users,
@@ -103,6 +108,9 @@ class IndexController
                 "not_confirmed_comment_percent" => $not_confirmed_comment_percent,
                 "AllComments" => $AllComments,
                 "posts" => $All_post,
+                "post_chart_count" => $post_chart_count,
+                "post_chart_date" => $post_chart_date,
+                "all_my_post" => $all_my_post
             ]
         );
     }
