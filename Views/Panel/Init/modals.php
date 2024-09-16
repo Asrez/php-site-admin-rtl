@@ -1,6 +1,6 @@
 <div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        <form method="post"  action="/panel/result/post/create">
+        <form method="post"  action="/panel/result/post/create" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">New Post</h5>
@@ -18,7 +18,7 @@
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label class="form-label">Image</label>
-                                <input type="file" class="form-control" name="image" >
+                                <input type="file" class="form-control" name="image">
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -33,7 +33,7 @@
                     <a class="btn btn-link link-secondary" data-bs-dismiss="modal" aria-label="Close">
                         Cancel
                     </a>
-                    <button href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+                    <button type="submit" name="btn_new_post" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
                             stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                             stroke-linejoin="round">
@@ -125,7 +125,7 @@
                     <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
                         Cancel
                     </a>
-                    <button type="submit" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+                    <button type="submit" name="btn_new_user" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
                             stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                             stroke-linejoin="round">

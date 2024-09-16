@@ -52,11 +52,11 @@ function tools()
     ];
 }
 
-function makeRandomSlug($length = 8) {
-    // Define the characters allowed in the random slug
-    $characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+function makeRandomSlug() {
     
-    // Generate a random string from allowed characters
+    $length = 8;
+    $characters = 'abcdefghijklmnopqrstuvwxyzZXCVBNMASDFGHJKLQWERTYUIOP%$#@!^*+-0123456789';
+    
     $randomSlug = '';
     for ($i = 0; $i < $length; $i++) {
         $randomSlug .= $characters[rand(0, strlen($characters) - 1)];

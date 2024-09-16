@@ -2,32 +2,12 @@
 
 namespace App\Controllers;
 
-use App\Modals\Posts;
-use Exception;
+use App\Actions\Posts\AllPosts;
+use App\Actions\Posts\CreatePost;
+use App\Actions\Posts\NotConfirmed;
+use App\Actions\Search\SearchPost;
 use Flight;
 use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
-
-
-use App\Actions\Settings\GetByKeySetting;
-use App\Actions\Settings\GetByStateSetting;
-use App\Actions\Posts\CountPost;
-use App\Actions\Posts\AllPosts;
-use App\Actions\Posts\Innerjoin;
-use App\Actions\Users\AllUsers;
-use App\Actions\Posts\Mostvisit;
-use App\Actions\Posts\NotConfirmed;
-use App\Actions\Comments\NotConfirmedComment;
-use App\Actions\Comments\AllComments;
-use App\Actions\Comments\CountComment;
-use App\Actions\Views\CountView;
-use App\Actions\Users\CountUser;
-use App\Actions\Users\Get_In_MonthUser;
-use App\Actions\Users\Count_Date_User;
-use App\Actions\Users\GetByIdUser;
-use App\Actions\Search\SearchAll;
-use App\Actions\Search\SearchPost;
-use App\Actions\Search\SearchUser;
-use App\Actions\Search\SearchAdmin;
 
 class PostController
 {
@@ -47,7 +27,7 @@ class PostController
                 'user_count' => $tool['usercount'],
                 "not_confirmed_pages" => $Not_confirmed,
                 "admin" => $tool['admin'],
-                "posts" => $All_post
+                "posts" => $All_post,
             ]
         );
     }
@@ -56,8 +36,10 @@ class PostController
     {
         $tool = tools();
         $All_post = AllPosts::execute();
-        if (isset($_GET['search']))
+        if (isset($_GET['search'])) {
             $All_post = SearchPost::execute($_GET['search']);
+        }
+
         Flight::render(
             directory_separator("Panel", "managepost.php"),
             [
@@ -65,7 +47,7 @@ class PostController
                 "footer" => $tool['footer'],
                 "title" => $tool['title'],
                 "admin" => $tool['admin'],
-                "posts" => $All_post
+                "posts" => $All_post,
             ]
         );
     }
@@ -80,7 +62,7 @@ class PostController
                 "logo" => $tool['logo'],
                 "footer" => $tool['footer'],
                 "admin" => $tool['admin'],
-                "posts" => $Posts
+                "posts" => $Posts,
             ]
         );
     }
@@ -88,18 +70,36 @@ class PostController
     {
         $validator = new Validator(Flight::request()->data->getData(), [
             'title' => ['required'],
-            'content' => ['required']
+            'content' => ['required'],
         ]);
 
         if ($validator->validate()) {
             if (isset($_POST['btn_new_post'])) {
                 $title = $_POST['title'];
                 $content = $_POST['content'];
-                $image = basename($_FILES['image'], "name");
-                if ($image === "")
+                $image = basename($_FILES["image"]["name"]);
+                if ($image === "") {
                     $image = "1.jpg";
+                }
+
+                $data = [
+                    'title' => $title,
+                    'content' => $content,
+                    'image' => $image,
+                ];
+
+                $result = CreatePost::execute($data);
+
+                if ($result) {
+                    Flight::redirect("/panel/manage/posts?postadd=true");
+                } else {
+                    Flight::redirect("/panel/manage/posts?postadd=false");
+                }
 
             }
+        } else {
+            Flight::redirect("/panel/manage/posts?postadd=nofill");
         }
+
     }
 }
