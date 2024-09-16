@@ -33,7 +33,7 @@
                     <h3 class="card-title">Profile Details</h3>
                     <div class="row align-items-center">
                       <div class="col-auto"><span class="avatar avatar-xl"
-                          style="background-image: url(../../static/avatars/<?= $admin['image'] ?>)"></span>
+                          style="background-image: url(/static/avatars/<?= $admin['image'] ?>)"></span>
                       </div>
                       <h3>Change avatar</h3>
                       <div class="col-auto btn"><input type="file" name="image"></div>

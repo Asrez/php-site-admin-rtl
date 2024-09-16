@@ -42,7 +42,7 @@
                           <?= $post['id'] ?>
                         </div>
                         <div class="col-auto">
-                          <img src="../../static/photos/<?= $post['image'] ?>" class="rounded" alt="<?= $post['title'] ?>" width="60" height="60">
+                          <img src="/static/photos/<?= $post['image'] ?>" class="rounded" alt="<?= $post['title'] ?>" width="60" height="60">
                         </div>
                         <div class="col">
                         <?= $post['title'] ?>

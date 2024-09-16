@@ -32,7 +32,7 @@
                           <?= $setting['title'] ?>
                         </div>
                         <div class="col-auto">
-                          <img src="../../static/<?= $setting['value_setting'] ?>" class="rounded" alt="<?= $setting['title'] ?>" width="60" height="60">
+                          <img src="/static/<?= $setting['value_setting'] ?>" class="rounded" alt="<?= $setting['title'] ?>" width="60" height="60">
                         </div>
                         <div class="col">
                         <b><?= $setting['value_setting'] ?></b>

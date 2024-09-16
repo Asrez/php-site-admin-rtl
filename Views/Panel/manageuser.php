@@ -43,7 +43,7 @@
                           <?= $user['id'] ?>
                         </div>
                         <div class="col-auto">
-                          <img src="../../static/avatars/<?= $user['image'] ?>" class="rounded" alt="<?= $user['username'] ?>" width="40" height="40">
+                          <img src="/static/avatars/<?= $user['image'] ?>" class="rounded" alt="<?= $user['username'] ?>" width="40" height="40">
                         </div>
                         <div class="col">
                         <?= $user['username'] ?>
@@ -121,7 +121,7 @@
                     <div class="card" <?php if ($adminn === $admin) { ?> style="background-color : lightblue;" <?php } ?>>
                       <div class="row row-0">
                         <div class="col-auto">
-                          <img src="../../static/avatars/<?= $adminn['image'] ?>" class="rounded-start" alt="<?= $adminn['username'] ?>" width="80" height="80">
+                          <img src="/static/avatars/<?= $adminn['image'] ?>" class="rounded-start" alt="<?= $adminn['username'] ?>" width="80" height="80">
                         </div>
                         <div class="col">
                           <div class="card-body">

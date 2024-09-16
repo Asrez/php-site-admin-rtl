@@ -31,7 +31,7 @@
                           <?= $adver['id'] ?>
                         </div>
                         <div class="col-auto">
-                          <img src="../../static/photos/<?= $adver['value_setting'] ?>" class="rounded" alt="<?= $adver['title'] ?>" width="60" height="60">
+                          <img src="/static/photos/<?= $adver['value_setting'] ?>" class="rounded" alt="<?= $adver['title'] ?>" width="60" height="60">
                         </div>
                         <div class="col">
                           <div class="text-muted">
