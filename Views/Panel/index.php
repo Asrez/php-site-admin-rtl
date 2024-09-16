@@ -246,7 +246,7 @@
               <div class="row row-cards">
                 <div class="col-12">
                   <div class="card" style="height: 28rem">
-                    <div class="card-body card-body-scrollable card-body-scrollable-shadow">
+                    <div class="card-body card-body-scrollable card-body-scrollable-shadow" >
                       <div class="divide-y">
                         <?php foreach ($users as $user) { ?>
                           <div>
@@ -274,40 +274,29 @@
             <div class="col-lg-6">
               <div class="card">
                 <div class="card-header border-0">
-                  <div class="card-title">Admins activity</div>
+                  <div class="card-title">Your activity in this Month</div>
                 </div>
-                <div class="position-relative">
+                <div class="position-relative" >
                   <div class="position-absolute top-0 left-0 px-3 mt-1 w-75">
                     <div class="row g-2">
                       <div class="col-auto">
                         <div class="chart-sparkline chart-sparkline-square" id="sparkline-activity"></div>
                       </div>
-                      <div class="col">
-                        <div>Today's Earning: $4,262.40</div>
-                        <div class="text-muted">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-inline text-green" width="24"
-                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <polyline points="3 17 9 11 13 15 21 7" />
-                            <polyline points="14 7 21 7 21 14" />
-                          </svg>
-                          +5% more than yesterday
-                        </div>
-                      </div>
                     </div>
                   </div>
                   <div id="chart-development-activity"></div>
                 </div>
-                <div class="card-table table-responsive">
-                  <table class="table table-vcenter">
-                    <thead>
+                <table class="table table-vcenter">
+                    <thead> 
                       <tr>
-                        <th>Admin</th>
-                        <th>Post</th>
-                        <th>Date</th>
+                        <th class="w-1">Admin</th>
+                        <th class="td-truncate">Post</th>
+                        <th class="text-nowrap text-muted">Date</th>
                       </tr>
                     </thead>
+                </table>
+                <div class="card-table table-responsive" style="overflow:auto; max-height: 200px;">
+                  <table class="table table-vcenter">
                     <tbody>
                       <?php foreach ($admin_activity as $activity) { ?>
                         <tr>

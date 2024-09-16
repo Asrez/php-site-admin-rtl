@@ -45,6 +45,13 @@ class IndexController
             $user_chart_count[] = $array2;
             $user_chart_date[] = $filed['date'];
         }
+        $array2 = Get_In_MonthUser::execute($date1);
+
+        foreach ($array2 as $filed) {
+            $array22 = Count_Date_User::execute($filed['date']);
+            $user_chart_count[] = $array22;
+            $user_chart_date[] = $filed['date'];
+        }
         $All_post = AllPosts::execute();
         foreach ($All_post as $view) {
             $view_count_chart[] = $view['viewcount'];

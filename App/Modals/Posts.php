@@ -153,4 +153,19 @@ class Posts
 
         return ["count_all" => $stmt['count'], "count_no_confirmed" => $stmt1['count']];
     }
+
+    public static function Count_in_date(string $date): array
+    {
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = "SELECT Count(*) as count FROM `posts` WHERE `admin_id` = :id AND `date` >= :date;";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("id", $_SESSION['admin_id']);
+        $stmt->bindParam("date", $date);
+        $stmt->execute();
+        $stmt = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $stmt;
+    }
 }
