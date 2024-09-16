@@ -18,7 +18,7 @@
               <h2 class="page-title">
                 Users
               </h2>
-              <div class="text-muted mt-1"> <?= $user_count ?> Users , <?= $admin_count ?> Admins</div>
+              <div class="text-muted mt-1"> <?= $user_count ?> Users, <?= $admin_count ?> Admins</div>
             </div>
             <div class="col-auto ms-auto d-print-none">
               <div class="d-flex">

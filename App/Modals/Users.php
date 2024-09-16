@@ -126,7 +126,7 @@ class Users
         $stmt1->execute();
         $stmt1 = $stmt1->fetch(PDO::FETCH_ASSOC);
 
-        return ["count_user" => $stmt['count'] , "count_admin" => $stmt1['count']];
+        return ["count_user" => $stmt['count'], "count_admin" => $stmt1['count']];
     }
 
     public static function Get_In_Month(string $date) : array

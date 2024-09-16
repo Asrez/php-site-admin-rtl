@@ -79,78 +79,29 @@ class UserController
 
     public function panel_users()
     {
-        $admin = session_admin();
-     
-        try {
-            if ($admin === false) {
-                return panel_login();
-            }
-            else
-                return panel_users($admin);
-            
-        } catch (Exception $exception) {
-            var_dump($exception->getMessage());exit;
-        }
+        return panel_users();
 
     }
 
     public function panel_manage_users()
     {
-        $admin = session_admin();
-     
-        try {
-            if ($admin === false) {
-                return panel_login();
-            }
-            else
-            {
-                if (isset($_GET['search']))
-                    return panel_manage_users($admin, $_GET['search']);
-                else
-                    return panel_manage_users($admin);
-            }
-            
-        } catch (Exception $exception) {
-            var_dump($exception->getMessage());exit;
-        }
+        if (isset($_GET['search']))
+            return panel_manage_users($_GET['search']);
+        else
+            return panel_manage_users();
 
     }
 
     public function panel_manage_account()
     {
-        $admin = session_admin();
-     
-        try {
-            if ($admin === false) {
-                return panel_login();
-            }
-            else
-                return panel_manage_account($admin);
-            
-        } catch (Exception $exception) {
-            var_dump($exception->getMessage());exit;
-        }
-
+        return panel_manage_account();
     }
 
     public function panel_search_users()
     {
-        $admin = session_admin();
-        
-        try {
-            if ($admin === false) {
-                return panel_login();
-            }
-            else
-            {
-                if (isset($_GET['search']))
-                    return panel_search_users($admin, $_GET['search']);
-                else
-                    return panel_manage_users($admin);
-            }
-                
-        } catch (Exception $exception) {
-            var_dump($exception->getMessage());exit;
-        }
+        if (isset($_GET['search']))
+            return panel_search_users($_GET['search']);
+        else
+            return panel_manage_users();
     }
 }

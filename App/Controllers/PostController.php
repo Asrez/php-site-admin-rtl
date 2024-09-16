@@ -12,63 +12,23 @@ class PostController
 
     public function panel_posts()
     {
-        $admin = session_admin();
-     
-        try {
-            if ($admin === false) {
-                return panel_login();
-            }
-            else
-                return panel_posts($admin);
-            
-        } catch (Exception $exception) {
-            var_dump($exception->getMessage());exit;
-        }
-
+        return panel_posts();
     }
 
     public function panel_manage_posts()
     {
-        $admin = session_admin();
-     
-        try {
-            if ($admin === false) {
-                return panel_login();
-            }
-            else
-            {
-                if (isset($_GET['search']))
-                    return panel_manage_posts($admin, $_GET['search']);
-                else
-                    return panel_manage_posts($admin);
-
-            }
-            
-        } catch (Exception $exception) {
-            var_dump($exception->getMessage());exit;
-        }
-
+        if (isset($_GET['search']))
+            return panel_manage_posts($_GET['search']);
+        else
+            return panel_manage_posts();
     }
 
     public function panel_search_posts()
     {
-        $admin = session_admin();
-        
-        try {
-            if ($admin === false) {
-                return panel_login();
-            }
-            else
-            {
-                if (isset($_GET['search']))
-                    return panel_search_posts($admin, $_GET['search']);
-                else
-                    return panel_manage_posts($admin);
-            }
-                
-        } catch (Exception $exception) {
-            var_dump($exception->getMessage());exit;
-        }
+        if (isset($_GET['search']))
+            return panel_search_posts($_GET['search']);
+        else
+            return panel_manage_posts();
     }
     public function panel_result_create_post()
     {
@@ -83,7 +43,7 @@ class PostController
                 $content = $_POST['content'];
                 $image =basename($_FILES['image'],"name");
                 if ($image === "") $image = "1.jpg";
-                
+
             }
         }
     }

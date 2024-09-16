@@ -37,6 +37,7 @@ function tools()
     $postcount = CountPost::execute()['count_all'];
     $commentcount = CountComment::execute();
     $viewcount = CountView::execute();
+    $admin = session_admin();
 
     return [
         'logo' => $logo,
@@ -46,32 +47,17 @@ function tools()
         'usercount' => $usercount,
         'postcount' => $postcount,
         'viewcount' => $viewcount,
-        'commentcount' => $commentcount
+        'commentcount' => $commentcount,
+        'admin' => $admin
     ];
 }
 
 function session_admin()
 {
-    if (isset($_SESSION['admin_id'])) {
-
-        $admin = GetByIdUser::execute($_SESSION['admin_id']);
-        $state = true;
-
-        if ($admin['state'] === 0) {
-            $state = false;
-        }
-    } else {
-        $state = false;
-    }
-
-    if ($state === false) {
-        return false;
-    } else {
-        return $admin;
-    }
+    return GetByIdUser::execute($_SESSION['admin_id']);
 }
 
-function panel_index(array $admin)
+function panel_index()
 {
     $year = date("Y");
     $day = date("d");
@@ -111,7 +97,6 @@ function panel_index(array $admin)
         $AllComments["comment_user_id"][] = $comment['user_id'];
     }
 
-
     Flight::render(
         directory_separator("Panel", "index.php"),
         [
@@ -123,7 +108,7 @@ function panel_index(array $admin)
             'post_count' => $tool['postcount'],
             'view_count' => $tool['viewcount'],
             'comment_count' => $tool['commentcount'],
-            "admin" => $admin,
+            "admin" => $tool['admin'],
             "admin_activity" => $admin_activity,
             "users" => $Users,
             "most_visit_pages" => $MostVisit,
@@ -135,13 +120,13 @@ function panel_index(array $admin)
             "view_count_chart" => $view_count_chart,
             "title_chart" => $title_chart,
             "not_confirmed_comment_percent" => $not_confirmed_comment_percent,
-            "AllComments" => $AllComments ,
-            "posts" => $All_post
+            "AllComments" => $AllComments,
+            "posts" => $All_post,
         ]
     );
 }
 
-function panel_manage_setting(array $admin)
+function panel_manage_setting()
 {
     $tool = tools();
     $settings = GetByStateSetting::execute("setting");
@@ -151,13 +136,13 @@ function panel_manage_setting(array $admin)
             "logo" => $tool['logo'],
             "footer" => $tool['footer'],
             "title" => $tool['title'],
-            "admin" => $admin,
+            "admin" => $tool['admin'],
             "settings" => $settings
         ]
     );;
 }
 
-function panel_manage_advers(array $admin)
+function panel_manage_advers()
 {
     $tool = tools();
     $advers = GetByStateSetting::execute("adver");
@@ -167,7 +152,7 @@ function panel_manage_advers(array $admin)
             "logo" => $tool['logo'],
             "footer" => $tool['footer'],
             "title" => $tool['title'],
-            "admin" => $admin,
+            "admin" => $tool['admin'],
             "advers" => $advers
         ]
     );;
@@ -183,10 +168,11 @@ function panel_signup()
     Flight::render(directory_separator("Panel", "signup.php"));
 }
 
-function panel_users(array $admin)
+function panel_users()
 {
     $tool = tools();
     $Users = AllUsers::execute2();
+
     Flight::render(
         directory_separator("Panel", "users.php"),
         [
@@ -195,13 +181,13 @@ function panel_users(array $admin)
             "title" => $tool['title'],
             'admin_count' => $tool['admincount'],
             'user_count' => $tool['usercount'],
-            "admin" => $admin,
+            "admin" => $tool['admin'],
             "users" => $Users
         ]
     );
 }
 
-function panel_manage_users(array $admin, string $title = null)
+function panel_manage_users(string $title = null)
 {
     $tool = tools();
     $Users = AllUsers::execute();
@@ -220,14 +206,14 @@ function panel_manage_users(array $admin, string $title = null)
             "title" => $tool['title'],
             'admin_count' => $tool['admincount'],
             'user_count' => $tool['usercount'],
-            "admin" => $admin,
+            "admin" => $tool['admin'],
             "users" => $Users,
             "admins" => $Admins
         ]
     );
 }
 
-function panel_manage_account(array $admin)
+function panel_manage_account()
 {
     $tool = tools();
     $Users = AllUsers::execute();
@@ -240,11 +226,11 @@ function panel_manage_account(array $admin)
             "title" => $tool['title'],
             'admin_count' => $tool['admincount'],
             'user_count' => $tool['usercount'],
-            "admin" => $admin
+            "admin" => $tool['admin']
         ]
     );
 }
-function panel_posts(array $admin)
+function panel_posts()
 {
     $tool = tools();
     $All_post = AllPosts::execute();
@@ -258,13 +244,13 @@ function panel_posts(array $admin)
             'post_count' => $tool['postcount'],
             'user_count' => $tool['usercount'],
             "not_confirmed_pages" => $Not_confirmed,
-            "admin" => $admin,
+            "admin" => $tool['admin'],
             "posts" => $All_post
         ]
     );
 }
 
-function panel_manage_posts(array $admin, string $title = null)
+function panel_manage_posts(string $title = null)
 {
     $tool = tools();
     $All_post = AllPosts::execute();
@@ -276,13 +262,13 @@ function panel_manage_posts(array $admin, string $title = null)
             "logo" => $tool['logo'],
             "footer" => $tool['footer'],
             "title" => $tool['title'],
-            "admin" => $admin,
+            "admin" => $tool['admin'],
             "posts" => $All_post
         ]
     );
 }
 
-function panel_search_all(array $admin, string $title)
+function panel_search_all(string $title)
 {
     $tool = tools();
     $All = SearchAll::execute($title);
@@ -292,14 +278,14 @@ function panel_search_all(array $admin, string $title)
             "logo" => $tool['logo'],
             "footer" => $tool['footer'],
             "title" => $tool['title'],
-            "admin" => $admin,
-            "posts" => $All['posts'] ,
-            "users" => $All['users']
-        ]
+            "admin" => $tool['admin'],
+            "posts" => $All['posts'],
+            "users" => $All['users'],
+        ],
     );
 }
 
-function panel_search_posts(array $admin, string $title)
+function panel_search_posts(string $title)
 {
     $tool = tools();
     $Posts = SearchPost::execute($title);
@@ -308,14 +294,13 @@ function panel_search_posts(array $admin, string $title)
         [
             "logo" => $tool['logo'],
             "footer" => $tool['footer'],
-            "title" => $tool['title'],
-            "admin" => $admin,
+            "admin" => $tool['admin'],
             "posts" => $Posts
         ]
     );
 }
 
-function panel_search_users(array $admin, string $title)
+function panel_search_users(string $title)
 {
     $tool = tools();
     $Users = SearchUser::execute($title);
@@ -325,7 +310,7 @@ function panel_search_users(array $admin, string $title)
             "logo" => $tool['logo'],
             "footer" => $tool['footer'],
             "title" => $tool['title'],
-            "admin" => $admin,
+            "admin" => $tool['admin'],
             "users" => $Users
         ]
     );

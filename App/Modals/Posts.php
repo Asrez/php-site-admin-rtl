@@ -66,10 +66,10 @@ class Posts
     {
         $db = Connect::getInstance()->getConnection();
 
-        $sql = 'SELECT `users`.`id` ,
-        `users`.`image` as `userimage` ,
-        `users`.`username` ,
-        `posts`.`title` ,
+        $sql = 'SELECT `users`.`id`,
+        `users`.`image` as `userimage`,
+        `users`.`username`,
+        `posts`.`title`,
         `posts`.`id` as `post_id`,
         `posts`.`date`
         FROM `posts`
