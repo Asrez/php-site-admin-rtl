@@ -43,7 +43,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                     <a href="/panel/manage/setting" class="dropdown-item">Settings</a>
-                    <a href="/panel/logout" class="dropdown-item">Logout</a>
+                    <a id="logout" class="dropdown-item">Logout</a>
                 </div>
             </div>
         </div>

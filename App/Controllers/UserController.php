@@ -36,6 +36,11 @@ class UserController
         Flight::render(directory_separator("Panel", "login.php"));
     }
 
+    public function panel_logout()
+        {
+            session_unset();
+            session_destroy();
+        }
     public function panel_result_login()
     {
         $validator = new Validator(Flight::request()->data->getData(), [
