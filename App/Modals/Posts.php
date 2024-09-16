@@ -63,9 +63,17 @@ class Posts
         return true;
     }
 
-    public static function GetById(int $id)
+    public static function GetById(int $id): array
     {
+        $db = Connect::getInstance()->getConnection();
 
+        $sql = 'SELECT * FROM `posts` WHERE `id` = :id;';
+
+        $stms = $db->prepare($sql);
+        $stms->bindParam('id', $id);
+        $stms->execute();
+
+        return $stms->fetch(PDO::FETCH_ASSOC);
     }
 
     public static function GetBySlug(string $slug)
