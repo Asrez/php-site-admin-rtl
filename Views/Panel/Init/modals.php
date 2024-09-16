@@ -50,7 +50,7 @@
 </div>
 <div class="modal modal-blur fade" id="modal-report2" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        <form method="post" action="/panel/result/user/create">
+        <form method="post" action="/panel/result/user/create" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">New User</h5>
@@ -98,13 +98,19 @@
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="text" name="email" class="form-control">
+                                <input type="email" name="email" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label class="form-label">Username</label>
                                 <input type="text" name="username" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="mb-3">
+                                <label class="form-label">Image</label>
+                                <input type="file" name="image" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-16">

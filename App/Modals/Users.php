@@ -3,6 +3,7 @@
 namespace App\Modals;
 
 use App\Database\Connect;
+use Exception;
 use PDO;
 
 class Users
@@ -17,29 +18,34 @@ class Users
 
     }
 
-    public static function Create(array $data) :bool
+    public static function Create(array $data)
     {
-        $db = Connect::getInstance()->getConnection();
+        $date = date("Y-m-d");
+        try {
+            $db = Connect::getInstance()->getConnection();
 
-        $sql = "INSERT INTO `users`(`id`, `name`, `username`, `email`, `password`, `state`) VALUES (NULL, :name, :username, :email, :password, :state);";
+            $sql = "INSERT INTO `users`(`id`, `name`, `username`, `email`, `password`, `image`, `date`, `state`) VALUES (null, :name, :username, :email, :password, :image, :date, :state);";
 
-        $stmt = $db->prepare($sql);
-        $stmt->bindParam("name", $data['name']);
-        $stmt->bindParam("username", $data['username']);
-        $stmt->bindParam("email", $data['email']);
-        $stmt->bindParam("password", $data['password']);
-        $stmt->bindParam("state", $data['state']);
-        $stmt->execute();
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam("name", $data['name']);
+            $stmt->bindParam("username", $data['username']);
+            $stmt->bindParam("email", $data['email']);
+            $stmt->bindParam("image", $data['image']);
+            $stmt->bindParam("password", $data['password']);
+            $stmt->bindParam("date", $date);
+            $stmt->bindParam("state", $data['state']);
+            $stmt->execute();
 
-        if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $_SESSION['admin_id'] = $row['id'];
-
-            return true;
-        } else
+            if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $_SESSION['admin_id'] = $row['id'];
+                return true;
+            }
+        } catch (Exception $e) {
             return false;
+        }
     }
 
-    public static function GetById(int $id) : array
+    public static function GetById(int $id): array
     {
         $db = Connect::getInstance()->getConnection();
 
@@ -74,7 +80,7 @@ class Users
 
     }
 
-    public static function GetAllUsers() : array
+    public static function GetAllUsers(): array
     {
         $db = Connect::getInstance()->getConnection();
 
@@ -86,7 +92,7 @@ class Users
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function GetAll() : array
+    public static function GetAll(): array
     {
         $db = Connect::getInstance()->getConnection();
 
@@ -98,7 +104,7 @@ class Users
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function GetAllAdmins() : array
+    public static function GetAllAdmins(): array
     {
         $db = Connect::getInstance()->getConnection();
 
@@ -110,7 +116,7 @@ class Users
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function Count() : array
+    public static function Count(): array
     {
         $db = Connect::getInstance()->getConnection();
 
@@ -129,7 +135,7 @@ class Users
         return ["count_user" => $stmt['count'], "count_admin" => $stmt1['count']];
     }
 
-    public static function Get_In_Month(string $date) : array
+    public static function Get_In_Month(string $date): array
     {
         $db = Connect::getInstance()->getConnection();
 
@@ -141,8 +147,8 @@ class Users
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
-    public static function Count_Date(string $date) : int
+
+    public static function Count_Date(string $date): int
     {
         $db = Connect::getInstance()->getConnection();
 

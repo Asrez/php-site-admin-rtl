@@ -2,32 +2,13 @@
 
 namespace App\Controllers;
 
-use App\Modals\Users;
-use Exception;
+use App\Actions\Search\SearchAdmin;
+use App\Actions\Search\SearchUser;
+use App\Actions\Users\AllUsers;
+use App\Actions\Users\CreateUser;
+use App\Actions\Users\Login_panel;
 use Flight;
 use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
-
-
-use App\Actions\Settings\GetByKeySetting;
-use App\Actions\Settings\GetByStateSetting;
-use App\Actions\Posts\CountPost;
-use App\Actions\Posts\AllPosts;
-use App\Actions\Posts\Innerjoin;
-use App\Actions\Users\AllUsers;
-use App\Actions\Posts\Mostvisit;
-use App\Actions\Posts\NotConfirmed;
-use App\Actions\Comments\NotConfirmedComment;
-use App\Actions\Comments\AllComments;
-use App\Actions\Comments\CountComment;
-use App\Actions\Views\CountView;
-use App\Actions\Users\CountUser;
-use App\Actions\Users\Get_In_MonthUser;
-use App\Actions\Users\Count_Date_User;
-use App\Actions\Users\GetByIdUser;
-use App\Actions\Search\SearchAll;
-use App\Actions\Search\SearchPost;
-use App\Actions\Search\SearchUser;
-use App\Actions\Search\SearchAdmin;
 
 class UserController
 {
@@ -37,15 +18,15 @@ class UserController
     }
 
     public function panel_logout()
-        {
-            session_unset();
-            session_destroy();
-        }
+    {
+        session_unset();
+        session_destroy();
+    }
     public function panel_result_login()
     {
         $validator = new Validator(Flight::request()->data->getData(), [
             'username' => ['required'],
-            'password' => ['required']
+            'password' => ['required'],
         ]);
 
         if ($validator->validate()) {
@@ -53,15 +34,19 @@ class UserController
                 $username = $_POST['username'];
                 $password = md5($_POST['password']);
 
-                $result = Users::Login($username, $password);
+                $result = Login_panel::execute($username, $password);
 
-                if ($result === true)
+                if ($result === true) {
                     Flight::redirect("/panel/login?login=true");
-                else
+                } else {
                     Flight::redirect("/panel/login?login=false");
+                }
+
             }
-        } else
+        } else {
             Flight::redirect("/panel/login?login=nofill");
+        }
+
     }
 
     public function panel_signup()
@@ -75,7 +60,7 @@ class UserController
             'name' => ['required'],
             'username' => ['required'],
             'password' => ['required'],
-            'email' => ['required']
+            'email' => ['required'],
         ]);
 
         if ($validator->validate()) {
@@ -90,18 +75,23 @@ class UserController
                     "username" => $username,
                     "password" => $password,
                     "email" => $email,
-                    "state" => 1
+                    "state" => 1,
+                    "image" => "default.png",
                 ];
 
-                $result = Users::Create($data);
+                $result = CreateUser::execute($data);
 
-                if ($result === true)
+                if ($result === true) {
                     Flight::redirect("/panel/signup?signup=true");
-                else
+                } else {
                     Flight::redirect("/panel/signup?signup=false");
+                }
+
             }
-        } else
+        } else {
             Flight::redirect("/panel/signup?signup=nofill");
+        }
+
     }
 
     public function panel_users()
@@ -118,7 +108,7 @@ class UserController
                 'admin_count' => $tool['admincount'],
                 'user_count' => $tool['usercount'],
                 "admin" => $tool['admin'],
-                "users" => $Users
+                "users" => $Users,
             ]
         );
     }
@@ -145,7 +135,7 @@ class UserController
                 'user_count' => $tool['usercount'],
                 "admin" => $tool['admin'],
                 "users" => $Users,
-                "admins" => $Admins
+                "admins" => $Admins,
             ]
         );
     }
@@ -161,15 +151,17 @@ class UserController
                 "title" => $tool['title'],
                 'admin_count' => $tool['admincount'],
                 'user_count' => $tool['usercount'],
-                "admin" => $tool['admin']
+                "admin" => $tool['admin'],
             ]
         );
     }
 
     public function panel_search_users(string $title = "")
     {
-        if (isset($_GET['search']))
+        if (isset($_GET['search'])) {
             $title = $_GET['search'];
+        }
+
         $tool = tools();
         $Users = SearchUser::execute($title);
         Flight::render(
@@ -179,8 +171,60 @@ class UserController
                 "footer" => $tool['footer'],
                 "title" => $tool['title'],
                 "admin" => $tool['admin'],
-                "users" => $Users
+                "users" => $Users,
             ]
         );
+    }
+
+    public function panel_result_create_user()
+    {
+        $validator = new Validator(Flight::request()->data->getData(), [
+            'name' => [],
+            'username' => ['required'],
+            'password' => ['required'],
+            'repassword' => ['required'],
+            'type' => [],
+            'email' => []
+        ]);
+
+        if ($validator->validate()) {
+            if (isset($_POST['btn_new_user'])) {
+                $username = $_POST['username'];
+                $password = md5($_POST['password']);
+                $repassword = md5($_POST['repassword']);
+                if ($password !== $repassword) {
+                    Flight::redirect("/panel/manage/users?user_add=pass_error");
+                }
+                $state = $_POST['type'];
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+
+                $image = basename($_FILES["image"]["name"]);
+                if ($image === "") {
+                    $image = "default.png";
+                }
+
+                $target_file = "./static/avatars/" . $image;
+                if (!file_exists($target_file)) {
+                    move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+                }
+                $data = [
+                    "name" => $name,
+                    "username" => $username,
+                    "password" => $password,
+                    "email" => $email,
+                    "state" => $state,
+                    "image" => $image,
+                ];
+
+                $result = CreateUser::execute($data);
+                Flight::redirect("/panel/manage/users?user_add=true");
+                if ($result === false) {
+                    Flight::redirect("/panel/manage/users?user_add=false");
+                }
+
+            }
+        } 
+
     }
 }
