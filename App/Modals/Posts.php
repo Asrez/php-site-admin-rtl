@@ -9,12 +9,33 @@ class Posts
 {
     public static function Delete(int $id)
     {
+        $db = Connect::getInstance()->getConnection();
 
+        $sql = "DELETE FROM `posts` WHERE `id` = :id;";
+
+        $stms = $db->prepare($sql);
+
+        $stms->bindParam('id', $id);
+        $stms->execute();
+        
+        return true;
     }
 
-    public static function Update(array $data)
+    public static function Update(array $data): bool
     {
+        $db = Connect::getInstance()->getConnection();
 
+        $sql = "UPDATE `posts` SET `title`=:title, `content`=:content, `image`=:image WHERE `id` = :id;";
+
+        $stms = $db->prepare($sql);
+
+        $stms->bindParam('title', $data['title']);
+        $stms->bindParam('content', $data['content']);
+        $stms->bindParam('image', $data['image']);
+        $stms->bindParam('id', $data['id']);
+        $stms->execute();
+        
+        return true;
     }
 
     public static function Create(array $data): bool
@@ -37,7 +58,7 @@ class Posts
         $stms->bindParam('slug', $slug);
         $stms->execute();
 
-        $stms->fetch(PDO::FETCH_ASSOC);
+        $stms = $stms->fetch(PDO::FETCH_ASSOC);
         
         return true;
     }
