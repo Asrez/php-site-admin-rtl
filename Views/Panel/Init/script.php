@@ -565,8 +565,7 @@
     crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
-
-        // log out
+        // Log out
         $("#logout_panel").click(function () {
 
             const xhttp = new XMLHttpRequest();
