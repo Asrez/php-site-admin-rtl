@@ -17,9 +17,28 @@ class Posts
         
     }
 
-    public static function Create(array $data)
+    public static function Create(array $data): bool
     {
-        
+        $date = date("y-d-m");
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = 'INSERT INTO `posts`(`id`, `title`, `content`, `image`, `admin_id`, `date`, `viewcount`, `state`, `slug`)
+                VALUES (Null,:title,:content,:image,:admin_id,:date,0,0,:slug);';
+
+
+        $stms = $db->prepare($sql);
+        $stms->bindParam('title', $data['title']);
+        $stms->bindParam('content', $data['content']);
+        $stms->bindParam('image', $data['image']);
+        $stms->bindParam('admin_id', $_SESSION['admin_id']);
+        $stms->bindParam('date', $date);
+        $stms->bindParam('slug', $slug);
+        $stms->execute();
+
+        if ($stms->fetch(PDO::FETCH_ASSOC))
+            return true;
+        else
+            return false;
     }
     
     public static function GetById(int $id)

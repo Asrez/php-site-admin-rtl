@@ -29,20 +29,25 @@ Flight::group("/panel", function () {
         Flight::route("GET /@id", [new UserController, "panel_show_user"]);
     });
 
-        Flight::route("GET /search", [new IndexController, "panel_search_all"]);
-        Flight::route("GET /search/users", [new UserController, "panel_search_users"]);
-        Flight::route("GET /search/posts", [new PostController, "panel_search_posts"]);
+    Flight::route("GET /search", [new IndexController, "panel_search_all"]);
+    Flight::route("GET /search/users", [new UserController, "panel_search_users"]);
+    Flight::route("GET /search/posts", [new PostController, "panel_search_posts"]);
 
     Flight::group("/result", function () {
         Flight::route("POST /login", [new UserController, "panel_result_login"]);
         Flight::route("POST /signup", [new UserController, "panel_result_signup"]);
-        Flight::route("POST /create-post", [new UserController, "panel_result_create_post"]);
-        Flight::route("GET /delete-post/@id", [new UserController, "panel_result_delete_post"]);
-        Flight::route("POST /update-post/@id", [new UserController, "panel_result_update_post"]);
-        Flight::route("POST /create-user", [new PostController, "panel_result_create_user"]);
-        Flight::route("GET /delete-user/@id", [new PostController, "panel_result_delete_user"]);
-        Flight::route("POST /update-user/@id", [new PostController, "panel_result_update_user"]);
         Flight::route("POST /account", [new UserController, "panel_result_account"]);
+
+        Flight::group("/post", function () {
+            Flight::route("POST /create", [new PostController, "panel_result_create_post"]);
+            Flight::route("GET /delete", [new PostController, "panel_result_delete_post"]);
+            Flight::route("GET /update", [new PostController, "panel_result_update_post"]);
+        });
+        Flight::group("/user", function () {
+            Flight::route("POST /create", [new UserController, "panel_result_create_user"]);
+            Flight::route("GET /delete/@id", [new UserController, "panel_result_delete_user"]);
+            Flight::route("POST /update/@id", [new UserController, "panel_result_update_user"]);
+        });
     });
 });
 

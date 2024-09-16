@@ -70,4 +70,21 @@ class PostController
             var_dump($exception->getMessage());exit;
         }
     }
+    public function panel_result_create_post()
+    {
+        $validator = new Validator(Flight::request()->data->getData(), [
+            'title' => ['required'],
+            'content' => ['required']
+        ]);
+
+        if ($validator->validate()) {
+            if (isset($_POST['btn_new_post'])) {
+                $title = $_POST['title'];
+                $content = $_POST['content'];
+                $image =basename($_FILES['image'],"name");
+                if ($image === "") $image = "1.jpg";
+                
+            }
+        }
+    }
 }

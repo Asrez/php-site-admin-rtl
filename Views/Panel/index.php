@@ -308,7 +308,7 @@
                 </div>
               </div>
               <div class="col-md-6 col-lg-4">
-                <a href="/" class="card card-sponsor" target="_blank" rel="noopener" style="background-image: url(./static/sponsor-banner-homepage.svg)" aria-label="Sponsor Tabler!">
+                <a href="/" class="card card-sponsor" target="_blank" rel="noopener" style="background-image: url(../../static/sponsor-banner-homepage.svg)" aria-label="Sponsor Tabler!">
                   <div class="card-body"></div>
                 </a>
               </div>
