@@ -52,3 +52,15 @@ function tools()
     ];
 }
 
+function makeRandomSlug($length = 8) {
+    // Define the characters allowed in the random slug
+    $characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    
+    // Generate a random string from allowed characters
+    $randomSlug = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomSlug .= $characters[rand(0, strlen($characters) - 1)];
+    }
+    
+    return $randomSlug;
+}
