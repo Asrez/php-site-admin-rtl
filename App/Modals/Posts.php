@@ -38,6 +38,18 @@ class Posts
         return true;
     }
 
+    public static function Confirm(int $id)
+    {
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = "UPDATE `posts` SET `state` = 1 WHERE `id` = :id;";
+
+        $stms = $db->prepare($sql);
+
+        $stms->bindParam('id', $data['id']);
+        $stms->execute();
+    }
+
     public static function Create(array $data): bool
     {
         $slug = makeRandomSlug();
