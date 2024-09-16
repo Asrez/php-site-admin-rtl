@@ -139,7 +139,7 @@ class Users
     {
         $db = Connect::getInstance()->getConnection();
 
-        $sql = "SELECT `date` FROM `users` WHERE `date` >= :date;";
+        $sql = "SELECT `date`,Count(*) as count FROM `users` WHERE `date` >= :date GROUP BY date;";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam("date", $date);
@@ -148,16 +148,4 @@ class Users
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function Count_Date(string $date): int
-    {
-        $db = Connect::getInstance()->getConnection();
-
-        $sql = "SELECT Count(*) as count FROM `users` WHERE `date` = :date;";
-
-        $stmt = $db->prepare($sql);
-        $stmt->bindParam("date", $date);
-        $stmt->execute();
-        $stmt = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $stmt['count'];
-    }
 }

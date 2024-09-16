@@ -40,18 +40,16 @@ class IndexController
         $month = date("m");
         $last_month = $month - 1;
         $date1 = date($year . $day . $last_month);
-        $array = Get_In_MonthUser::execute($date1);
 
+        $array = Get_In_MonthUser::execute($date1);
         foreach ($array as $filed) {
-            $array2 = Count_Date_User::execute($filed['date']);
-            $user_chart_count[] = $array2;
+            $user_chart_count[] = $filed['count'];
             $user_chart_date[] = $filed['date'];
         }
 
-        $array22 = Post_in_month::execute($date1);
-
+        $array2 = Post_in_month::execute($date1);
         $all_my_post = 0;
-        foreach ($array22 as $filed1) {
+        foreach ($array2 as $filed1) {
             $post_chart_count[] = $filed1['count'];
             $post_chart_date[] = $filed1['date'];
             $all_my_post += $filed1['count'];
