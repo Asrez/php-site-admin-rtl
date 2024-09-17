@@ -46,7 +46,7 @@ class Posts
 
         $stms = $db->prepare($sql);
 
-        $stms->bindParam('id', $data['id']);
+        $stms->bindParam('id', $id);
         $stms->execute();
     }
 

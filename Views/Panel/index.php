@@ -667,7 +667,7 @@
                                 <div class="col"><a href="#" class="btn w-100" data-bs-dismiss="modal">
                                     Cancel
                                   </a></div>
-                                <div class="col"><a href="/panel/result/post/confirm/<?= $post['id'] ?>" class="btn btn-success w-100" data-bs-dismiss="modal">
+                                <div class="col"><a href="/panel/result/post/confirm/<?= $post['id'] ?>" class="btn btn-success w-100" >
                                     Yes
                                   </a></div>
                               </div>

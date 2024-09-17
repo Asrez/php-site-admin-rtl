@@ -6,7 +6,7 @@ use App\Actions\Posts\AllPosts;
 use App\Actions\Posts\CreatePost;
 use App\Actions\Posts\GetByIdPost;
 use App\Actions\Posts\NotConfirmed;
-use App\Actions\Posts\Confirm_Post
+use App\Actions\Posts\Confirm_Post;
 use App\Actions\Search\SearchPost;
 use Flight;
 use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;

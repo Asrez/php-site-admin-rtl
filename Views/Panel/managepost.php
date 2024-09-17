@@ -122,15 +122,15 @@
                           <div class="modal-status bg-success"></div>
                           <div class="modal-body text-center py-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-green icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9" /><path d="M9 12l2 2l4 -4" /></svg>
-                            <h3>Confirm <?= $post['title'] ?> post</h3>
+                            <h3 dir="ltr">do you want to confirm `<?= $post['title'] ?>`  post ?</h3>
                           <div class="modal-footer">
                             <div class="w-100">
                               <div class="row">
                                 <div class="col"><a href="#" class="btn w-100" data-bs-dismiss="modal">
                                     Cancel
                                   </a></div>
-                                <div class="col"><a href="/panel/result/post/confirm" class="btn btn-success w-100" data-bs-dismiss="modal">
-                                    Set Confirm
+                                <div class="col"><a href="/panel/result/post/confirm/<?= $post['id'] ?>" class="btn btn-success w-100" >
+                                    Yes
                                   </a></div>
                               </div>
                             </div>
