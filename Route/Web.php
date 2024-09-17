@@ -24,6 +24,8 @@ Flight::group("/panel", function () {
             Flight::route("GET /advertisings", [new SettingController, "panel_manage_advers"]);
             Flight::route("GET /settings", [new SettingController, "panel_manage_setting"]);
             Flight::route("GET /account", [new UserController, "panel_manage_account"]);
+            Flight::route("GET /comments", [new CommentController, "panel_manage_comment"]);
+
         });
 
         Flight::group("/posts", function () {
