@@ -53,7 +53,7 @@
                         <?= $comment['date'] ?>
                         </div>
                         <div class="col-auto">
-                          <a  class="link-secondary">
+                          <a data-bs-toggle="modal" data-bs-target="#modal-simple<?= $comment['id'] ?>" class="link-secondary">
                             <button class="switch-icon" >
                               <span class="text-muted">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
@@ -83,6 +83,23 @@
                                 Delete
                               </a>
                             </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal modal-blur fade" id="modal-simple<?= $comment['id'] ?>" tabindex="-1" role="dialog"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title"><?= $comment['title'] ?></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <?= $comment['comment'] ?>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
                           </div>
                         </div>
                       </div>
