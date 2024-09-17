@@ -3,6 +3,8 @@
 use App\Controllers\UserController;
 use App\Controllers\PostController;
 use App\Controllers\IndexController;
+use App\Controllers\CommentController;
+use App\Controllers\SettingController;
 use App\Middleware\AuthMiddleware;
 
 Flight::group("/panel", function () {
@@ -19,8 +21,8 @@ Flight::group("/panel", function () {
         Flight::group("/manage", function () {
             Flight::route("GET /posts", [new PostController, "panel_manage_posts"]);
             Flight::route("GET /users", [new UserController, "panel_manage_users"]);
-            Flight::route("GET /advertisings", [new IndexController, "panel_manage_advers"]);
-            Flight::route("GET /settings", [new IndexController, "panel_manage_setting"]);
+            Flight::route("GET /advertisings", [new SettingController, "panel_manage_advers"]);
+            Flight::route("GET /settings", [new SettingController, "panel_manage_setting"]);
             Flight::route("GET /account", [new UserController, "panel_manage_account"]);
         });
 
