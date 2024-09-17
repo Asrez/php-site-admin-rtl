@@ -630,7 +630,7 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-link link-secondary me-auto" data-bs-dismiss="modal">Cancel</button>
-                            <a href="/panel/result/post/delete/<?= $post['id'] ?>" class="btn btn-danger" data-bs-dismiss="modal">Yes, delete</a>
+                            <a href="/panel/result/post/delete/<?= $post['id'] ?>" class="btn btn-danger" >Yes, delete</a>
                           </div>
                         </div>
                       </div>

@@ -7,21 +7,19 @@ use PDO;
 
 class Posts
 {
-    public static function Delete(int $id)
+    public static function Delete(int $id): void
     {
         $db = Connect::getInstance()->getConnection();
 
         $sql = "DELETE FROM `posts` WHERE `id` = :id;";
 
         $stms = $db->prepare($sql);
-
         $stms->bindParam('id', $id);
-        $stms->execute();
         
-        return true;
+        $stms->execute();
     }
 
-    public static function Update(array $data): bool
+    public static function Update(array $data): void
     {
         $db = Connect::getInstance()->getConnection();
 
@@ -34,11 +32,9 @@ class Posts
         $stms->bindParam('image', $data['image']);
         $stms->bindParam('id', $data['id']);
         $stms->execute();
-        
-        return true;
     }
 
-    public static function Confirm(int $id)
+    public static function Confirm(int $id): void
     {
         $db = Connect::getInstance()->getConnection();
 

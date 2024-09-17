@@ -7,6 +7,7 @@ use App\Actions\Posts\CreatePost;
 use App\Actions\Posts\GetByIdPost;
 use App\Actions\Posts\NotConfirmed;
 use App\Actions\Posts\Confirm_Post;
+use App\Actions\Posts\DeletePost;
 use App\Actions\Search\SearchPost;
 use Flight;
 use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
@@ -158,6 +159,13 @@ class PostController
     {
         Confirm_Post::execute($id);
         flight::redirect("/panel/manage/posts?confirm=true");
+
+    }
+    
+    public function panel_result_delete_post(int $id)
+    {
+        DeletePost::execute($id);
+        flight::redirect("/panel/manage/posts?delete=true");
 
     }
 }

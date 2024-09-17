@@ -44,7 +44,7 @@ Flight::group("/panel", function () {
 
             Flight::group("/post", function () {
                 Flight::route("POST /create", [new PostController, "panel_result_create_post"]);
-                Flight::route("GET /delete", [new PostController, "panel_result_delete_post"]);
+                Flight::route("GET /delete/@id", [new PostController, "panel_result_delete_post"]);
                 Flight::route("GET /update", [new PostController, "panel_result_update_post"]);
                 Flight::route("GET /confirm/@id", [new PostController, "panel_result_confirm_post"]);
 
