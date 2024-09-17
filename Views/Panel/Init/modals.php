@@ -48,6 +48,7 @@
         </form>
     </div>
 </div>
+
 <div class="modal modal-blur fade" id="modal-report2" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <form method="post" action="/panel/result/user/create" enctype="multipart/form-data">
