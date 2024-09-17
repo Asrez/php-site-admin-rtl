@@ -79,7 +79,7 @@
                 xhttp.send();
             }
         })
-
+        
         let data = window.location.search.substring(1).trim();
 
         console.log(data);

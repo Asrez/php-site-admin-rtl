@@ -261,11 +261,25 @@
                             </a>
                           </div>
                         <?php } ?>
+                        <?php if ($adminn !== $admin) { 
+                          if ($adminn['id'] !== 1 && $admin['id'] === 1) { ?>
+                          <div class="col-auto">
+                              <a id="deleteadmin<?= $adminn['id'] ?>" class="switch-icon">
+                                <span class="text-muted">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                 fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                 <line x1="4" y1="7" x2="20" y2="7" /><line x1="10" y1="11" x2="10" y2="17" /><line x1="14" y1="11" x2="14" y2="17" />
+                                 <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg>
+                                </span>
+                          </a>
+                          
+                          </div>
+                        <?php } }?>
                       </div>
                     </div>
                   </div>
                 <?php } ?>
-                <?php if (empty($users))
+                <?php if (empty($admins))
                   echo "no result"; ?>
               </div>
             </div>
@@ -277,6 +291,26 @@
   </div>
   <?php include "Init/script.php"; ?>
   <?php include "Init/modals.php"; ?>
+  <script>
+    $(document).ready(function () {
+        <?php foreach($admins as $adminn) { ?>
+        $("#deleteadmin<?= $adminn['id'] ?>").click(function () {
+
+            const xhttp = new XMLHttpRequest();
+            result = window.confirm("do you want to delete this admin?");
+            if (result) {
+                xhttp.onload = function () {
+                    window.confirm("deleted");
+                    location.reload();
+                }
+
+                xhttp.open("GET", "/panel/result/user/delete/<?= $adminn['id'] ?>", true);
+                xhttp.send();
+            }
+        })
+        <?php } ?>
+    })
+</script>
 </body>
 
 </html>
