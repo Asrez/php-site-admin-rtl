@@ -8,9 +8,15 @@ use PDO;
 
 class Users
 {
-    public static function Delete(int $id)
+    public static function Delete(int $id): void
     {
+        $db = Connect::getInstance()->getConnection();
 
+        $sql = "DELETE FROM `users` WHERE `id` = :id;";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("id", $id);
+        $stmt->execute();
     }
 
     public static function Update(array $data)

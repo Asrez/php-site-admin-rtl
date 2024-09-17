@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Actions\Search\SearchAdmin;
 use App\Actions\Search\SearchUser;
 use App\Actions\Users\AllUsers;
+use App\Actions\Users\DeleteUser;
 use App\Actions\Users\CreateUser;
 use App\Actions\Users\Login_panel;
 use Flight;
@@ -225,6 +226,13 @@ class UserController
 
             }
         } 
+
+    }
+    
+    public function panel_result_delete_user(int $id)
+    {
+        DeleteUser::execute($id);
+        flight::redirect("/panel/manage/users?delete=true");
 
     }
 }
