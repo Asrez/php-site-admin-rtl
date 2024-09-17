@@ -156,39 +156,6 @@
                                 <input type="text" class="form-control" name="name" placeholder="enter name of user"
                                   value="<?= $user['name'] ?>">
                               </div>
-                              <label class="form-label">Type</label>
-                              <div class="form-selectgroup-boxes row mb-3">
-                                <div class="col-lg-6">
-                                  <label class="form-selectgroup-item">
-                                    <input type="radio" name="type" value="0" class="form-selectgroup-input" <?php if ($user['state'] === 0)
-                                      echo "checked"; ?>>
-                                    <span class="form-selectgroup-label d-flex align-items-center p-3">
-                                      <span class="me-3">
-                                        <span class="form-selectgroup-check"></span>
-                                      </span>
-                                      <span class="form-selectgroup-label-content">
-                                        <span class="form-selectgroup-title strong mb-1">User</span>
-                                        <span class="d-block text-muted">can't access the admin panel</span>
-                                      </span>
-                                    </span>
-                                  </label>
-                                </div>
-                                <div class="col-lg-6">
-                                  <label class="form-selectgroup-item">
-                                    <input type="radio" name="type" value="1" class="form-selectgroup-input" <?php if ($user['state'] === 1)
-                                      echo "checked"; ?>>
-                                    <span class="form-selectgroup-label d-flex align-items-center p-3">
-                                      <span class="me-3">
-                                        <span class="form-selectgroup-check"></span>
-                                      </span>
-                                      <span class="form-selectgroup-label-content">
-                                        <span class="form-selectgroup-title strong mb-1">Admin</span>
-                                        <span class="d-block text-muted">can access the admin panel</span>
-                                      </span>
-                                    </span>
-                                  </label>
-                                </div>
-                              </div>
                             </div>
                             <div class="modal-body">
                               <div class="row">
@@ -217,10 +184,17 @@
                                     <input class="form-control" name="password" type="password" required>
                                   </div>
                                 </div>
-                                <div class="col-lg-16">
+                                <hr>
+                                <div class="col-lg-6">
+                                  <div>
+                                    <label class="form-label">New password</label>
+                                    <input class="form-control" name="new_password" type="password">
+                                  </div>
+                                </div>
+                                <div class="col-lg-6">
                                   <div>
                                     <label class="form-label">Repassword</label>
-                                    <input class="form-control" name="repassword" type="password" required>
+                                    <input class="form-control" name="new_repassword" type="password">
                                   </div>
                                 </div>
                               </div>
@@ -229,7 +203,7 @@
                               <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
                                 Cancel
                               </a>
-                              <button type="submit" name="btn_new_user" class="btn btn-primary ms-auto">
+                              <button type="submit" name="btn_update_user" class="btn btn-primary ms-auto">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                   viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                                   stroke-linecap="round" stroke-linejoin="round">

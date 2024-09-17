@@ -19,9 +19,27 @@ class Users
         $stmt->execute();
     }
 
-    public static function Update(array $data)
+    public static function Update(array $data): bool
     {
+        try {
+            $db = Connect::getInstance()->getConnection();
 
+            $sql = "UPDATE `users` SET `name`= :name,`username`= :username,`email`= :email,`password`= :password,`image`= :image WHERE `id` = :id;";
+
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam("name", $data['name']);
+            $stmt->bindParam("username", $data['username']);
+            $stmt->bindParam("email", $data['email']);
+            $stmt->bindParam("image", $data['image']);
+            $stmt->bindParam("password", $data['password']);
+            $stmt->bindParam("id", $data['id']);
+            $stmt->execute();
+
+            return true;
+
+        } catch (Exception $e) {
+            return false;
+        }
     }
 
     public static function Create(array $data)
