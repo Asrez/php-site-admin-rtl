@@ -6,6 +6,7 @@ use App\Actions\Search\SearchAdmin;
 use App\Actions\Search\SearchUser;
 use App\Actions\Users\AllUsers;
 use App\Actions\Users\DeleteUser;
+use App\Actions\Users\SetAdminUser;
 use App\Actions\Users\CreateUser;
 use App\Actions\Users\Login_panel;
 use Flight;
@@ -233,6 +234,13 @@ class UserController
     {
         DeleteUser::execute($id);
         flight::redirect("/panel/manage/users?delete=true");
+
+    }
+
+    public function panel_result_set_admin_user(int $id)
+    {
+        SetAdminUser::execute($id);
+        flight::redirect("/panel/manage/users?setadmin=true");
 
     }
 }

@@ -154,4 +154,15 @@ class Users
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function SetAsAdmin(int $id): void
+    {
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = "UPDATE `users` SET `state`= 1 WHERE `id` = :id;";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("id", $id);
+        $stmt->execute();
+    }
+
 }

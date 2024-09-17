@@ -53,6 +53,8 @@ Flight::group("/panel", function () {
                 Flight::route("POST /create", [new UserController, "panel_result_create_user"]);
                 Flight::route("GET /delete/@id", [new UserController, "panel_result_delete_user"]);
                 Flight::route("POST /update/@id", [new UserController, "panel_result_update_user"]);
+                Flight::route("GET /setadmin/@id", [new UserController, "panel_result_set_admin_user"]);
+
             });
         });
     }, [ new AuthMiddleware ]);

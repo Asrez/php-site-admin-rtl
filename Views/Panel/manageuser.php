@@ -103,7 +103,7 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-link link-secondary me-auto" data-bs-dismiss="modal">Cancel</button>
-                            <a href="/panel/result/user/admin/<?= $user['id'] ?>" class="btn btn-success" data-bs-dismiss="modal">Yes, Set as admin</a>
+                            <a href="/panel/result/user/setadmin/<?= $user['id'] ?>" class="btn btn-success" >Yes, Set as admin</a>
                           </div>
                         </div>
                       </div>
