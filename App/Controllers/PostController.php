@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Actions\Posts\AllPosts;
 use App\Actions\Posts\CreatePost;
 use App\Actions\Posts\GetByIdPost;
+use App\Actions\Posts\UpdatePost;
 use App\Actions\Posts\NotConfirmed;
 use App\Actions\Posts\Confirm_Post;
 use App\Actions\Posts\DeletePost;
@@ -142,15 +143,12 @@ class PostController
                     'id' => $id,
                 ];
 
-                $result = CreatePost::execute($data);
-
-                if ($result) {
-                    Flight::redirect("/panel/manage/posts?postadd=true");
-                }
+                UpdatePost::execute($data);
+                Flight::redirect("/panel/manage/posts?postupdate=true");
 
             }
         } else {
-            Flight::redirect("/panel/manage/posts?postadd=nofill");
+            Flight::redirect("/panel/manage/posts?postupdate=nofill");
         }
 
     }
@@ -168,4 +166,5 @@ class PostController
         flight::redirect("/panel/manage/posts?delete=true");
 
     }
+
 }
