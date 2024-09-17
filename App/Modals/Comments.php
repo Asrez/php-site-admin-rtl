@@ -8,12 +8,23 @@ class Comments
 {
     public static function Delete(int $id)
     {
+        $db = Connect::getInstance()->getConnection();
 
+        $sql = "DELETE FROM `comments` WHERE `id` = :id;";
+
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
     }
 
     public static function Confirmed(int $id)
     {
-        
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = "UPDATE `comments` SET `state`= 1 WHERE `id` = :id;";
+
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+
     }
 
     public static function NotConfirmed() : array
