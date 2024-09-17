@@ -13,6 +13,7 @@ class Comments
         $sql = "DELETE FROM `comments` WHERE `id` = :id;";
 
         $stmt = $db->prepare($sql);
+        $stmt->bindParam("id", $id);
         $stmt->execute();
     }
 
@@ -23,6 +24,7 @@ class Comments
         $sql = "UPDATE `comments` SET `state`= 1 WHERE `id` = :id;";
 
         $stmt = $db->prepare($sql);
+        $stmt->bindParam("id", $id);
         $stmt->execute();
 
     }

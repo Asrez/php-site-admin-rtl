@@ -75,11 +75,13 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <?php if ($comment['state'] === 0) { ?>
-                              <a class="dropdown-item" href="#">
+                              <a class="dropdown-item" data-bs-toggle="modal"
+                              data-bs-target="#modal-success<?= $comment['id'] ?>">
                                 Confirm
                               </a>
                               <?php } ?>
-                              <a class="dropdown-item" href="#">
+                              <a class="dropdown-item" data-bs-toggle="modal"
+                              data-bs-target="#modal-small<?= $comment['id'] ?>">
                                 Delete
                               </a>
                             </div>
@@ -100,6 +102,54 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal modal-blur fade" id="modal-small<?= $comment['id'] ?>" tabindex="-1" role="dialog"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            <div class="modal-title">Delete Post `<?= $comment['title'] ?>`</div>
+                            <div>Are you sure?</div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-link link-secondary me-auto"
+                              data-bs-dismiss="modal">Cancel</button>
+                            <a href="/panel/result/comment/delete/<?= $comment['id'] ?>" class="btn btn-danger">Yes, delete</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal modal-blur fade" id="modal-success<?= $comment['id'] ?>" tabindex="-1" role="dialog"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          <div class="modal-status bg-success"></div>
+                          <div class="modal-body text-center py-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-green icon-lg" width="24"
+                              height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                              stroke-linecap="round" stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <circle cx="12" cy="12" r="9" />
+                              <path d="M9 12l2 2l4 -4" />
+                            </svg>
+                            <h3 dir="ltr">do you want to confirm `<?= $comment['title'] ?>` comment ?</h3>
+                            <div class="modal-footer">
+                              <div class="w-100">
+                                <div class="row">
+                                  <div class="col"><a href="#" class="btn w-100" data-bs-dismiss="modal">
+                                      Cancel
+                                    </a></div>
+                                  <div class="col"><a href="/panel/result/comment/confirm/<?= $comment['id'] ?>"
+                                      class="btn btn-success w-100">
+                                      Yes
+                                    </a></div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
