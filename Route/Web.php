@@ -6,8 +6,7 @@ use App\Controllers\IndexController;
 use App\Middleware\AuthMiddleware;
 
 Flight::group("/panel", function () {
-    Flight::route("GET /", [new IndexController, "panel_index"])->addMiddleware(new AuthMiddleware);
-
+    Flight::route("GET /", [new IndexController, "panel_index"])->addMiddleware([new AuthMiddleware]);
     Flight::route("GET /login", [new UserController, "panel_login"]);
     Flight::route("POST /result/login", [new UserController, "panel_result_login"]);
     Flight::route("POST /result/signup", [new UserController, "panel_result_signup"]);
@@ -57,5 +56,5 @@ Flight::group("/panel", function () {
 
             });
         });
-    }, [ new AuthMiddleware ]);
+    }, [new AuthMiddleware]);
 });

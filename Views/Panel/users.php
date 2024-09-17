@@ -52,7 +52,7 @@
                       <h3 class="m-0 mb-1"><a href="/panel/user/<?= $user['id'] ?>"><?= $user['name'] ?></a></h3>
                       <div class="text-muted"><?= $user['username'] ?></div>
                       <div class="mt-3">
-                        <span class="badge bg-purple-lt">Owner</span>
+                        <span class="badge bg-purple-lt"><?php if ($user['state'] === 0) echo "User"; else echo "Admin"; ?></span>
                       </div>
                     </div>
                     <div class="d-flex">
