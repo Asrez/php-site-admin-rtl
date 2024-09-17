@@ -11,8 +11,17 @@ class Settings
 
     }
 
-    public static function Update(array $data)
+    public static function Update(array $data): void
     {
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = "UPDATE `comments` SET `title`=:title,`comment`=:comment WHERE `id` = :id;";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("title", $data['title']);
+        $stmt->bindParam("comment", $data['comment']);
+        $stmt->bindParam("id", $data['id']);
+        $stmt->execute();
         
     }
 
