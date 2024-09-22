@@ -15,11 +15,13 @@ class Settings
     {
         $db = Connect::getInstance()->getConnection();
 
-        $sql = "UPDATE `comments` SET `title`=:title,`comment`=:comment WHERE `id` = :id;";
+        $sql = "UPDATE `settings` SET `value_setting`= :value,`link`= :link,`title`= :title,`text`=:text WHERE id = :id;";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam("title", $data['title']);
-        $stmt->bindParam("comment", $data['comment']);
+        $stmt->bindParam("text", $data['text']);
+        $stmt->bindParam("link", $data['link']);
+        $stmt->bindParam("value_setting", $data['value_setting']);
         $stmt->bindParam("id", $data['id']);
         $stmt->execute();
         

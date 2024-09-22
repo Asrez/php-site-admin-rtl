@@ -49,7 +49,36 @@ class SettingController
 
     public function panel_result_update_adver(int $id)
     {
-        // UpdateSetting::execute($data);
+        $validator = new Validator(Flight::request()->data->getData(), [
+            'value_setting' => ['required'],
+            'link' => [],
+            'title' => [],
+            'text' => []
+        ]);
+
+        if ($validator->validate()) {
+            if (isset($_POST['btn_update_adver'])) {
+                $value_setting = $_POST['value_setting'];
+                $link = $_POST['link'];
+                $title = $_POST['title'];
+                $text = $_POST['text'];
+
+                $data = [
+                    "text" => $text,
+                    "value_setting" => $value_setting,
+                    "link" => $link,
+                    "title" => $title,
+                    "id" => $id
+                ];
+
+                UpdateSetting::execute($data);
+                Flight::redirect("/panel/manage/advertisings?adverupdate=true");
+
+            }
+        } 
+        else {
+            Flight::redirect("/panel/manage/advertisings?adverupdate=nofill");
+        }
     }
 
 }
