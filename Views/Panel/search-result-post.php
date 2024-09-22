@@ -31,7 +31,7 @@
               <?php foreach ($posts as $post) { ?>
                 <div class="col-sm-6 col-lg-4">
                   <div class="card card-sm">
-                    <a href="/panel/post/<?= $post['id'] ?>" class="d-block"><img
+                    <a href="/panel/posts/<?= $post['id'] ?>" class="d-block"><img
                         src="/static/photos/<?= $post['image'] ?>" class="card-img-top"></a>
                     <div class="card-body">
                       <div class="d-flex align-items-center">

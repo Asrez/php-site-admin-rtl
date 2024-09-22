@@ -306,7 +306,7 @@
                             <?= $activity['username'] ?>
                           </td>
                           <td class="td-truncate">
-                            <a href="/panel/post/<?= $activity['post_id'] ?>">
+                            <a href="/panel/posts/<?= $activity['post_id'] ?>">
                               <div class="text-truncate">
                                 <?= $activity['title'] ?>
                               </div>
@@ -355,8 +355,8 @@
                     <tr>
                       <?php foreach ($most_visit_pages as $page) { ?>
                         <td>
-                          /panel/post/<?= $page['id'] ?>
-                          <a href="/panel/post/<?= $page['id'] ?>" class="ms-1" aria-label="Open website">
+                          /panel/posts/<?= $page['id'] ?>
+                          <a href="/panel/posts/<?= $page['id'] ?>" class="ms-1" aria-label="Open website">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                               viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                               stroke-linecap="round" stroke-linejoin="round">
@@ -472,7 +472,7 @@
                           </span>
                         </td>
                         <td class="w-100">
-                          <a href="/panel/post/<?= $page['id'] ?>" class="text-reset"><?= $page['title'] ?></a>
+                          <a href="/panel/posts/<?= $page['id'] ?>" class="text-reset"><?= $page['title'] ?></a>
                         </td>
                         <td class="text-nowrap text-muted">
                           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"

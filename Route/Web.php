@@ -30,7 +30,7 @@ Flight::group("/panel", function () {
 
         Flight::group("/posts", function () {
             Flight::route("GET /", [new PostController, "panel_posts"]);
-            Flight::route("GET /@id", [new UserController, "panel_show_post"]);
+            Flight::route("GET /@id", [new PostController, "panel_show_post"]);
         });
 
         Flight::group("/users", function () {

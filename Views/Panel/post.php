@@ -13,7 +13,7 @@
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                <?= $post['name'] ?>
+                <?= $post['title'] ?>
                 </h2>
               </div>
             </div>
@@ -51,7 +51,7 @@
                   <div class="datagrid-item">
                     <div class="datagrid-title">View count</div>
                     <div class="datagrid-content">
-                    <?= $post['view_count'] ?>
+                    <?= $post['viewcount'] ?>
                     </div>
                   </div>
                   <div class="datagrid-item">

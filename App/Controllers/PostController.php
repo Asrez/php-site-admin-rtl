@@ -167,4 +167,19 @@ class PostController
 
     }
 
+    public function panel_show_post(int $id)
+    {
+        $tool = tools();
+        $post = GetByIdPost::execute($id);
+        Flight::render(directory_separator("Panel", "post.php"),
+        [
+                "logo" => $tool['logo'],
+                "footer" => $tool['footer'],
+                "title" => $tool['title'],
+                "admin" => $tool['admin'],
+                "post" => $post
+        ]);
+
+    }
+
 }
