@@ -64,6 +64,11 @@ Flight::group("/panel", function () {
                 Flight::route("GET /confirm/@id", [new CommentController, "panel_result_confirm_comment"]);
 
             });
+            Flight::group("/adver", function () {
+                Flight::route("POST /update", [new SettingController, "panel_result_update_adver"]);
+                Flight::route("GET /delete/@id", [new SettingController, "panel_result_delete_adver"]);
+
+            });
         });
     }, [new AuthMiddleware]);
 });
