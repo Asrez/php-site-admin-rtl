@@ -8,6 +8,13 @@ class Settings
 {
     public static function Delete(int $id)
     {
+        $db = Connect::getInstance()->getConnection();
+
+        $sql = "UPDATE `settings` SET `value_setting`= '',`link`= '',`title`= '',`text`= '' WHERE id = :id;";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam("id", $id);
+        $stmt->execute();
 
     }
 

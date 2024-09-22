@@ -9,6 +9,7 @@ use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
 
 use App\Actions\Settings\GetByKeySetting;
 use App\Actions\Settings\UpdateSetting;
+use App\Actions\Settings\DeleteSetting;
 use App\Actions\Settings\GetByStateSetting;
 
 
@@ -36,7 +37,7 @@ class SettingController
         $tool = tools();
         $advers = GetByStateSetting::execute("adver");
         Flight::render(
-            directory_separator("Panel", "manageadvers.php"),
+            directory_separator("Panel", "manageadver.php"),
             [
                 "logo" => $tool['logo'],
                 "footer" => $tool['footer'],
@@ -78,6 +79,16 @@ class SettingController
         } 
         else {
             Flight::redirect("/panel/manage/advertisings?adverupdate=nofill");
+        }
+    }
+
+    public function panel_result_delete_adver(int $id)
+    {
+        if (isset($_POST['btn_delete_adver'])) {
+
+            DeleteSetting::execute($id);
+            Flight::redirect("/panel/manage/advertisings?adverdelete=true");
+
         }
     }
 
