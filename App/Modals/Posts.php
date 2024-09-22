@@ -15,7 +15,7 @@ class Posts
 
         $stms = $db->prepare($sql);
         $stms->bindParam('id', $id);
-        
+
         $stms->execute();
     }
 
@@ -67,7 +67,7 @@ class Posts
         $stms->execute();
 
         $stms = $stms->fetch(PDO::FETCH_ASSOC);
-        
+
         return true;
     }
 
@@ -100,6 +100,7 @@ class Posts
 
         return $stms->fetchAll(PDO::FETCH_ASSOC);
     }
+
     public static function Innerjoin()
     {
         $db = Connect::getInstance()->getConnection();

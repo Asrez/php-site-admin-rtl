@@ -13,7 +13,7 @@ class Connect
 
     private function __construct()
     {
-        $info = require __DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'database.php';
+        $info = require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'database.php';
 
         try {
 
@@ -33,7 +33,7 @@ class Connect
 
     public static function getInstance()
     {
-        if (! self::$instance) {
+        if (!self::$instance) {
             self::$instance = new self;
         }
 

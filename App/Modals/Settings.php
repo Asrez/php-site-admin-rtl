@@ -31,7 +31,7 @@ class Settings
         $stmt->bindParam("value", $data['value_setting']);
         $stmt->bindParam("id", $data['id']);
         $stmt->execute();
-        
+
     }
 
     public static function Update2(array $data): void
@@ -46,7 +46,7 @@ class Settings
         $stmt->bindParam("value", $data['value_setting']);
         $stmt->bindParam("id", $data['id']);
         $stmt->execute();
-        
+
     }
 
     public static function GetByKey(string $key): array

@@ -26,6 +26,7 @@ class UserController
         session_unset();
         session_destroy();
     }
+
     public function panel_result_login()
     {
         $validator = new Validator(Flight::request()->data->getData(), [
@@ -228,10 +229,10 @@ class UserController
                 }
 
             }
-        } 
+        }
 
     }
-    
+
     public function panel_result_update_user(int $id)
     {
         $validator = new Validator(Flight::request()->data->getData(), [
@@ -246,17 +247,16 @@ class UserController
                 $username = $_POST['username'];
                 $password = md5($_POST['password']);
                 $real_password = GetByIdUser::execute($id)['password'];
-                
+
                 if ($real_password !== $password) {
                     Flight::redirect("/panel/manage/users?userupdate=pass_error");
                     exit();
                 }
                 if (!empty($_POST['new_password']) && !empty($_POST['new_repassword'])) {
                     // Flight::redirect("/panel/manage/users?userupdate=pass_error");
-                    if($_POST['new_password'] === $_POST['new_repassword'] ){
+                    if ($_POST['new_password'] === $_POST['new_repassword']) {
                         $password = md5($_POST['new_password']);
-                    }
-                    else {
+                    } else {
                         Flight::redirect("/panel/manage/users?userupdate=pass_error");
                         exit();
                     }
@@ -290,8 +290,7 @@ class UserController
                 }
 
             }
-        } 
-        else {
+        } else {
             Flight::redirect("/panel/manage/users?userupdate=nofill");
         }
 
@@ -315,14 +314,16 @@ class UserController
     {
         $tool = tools();
         $user = GetByIdUser::execute($id);
-        Flight::render(directory_separator("Panel", "user.php"),
-        [
-            "logo" => $tool['logo'],
+        Flight::render(
+            directory_separator("Panel", "user.php"),
+            [
+                "logo" => $tool['logo'],
                 "footer" => $tool['footer'],
                 "title" => $tool['title'],
                 "admin" => $tool['admin'],
                 "user" => $user
-        ]);
+            ]
+        );
 
     }
 }

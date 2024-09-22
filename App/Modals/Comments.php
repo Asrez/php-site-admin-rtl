@@ -29,7 +29,7 @@ class Comments
 
     }
 
-    public static function NotConfirmed() : array
+    public static function NotConfirmed(): array
     {
         $db = Connect::getInstance()->getConnection();
 
@@ -41,7 +41,7 @@ class Comments
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function GetAll() : array
+    public static function GetAll(): array
     {
         $db = Connect::getInstance()->getConnection();
 
@@ -53,7 +53,7 @@ class Comments
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function Count() : int
+    public static function Count(): int
     {
         $db = Connect::getInstance()->getConnection();
 
@@ -68,6 +68,6 @@ class Comments
 
     public static function Creat(array $data)
     {
-        
+
     }
 }

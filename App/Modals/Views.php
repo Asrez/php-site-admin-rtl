@@ -10,10 +10,10 @@ class Views
 
     public static function Create(array $data)
     {
-        
+
     }
 
-    public static function Count() : int
+    public static function Count(): int
     {
         $db = Connect::getInstance()->getConnection();
 

@@ -75,6 +75,7 @@ class PostController
             ]
         );
     }
+
     public function panel_result_create_post()
     {
         $validator = new Validator(Flight::request()->data->getData(), [
@@ -159,7 +160,7 @@ class PostController
         flight::redirect("/panel/manage/posts?confirm=true");
 
     }
-    
+
     public function panel_result_delete_post(int $id)
     {
         DeletePost::execute($id);
@@ -171,14 +172,16 @@ class PostController
     {
         $tool = tools();
         $post = GetByIdPost::execute($id);
-        Flight::render(directory_separator("Panel", "post.php"),
-        [
+        Flight::render(
+            directory_separator("Panel", "post.php"),
+            [
                 "logo" => $tool['logo'],
                 "footer" => $tool['footer'],
                 "title" => $tool['title'],
                 "admin" => $tool['admin'],
                 "post" => $post
-        ]);
+            ]
+        );
 
     }
 

@@ -15,7 +15,7 @@ class Search
 
         $posts_sql = 'SELECT * FROM `posts` WHERE `posts`.`title` LIKE :title ;';
 
-        $title = '%'.$title.'%';
+        $title = '%' . $title . '%';
         $users = $db->prepare($users_sql);
         $posts = $db->prepare($posts_sql);
         $users->bindParam('title', $title);
@@ -36,7 +36,7 @@ class Search
 
         $users_sql = 'SELECT * FROM `users` WHERE `users`.`name` LIKE :title OR `users`.`username` LIKE :title;';
 
-        $title = '%'.$title.'%';
+        $title = '%' . $title . '%';
         $users = $db->prepare($users_sql);
         $users->bindParam('title', $title);
         $users->execute();
@@ -51,7 +51,7 @@ class Search
 
         $posts_sql = 'SELECT * FROM `posts` WHERE `posts`.`title` LIKE :title ;';
 
-        $title = '%'.$title.'%';
+        $title = '%' . $title . '%';
         $posts = $db->prepare($posts_sql);
         $posts->bindParam('title', $title);
         $posts->execute();
@@ -66,7 +66,7 @@ class Search
 
         $users_sql = 'SELECT * FROM `users` WHERE `users`.`username` LIKE :title And `state` = 1;';
 
-        $title = '%'.$title.'%';
+        $title = '%' . $title . '%';
         $users = $db->prepare($users_sql);
         $users->bindParam('title', $title);
         $users->execute();
@@ -81,7 +81,7 @@ class Search
 
         $users_sql = 'SELECT * FROM `users` WHERE `users`.`username` LIKE :title And `users`.`state` = 0;';
 
-        $title = '%'.$title.'%';
+        $title = '%' . $title . '%';
         $users = $db->prepare($users_sql);
         $users->bindParam('title', $title);
         $users->execute();

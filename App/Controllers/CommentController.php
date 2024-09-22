@@ -29,7 +29,7 @@ class CommentController
             ],
         );
     }
-    
+
     public function panel_result_delete_comment(int $id)
     {
         DeleteComment::execute($id);
