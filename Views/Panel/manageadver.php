@@ -103,13 +103,13 @@
                             <div class="row">
                               <div class="col-lg-6">
                                 <div class="mb-3">
-                                  <label class="form-label">title</label>
+                                  <label class="form-label">Title</label>
                                   <input type="text" name="title" class="form-control" value="<?= $adver['title']?>">
                                 </div>
                               </div>
                               <div class="col-lg-6">
                                 <div class="mb-3">
-                                  <label class="form-label">link</label>
+                                  <label class="form-label">Link</label>
                                   <input type="text" name="link" class="form-control" value="<?= $adver['link']?>">
                                 </div>
                               </div>
