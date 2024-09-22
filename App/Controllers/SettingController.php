@@ -84,12 +84,8 @@ class SettingController
 
     public function panel_result_delete_adver(int $id)
     {
-        if (isset($_POST['btn_delete_adver'])) {
-
             DeleteSetting::execute($id);
             Flight::redirect("/panel/manage/advertisings?adverdelete=true");
-
-        }
     }
 
 }
