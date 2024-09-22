@@ -88,4 +88,35 @@ class SettingController
             Flight::redirect("/panel/manage/advertisings?adverdelete=true");
     }
 
+    public function panel_result_update_setting(int $id)
+    {
+        $validator = new Validator(Flight::request()->data->getData(), [
+            'value_setting' => ['required'],
+            'link' => [],
+            'title' => [],
+        ]);
+
+        if ($validator->validate()) {
+            if (isset($_POST['btn_update_setting'])) {
+                $value_setting = $_POST['value_setting'];
+                $link = $_POST['link'];
+                $title = $_POST['title'];
+
+                $data = [
+                    "value_setting" => $value_setting,
+                    "link" => $link,
+                    "title" => $title,
+                    "id" => $id
+                ];
+
+                UpdateSetting::execute2($data);
+                Flight::redirect("/panel/manage/advertisings?settingupdate=true");
+
+            }
+        } 
+        else {
+            Flight::redirect("/panel/manage/advertisings?settingupdate=nofill");
+        }
+    }
+
 }

@@ -10,4 +10,9 @@ class UpdateSetting
     {
         return Settings::Update($data);
     }
+
+    public static function execute2(array $data)
+    {
+        return Settings::Update2($data);
+    }
 }

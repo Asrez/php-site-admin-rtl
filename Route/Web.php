@@ -69,6 +69,10 @@ Flight::group("/panel", function () {
                 Flight::route("GET /delete/@id", [new SettingController, "panel_result_delete_adver"]);
 
             });
+            Flight::group("/setting", function () {
+                Flight::route("POST /update/@id", [new SettingController, "panel_result_update_setting"]);
+
+            });
         });
     }, [new AuthMiddleware]);
 });
