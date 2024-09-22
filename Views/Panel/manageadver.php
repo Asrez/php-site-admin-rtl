@@ -76,7 +76,7 @@
                             <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-report-update-adver<?= $adver['id'] ?>">
                               Update
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="/panel/result/adver/delete/<?= $adver['id'] ?>">
                               Delete
                             </a>
                           </div>
@@ -87,7 +87,7 @@
                   <div class="modal modal-blur fade" id="modal-report-update-adver<?= $adver['id'] ?>" tabindex="-1" role="dialog"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
-                      <form method="post" action="/panel/result/advertising/update" enctype="multipart/form-data">
+                      <form method="post" action="/panel/result/adver/update/<?= $adver['id'] ?>" >
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title">Update Advertising</h5>
@@ -104,7 +104,7 @@
                               <div class="col-lg-6">
                                 <div class="mb-3">
                                   <label class="form-label">title</label>
-                                  <input type="email" name="title" class="form-control" value="<?= $adver['title']?>">
+                                  <input type="text" name="title" class="form-control" value="<?= $adver['title']?>">
                                 </div>
                               </div>
                               <div class="col-lg-6">
@@ -125,8 +125,7 @@
                             <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
                               Cancel
                             </a>
-                            <button type="submit" name="btn_new_user" class="btn btn-primary ms-auto"
-                              data-bs-dismiss="modal">
+                            <button type="submit" name="btn_update_adver" class="btn btn-primary ms-auto">
                               <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                                 stroke-linecap="round" stroke-linejoin="round">

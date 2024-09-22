@@ -6,7 +6,7 @@ use PDO;
 use App\Database\Connect;
 class Settings
 {
-    public static function Delete(int $id)
+    public static function Delete(int $id): void
     {
         $db = Connect::getInstance()->getConnection();
 
@@ -28,13 +28,13 @@ class Settings
         $stmt->bindParam("title", $data['title']);
         $stmt->bindParam("text", $data['text']);
         $stmt->bindParam("link", $data['link']);
-        $stmt->bindParam("value_setting", $data['value_setting']);
+        $stmt->bindParam("value", $data['value_setting']);
         $stmt->bindParam("id", $data['id']);
         $stmt->execute();
         
     }
 
-    public static function GetByKey(string $key)
+    public static function GetByKey(string $key): array
     {
         $db = Connect::getInstance()->getConnection();
 
@@ -47,7 +47,7 @@ class Settings
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function GetByState(string $state)
+    public static function GetByState(string $state): array
     {
         $db = Connect::getInstance()->getConnection();
 

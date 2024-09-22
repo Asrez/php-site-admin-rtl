@@ -65,7 +65,7 @@ Flight::group("/panel", function () {
 
             });
             Flight::group("/adver", function () {
-                Flight::route("POST /update", [new SettingController, "panel_result_update_adver"]);
+                Flight::route("POST /update/@id", [new SettingController, "panel_result_update_adver"]);
                 Flight::route("GET /delete/@id", [new SettingController, "panel_result_delete_adver"]);
 
             });
