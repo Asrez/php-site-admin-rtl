@@ -76,16 +76,15 @@ class SettingController
                 Flight::redirect("/panel/manage/advertisings?adverupdate=true");
 
             }
-        } 
-        else {
+        } else {
             Flight::redirect("/panel/manage/advertisings?adverupdate=nofill");
         }
     }
 
     public function panel_result_delete_adver(int $id)
     {
-            DeleteSetting::execute($id);
-            Flight::redirect("/panel/manage/advertisings?adverdelete=true");
+        DeleteSetting::execute($id);
+        Flight::redirect("/panel/manage/advertisings?adverdelete=true");
     }
 
     public function panel_result_update_setting(int $id)
@@ -110,12 +109,11 @@ class SettingController
                 ];
 
                 UpdateSetting::execute2($data);
-                Flight::redirect("/panel/manage/advertisings?settingupdate=true");
+                Flight::redirect("/panel/manage/settings?settingupdate=true");
 
             }
-        } 
-        else {
-            Flight::redirect("/panel/manage/advertisings?settingupdate=nofill");
+        } else {
+            Flight::redirect("/panel/manage/settings?settingupdate=nofill");
         }
     }
 
