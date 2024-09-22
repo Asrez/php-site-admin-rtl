@@ -310,4 +310,19 @@ class UserController
         flight::redirect("/panel/manage/users?setadmin=true");
 
     }
+
+    public function panel_show_user(int $id)
+    {
+        $tool = tools();
+        $user = GetByIdUser::execute($id);
+        Flight::render(directory_separator("Panel", "user.php"),
+        [
+            "logo" => $tool['logo'],
+                "footer" => $tool['footer'],
+                "title" => $tool['title'],
+                "admin" => $tool['admin'],
+                "user" => $user
+        ]);
+
+    }
 }

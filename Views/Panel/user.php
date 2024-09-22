@@ -1,12 +1,12 @@
 <!doctype html>>
 <html lang="en" dir="rtl">
   <head>
-    <title><?= $user['id'] ?></title>
+    <title>User <?= $user['id'] ?></title>
     <?php include "Init/style.php"; ?>
   </head>
   <body >
     <div class="page">
-     <?php ?>
+    <?php include "Includes/header.php"; ?>
       <div class="page-wrapper">
         <div class="page-header d-print-none">
           <div class="container-xl">
@@ -39,7 +39,7 @@
                     <div class="datagrid-title">Avatar</div>
                     <div class="datagrid-content">
                       <div class="d-flex align-items-center">
-                        <span class="avatar avatar-xs me-2 avatar-rounded" style="background-image: url(./static/avatars/<?= $user['image'] ?>)"></span>
+                        <span class="avatar avatar-xs me-2 avatar-rounded" style="background-image: url(../../static/avatars/<?= $user['image'] ?>)"></span>
                         <?= $user['name'] ?>
                       </div>
                     </div>
@@ -58,7 +58,7 @@
                     <div class="datagrid-title">Type</div>
                     <div class="datagrid-content">
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon text-green" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>
-                      <?php if ($user['state'] === 0) echo "Admin"; else echo "User" ; ?>
+                      <?php if ($user['state'] === 1) echo "Admin"; else echo "User" ; ?>
                     </div>
                   </div>
                 </div>

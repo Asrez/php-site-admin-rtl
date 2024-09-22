@@ -49,7 +49,7 @@
                     <div class="card-body p-4 text-center">
                       <span class="avatar avatar-xl mb-3 avatar-rounded"
                         style="background-image: url(/static/avatars/<?= $user['image'] ?>)"></span>
-                      <h3 class="m-0 mb-1"><a href="/panel/user/<?= $user['id'] ?>"><?= $user['name'] ?></a></h3>
+                      <h3 class="m-0 mb-1"><a href="/panel/users/<?= $user['id'] ?>"><?= $user['name'] ?></a></h3>
                       <div class="text-muted"><?= $user['username'] ?></div>
                       <div class="mt-3">
                         <span class="badge bg-purple-lt"><?php if ($user['state'] === 0) echo "User"; else echo "Admin"; ?></span>
@@ -65,7 +65,7 @@
                           <polyline points="3 7 12 13 21 7" />
                         </svg>
                         <?= $user['email'] ?></a>
-                      <a href="/panel/user/<?= $user['id'] ?>" class="card-btn">
+                      <a href="/panel/users/<?= $user['id'] ?>" class="card-btn">
                         <?php if ($user['state'] === 0) { ?>
                           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
                             stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
