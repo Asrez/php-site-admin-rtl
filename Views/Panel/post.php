@@ -1,7 +1,7 @@
 <!doctype html>>
 <html lang="en" dir="rtl">
   <head>
-    <title>User <?= $user['id'] ?></title>
+    <title>Post <?= $post['id'] ?></title>
     <?php include "Init/style.php"; ?>
   </head>
   <body >
@@ -13,7 +13,7 @@
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                <?= $user['name'] ?>
+                <?= $post['name'] ?>
                 </h2>
               </div>
             </div>
@@ -23,41 +23,41 @@
           <div class="container-xl">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">User info</h3>
+                <h3 class="card-title">Post info</h3>
               </div>
               <div class="card-body">
                 <div class="datagrid">
                   <div class="datagrid-item">
-                    <div class="datagrid-title">Name</div>
-                    <div class="datagrid-content"><?= $user['name'] ?></div>
+                    <div class="datagrid-title">Title</div>
+                    <div class="datagrid-content"><?= $post['title'] ?></div>
                   </div>
                   <div class="datagrid-item">
-                    <div class="datagrid-title">Username</div>
-                    <div class="datagrid-content"><?= $user['username'] ?></div>
+                    <div class="datagrid-title">content</div>
+                    <div class="datagrid-content"><?= $post['content'] ?></div>
                   </div>
                   <div class="datagrid-item">
-                    <div class="datagrid-title">Avatar</div>
+                    <div class="datagrid-title">Image</div>
                     <div class="datagrid-content">
                       <div class="d-flex align-items-center">
-                        <span class="avatar avatar-xs me-2 avatar-rounded" style="background-image: url(../../static/avatars/<?= $user['image'] ?>)"></span>
-                        <?= $user['name'] ?>
+                        <span class="avatar avatar-xs me-2 avatar-rounded" style="background-image: url(../../static/photos/<?= $post['image'] ?>)"></span>
+                        <?= $post['title'] ?>
                       </div>
                     </div>
                   </div>
                   <div class="datagrid-item">
                     <div class="datagrid-title">Date</div>
-                    <div class="datagrid-content"><?= date($user['date']) ?></div>
+                    <div class="datagrid-content"><?= date($post['date']) ?></div>
                   </div>
                   <div class="datagrid-item">
-                    <div class="datagrid-title">Email</div>
+                    <div class="datagrid-title">View count</div>
                     <div class="datagrid-content">
-                    <?= $user['email'] ?>
+                    <?= $post['view_count'] ?>
                     </div>
                   </div>
                   <div class="datagrid-item">
-                    <div class="datagrid-title">Type</div>
+                    <div class="datagrid-title">status</div>
                     <div class="datagrid-content">
-                      <?php if ($user['state'] === 1) echo "Admin"; else echo "User" ; ?>
+                      <?php if ($post['state'] === 1) echo "confirmed"; else echo "not confirmed" ; ?>
                     </div>
                   </div>
                 </div>
