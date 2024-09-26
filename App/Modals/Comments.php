@@ -4,11 +4,12 @@ namespace App\Modals;
 
 use PDO;
 use App\Database\Connect;
+use App\Modals\BaseModal;
 class Comments
 {
     public static function Delete(int $id): void
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "DELETE FROM `comments` WHERE `id` = :id;";
 
@@ -19,7 +20,7 @@ class Comments
 
     public static function Confirmed(int $id): void
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "UPDATE `comments` SET `state`= 1 WHERE `id` = :id;";
 
@@ -31,7 +32,7 @@ class Comments
 
     public static function NotConfirmed(): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "SELECT * FROM `comments` WHERE `state` = 0 ;";
 
@@ -43,7 +44,7 @@ class Comments
 
     public static function GetAll(): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "SELECT * FROM `comments` ;";
 
@@ -55,7 +56,7 @@ class Comments
 
     public static function Count(): int
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "SELECT Count(*) as count FROM `comments` ;";
 

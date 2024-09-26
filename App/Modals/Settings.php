@@ -8,7 +8,7 @@ class Settings
 {
     public static function Delete(int $id): void
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "UPDATE `settings` SET `value_setting`= '',`link`= '',`title`= '',`text`= '' WHERE id = :id;";
 
@@ -20,7 +20,7 @@ class Settings
 
     public static function Update(array $data): void
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "UPDATE `settings` SET `value_setting`= :value,`link`= :link,`title`= :title,`text`=:text WHERE id = :id;";
 
@@ -36,7 +36,7 @@ class Settings
 
     public static function Update2(array $data): void
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "UPDATE `settings` SET `value_setting`= :value,`link`= :link,`title`= :title WHERE id = :id;";
 
@@ -51,7 +51,7 @@ class Settings
 
     public static function GetByKey(string $key): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "SELECT * FROM `settings` WHERE `key_setting`= :key";
 
@@ -64,7 +64,7 @@ class Settings
 
     public static function GetByState(string $state): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "SELECT * FROM `settings` WHERE `type`= :state";
 

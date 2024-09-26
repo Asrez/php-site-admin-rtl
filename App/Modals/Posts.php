@@ -9,7 +9,7 @@ class Posts
 {
     public static function Delete(int $id): void
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "DELETE FROM `posts` WHERE `id` = :id;";
 
@@ -21,7 +21,7 @@ class Posts
 
     public static function Update(array $data): void
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "UPDATE `posts` SET `title`=:title, `content`=:content, `image`=:image WHERE `id` = :id;";
 
@@ -36,7 +36,7 @@ class Posts
 
     public static function Confirm(int $id): void
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "UPDATE `posts` SET `state` = 1 WHERE `id` = :id;";
 
@@ -51,7 +51,7 @@ class Posts
         $slug = makeRandomSlug();
         $date = date("y-m-d");
 
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "INSERT INTO `posts`(`id`, `title`, `content`, `image`, `admin_id`, `date`, `viewcount`, `state`, `slug`)
                 VALUES (Null, :title, :content, :image, :admin_id, :date, 0, 0, :slug);";
@@ -73,7 +73,7 @@ class Posts
 
     public static function GetById(int $id): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = 'SELECT * FROM `posts` WHERE `id` = :id;';
 
@@ -86,7 +86,7 @@ class Posts
 
     public static function GetAll(): mixed
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = 'SELECT * FROM `posts`;';
 
@@ -98,7 +98,7 @@ class Posts
 
     public static function Innerjoin(): mixed
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = 'SELECT `users`.`id`,
         `users`.`image` as `userimage`,
@@ -117,7 +117,7 @@ class Posts
 
     public static function Mostvisit(): mixed
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = 'SELECT * FROM `posts` ORDER BY `viewcount` DESC;';
 
@@ -129,7 +129,7 @@ class Posts
 
     public static function NotConfirmed(): mixed
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = 'SELECT * FROM `posts` WHERE `state` = 0;';
 
@@ -141,7 +141,7 @@ class Posts
 
     public static function Count(): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "SELECT Count(*) as count FROM `posts` ;";
 
@@ -160,7 +160,7 @@ class Posts
 
     public static function Post_in_month(string $date): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "SELECT *,Count(*) as count FROM `posts` WHERE `admin_id` = :id AND `date` >= :date GROUP BY `date`; ";
 

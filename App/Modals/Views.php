@@ -9,7 +9,7 @@ class Views
 {
     public static function Count(): int
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "SELECT Count(*) as count FROM `views` ;";
 

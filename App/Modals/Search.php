@@ -9,7 +9,7 @@ class Search
 {
     public static function Search(string $title): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $users_sql = 'SELECT * FROM `users` WHERE `users`.`name` LIKE :title OR `users`.`username` LIKE :title;';
 
@@ -32,7 +32,7 @@ class Search
 
     public static function SearchUser(string $title): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $users_sql = 'SELECT * FROM `users` WHERE `users`.`name` LIKE :title OR `users`.`username` LIKE :title;';
 
@@ -47,7 +47,7 @@ class Search
 
     public static function SearchPost(string $title): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $posts_sql = 'SELECT * FROM `posts` WHERE `posts`.`title` LIKE :title ;';
 
@@ -62,7 +62,7 @@ class Search
 
     public static function SearchAdmin(string $title): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $users_sql = 'SELECT * FROM `users` WHERE `users`.`username` LIKE :title And `state` = 1;';
 
@@ -77,7 +77,7 @@ class Search
 
     public static function SearchUser2(string $title): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $users_sql = 'SELECT * FROM `users` WHERE `users`.`username` LIKE :title And `users`.`state` = 0;';
 

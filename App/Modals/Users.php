@@ -10,7 +10,7 @@ class Users
 {
     public static function Delete(int $id): void
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "DELETE FROM `users` WHERE `id` = :id;";
 
@@ -22,7 +22,7 @@ class Users
     public static function Update(array $data): bool
     {
         try {
-            $db = Connect::getInstance()->getConnection();
+            $db = BaseModal::getDbConnection();
 
             $sql = "UPDATE `users` SET `name`= :name,`username`= :username,`email`= :email,`password`= :password,`image`= :image WHERE `id` = :id;";
 
@@ -46,7 +46,7 @@ class Users
     {
         $date = date("Y-m-d");
         try {
-            $db = Connect::getInstance()->getConnection();
+            $db = BaseModal::getDbConnection();
 
             $sql = "INSERT INTO `users`(`id`, `name`, `username`, `email`, `password`, `image`, `date`, `state`) VALUES (null, :name, :username, :email, :password, :image, :date, :state);";
 
@@ -71,7 +71,7 @@ class Users
 
     public static function GetById(int $id): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "SELECT * FROM `users` WHERE `id`= :id";
 
@@ -84,7 +84,7 @@ class Users
 
     public static function Login(string $username, string $password): bool
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "SELECT * FROM `users` WHERE `username` = :username AND `password` = :password AND `state` = 1;";
 
@@ -106,7 +106,7 @@ class Users
 
     public static function GetAllUsers(): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "SELECT * FROM `users` WHERE `state`= 0;";
 
@@ -118,7 +118,7 @@ class Users
 
     public static function GetAll(): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "SELECT * FROM `users` ;";
 
@@ -130,7 +130,7 @@ class Users
 
     public static function GetAllAdmins(): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "SELECT * FROM `users` WHERE `state`= 1";
 
@@ -142,7 +142,7 @@ class Users
 
     public static function Count(): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "SELECT Count(*) as count FROM `users` WHERE `state` = 0;";
 
@@ -161,7 +161,7 @@ class Users
 
     public static function Get_In_Month(string $date): array
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "SELECT `date`,Count(*) as count FROM `users` WHERE `date` >= :date GROUP BY date;";
 
@@ -174,7 +174,7 @@ class Users
 
     public static function SetAsAdmin(int $id): void
     {
-        $db = Connect::getInstance()->getConnection();
+        $db = BaseModal::getDbConnection();
 
         $sql = "UPDATE `users` SET `state`= 1 WHERE `id` = :id;";
 
