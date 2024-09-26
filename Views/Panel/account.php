@@ -26,7 +26,7 @@
         <div class="container-xl">
           <div class="card">
             <div class="row g-0">
-              <form action="/panel/result/account" method="post">
+              <form action="/panel/result/account" method="post" enctype="multipart/form-data">
                 <div class="col d-flex flex-column">
                   <div class="card-body">
                     <h2 class="mb-4">My Account</h2>
@@ -71,7 +71,7 @@
                       <a href="/panel" class="btn">
                         Cancel
                       </a>
-                      <button type="submit" class="btn btn-primary">
+                      <button type="submit" name="btnaccount" class="btn btn-primary">
                         Submit
                       </button>
                     </div>

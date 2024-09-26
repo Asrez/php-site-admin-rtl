@@ -307,7 +307,7 @@ class UserController
         ]);
 
         if ($validator->validate()) {
-            if (isset($_POST['btn_update_user'])) {
+            if (isset($_POST['btnaccount'])) {
                 $username = $_POST['username'];
                 $password = md5($_POST['password']);
                 $real_password = GetByIdUser::execute($_SESSION['admin_id'])['password'];
