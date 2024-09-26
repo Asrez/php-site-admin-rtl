@@ -172,5 +172,18 @@
         else if (data === "commentconfirm=true") {
             window.alert("comment confirmed");
         }
+
+        else if (data === "updateyou=pass_error") {
+            window.alert("password is incorrect");
+        }
+        else if (data === "updateyou=true") {
+            window.alert("your account updated");
+        }
+        else if (data === "updateyou=false") {
+            window.alert("your account didn't update. change username");
+        }
+        else if (data === "updateyou=nofill") {
+            window.alert("some fildes are not set yet");
+        }
     })
 </script>

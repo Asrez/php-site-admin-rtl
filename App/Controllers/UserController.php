@@ -255,7 +255,6 @@ class UserController
                     exit();
                 }
                 if (!empty($_POST['new_password']) && !empty($_POST['new_repassword'])) {
-                    // Flight::redirect("/panel/manage/users?userupdate=pass_error");
                     if ($_POST['new_password'] === $_POST['new_repassword']) {
                         $password = md5($_POST['new_password']);
                     } else {
@@ -298,6 +297,67 @@ class UserController
 
     }
 
+    public function panel_result_account()
+    {
+        $validator = new Validator(Flight::request()->data->getData(), [
+            'name' => [],
+            'username' => ['required'],
+            'password' => ['required'],
+            'email' => []
+        ]);
+
+        if ($validator->validate()) {
+            if (isset($_POST['btn_update_user'])) {
+                $username = $_POST['username'];
+                $password = md5($_POST['password']);
+                $real_password = GetByIdUser::execute($_SESSION['admin_id'])['password'];
+
+                if ($real_password !== $password) {
+                    Flight::redirect("/panel/manage/users?updateyou=pass_error");
+                    exit();
+                }
+                if (!empty($_POST['new_password']) && !empty($_POST['new_password2'])) {
+                    if ($_POST['new_password'] === $_POST['new_repassword']) {
+                        $password = md5($_POST['new_password']);
+                    } else {
+                        Flight::redirect("/panel/manage/users?updateyou=pass_error");
+                        exit();
+                    }
+                }
+
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+
+                $image = basename($_FILES["image"]["name"]);
+                if ($image === "") {
+                    $image = GetByIdUser::execute($_SESSION['admin_id'])['image'];
+                }
+
+                $target_file = "./static/avatars/" . $image;
+                if (!file_exists($target_file)) {
+                    move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+                }
+                $data = [
+                    "name" => $name,
+                    "username" => $username,
+                    "password" => $password,
+                    "email" => $email,
+                    "image" => $image,
+                    "id" => $_SESSION['admin_id']
+                ];
+
+                $result = UpdateUser::execute($data);
+                Flight::redirect("/panel/manage/users?updateyou=true");
+                if ($result === false) {
+                    Flight::redirect("/panel/manage/users?updateyou=false");
+                }
+
+            }
+        } else {
+            Flight::redirect("/panel/manage/users?updateyou=nofill");
+        }
+
+    }
     public function panel_result_delete_user(int $id)
     {
         DeleteUser::execute($id);
