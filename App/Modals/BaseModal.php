@@ -7,7 +7,7 @@ use PDO;
 
 class BaseModal
 {
-    protected static function getDbConnection(): PDO
+    public static function getDbConnection(): PDO
     {
         return Connect::getInstance()->getConnection();
     }
