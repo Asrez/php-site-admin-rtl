@@ -11,6 +11,7 @@ use App\Actions\Posts\Confirm_Post;
 use App\Actions\Posts\DeletePost;
 use App\Actions\Search\SearchPost;
 use Flight;
+use Exception;
 use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
 
 class PostController
@@ -21,20 +22,24 @@ class PostController
         $tool = tools();
         $All_post = AllPosts::execute();
         $Not_confirmed = count(NotConfirmed::execute());
-        Flight::render(
-            directory_separator("Panel", "posts.php"),
-            [
-                "logo" => $tool['logo'],
-                "footer" => $tool['footer'],
-                "title" => $tool['title'],
-                'post_count' => $tool['postcount'],
-                'user_count' => $tool['usercount'],
-                "not_confirmed_pages" => $Not_confirmed,
-                "admin" => $tool['admin'],
-                "posts" => $All_post,
-                "tab" => "posts"
-            ]
-        );
+        try {
+            Flight::render(
+                directory_separator("Panel", "posts.php"),
+                [
+                    "logo" => $tool['logo'],
+                    "footer" => $tool['footer'],
+                    "title" => $tool['title'],
+                    'post_count' => $tool['postcount'],
+                    'user_count' => $tool['usercount'],
+                    "not_confirmed_pages" => $Not_confirmed,
+                    "admin" => $tool['admin'],
+                    "posts" => $All_post,
+                    "tab" => "posts"
+                ]
+            );
+        } catch (Exception $exception) {
+            $exception->getMessage();
+        }
     }
 
     public function panel_manage_posts(): void
@@ -44,18 +49,21 @@ class PostController
         if (isset($_GET['search'])) {
             $All_post = SearchPost::execute($_GET['search']);
         }
-
-        Flight::render(
-            directory_separator("Panel", "managepost.php"),
-            [
-                "logo" => $tool['logo'],
-                "footer" => $tool['footer'],
-                "title" => $tool['title'],
-                "admin" => $tool['admin'],
-                "posts" => $All_post,
-                "tab" => "manage"
-            ]
-        );
+        try {
+            Flight::render(
+                directory_separator("Panel", "managepost.php"),
+                [
+                    "logo" => $tool['logo'],
+                    "footer" => $tool['footer'],
+                    "title" => $tool['title'],
+                    "admin" => $tool['admin'],
+                    "posts" => $All_post,
+                    "tab" => "manage"
+                ]
+            );
+        } catch (Exception $exception) {
+            $exception->getMessage();
+        }
     }
 
     public function panel_search_posts(string $title = ""): void
@@ -66,17 +74,22 @@ class PostController
         }
 
         $Posts = SearchPost::execute($title);
-        Flight::render(
-            directory_separator("Panel", "search-result-post.php"),
-            [
-                "logo" => $tool['logo'],
-                "title" => $tool['title'],
-                "footer" => $tool['footer'],
-                "admin" => $tool['admin'],
-                "posts" => $Posts,
-                "tab" => "home"
-            ]
-        );
+
+        try {
+            Flight::render(
+                directory_separator("Panel", "search-result-post.php"),
+                [
+                    "logo" => $tool['logo'],
+                    "title" => $tool['title'],
+                    "footer" => $tool['footer'],
+                    "admin" => $tool['admin'],
+                    "posts" => $Posts,
+                    "tab" => "home"
+                ]
+            );
+        } catch (Exception $exception) {
+            $exception->getMessage();
+        }
     }
 
     public function panel_result_create_post(): void
@@ -175,18 +188,21 @@ class PostController
     {
         $tool = tools();
         $post = GetByIdPost::execute($id);
-        Flight::render(
-            directory_separator("Panel", "post.php"),
-            [
-                "logo" => $tool['logo'],
-                "footer" => $tool['footer'],
-                "title" => $tool['title'],
-                "admin" => $tool['admin'],
-                "post" => $post,
-                "tab" => "home"
-            ]
-        );
-
+        try {
+            Flight::render(
+                directory_separator("Panel", "post.php"),
+                [
+                    "logo" => $tool['logo'],
+                    "footer" => $tool['footer'],
+                    "title" => $tool['title'],
+                    "admin" => $tool['admin'],
+                    "post" => $post,
+                    "tab" => "home"
+                ]
+            );
+        } catch (Exception $exception) {
+            $exception->getMessage();
+        }
     }
 
 }

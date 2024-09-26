@@ -12,13 +12,18 @@ use App\Actions\Users\SetAdminUser;
 use App\Actions\Users\CreateUser;
 use App\Actions\Users\Login_panel;
 use Flight;
+use Exception;
 use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
 
 class UserController
 {
     public function panel_login(): void
     {
-        Flight::render(directory_separator("Panel", "login.php"));
+        try {
+            Flight::render(directory_separator("Panel", "login.php"));
+        } catch (Exception $exception) {
+            $exception->getMessage();
+        }
     }
 
     public function panel_logout()
@@ -56,7 +61,11 @@ class UserController
 
     public function panel_signup(): void
     {
-        Flight::render(directory_separator("Panel", "signup.php"));
+        try {
+            Flight::render(directory_separator("Panel", "signup.php"));
+        } catch (Exception $exception) {
+            $exception->getMessage();
+        }
     }
 
     public function panel_result_signup(): void
@@ -104,19 +113,23 @@ class UserController
         $tool = tools();
         $Users = AllUsers::execute2();
 
-        Flight::render(
-            directory_separator("Panel", "users.php"),
-            [
-                "logo" => $tool['logo'],
-                "footer" => $tool['footer'],
-                "title" => $tool['title'],
-                'admin_count' => $tool['admincount'],
-                'user_count' => $tool['usercount'],
-                "admin" => $tool['admin'],
-                "users" => $Users,
-                "tab" => "users"
-            ]
-        );
+        try {
+            Flight::render(
+                directory_separator("Panel", "users.php"),
+                [
+                    "logo" => $tool['logo'],
+                    "footer" => $tool['footer'],
+                    "title" => $tool['title'],
+                    'admin_count' => $tool['admincount'],
+                    'user_count' => $tool['usercount'],
+                    "admin" => $tool['admin'],
+                    "users" => $Users,
+                    "tab" => "users"
+                ]
+            );
+        } catch (Exception $exception) {
+            $exception->getMessage();
+        }
     }
 
     public function panel_manage_users(): void
@@ -131,37 +144,45 @@ class UserController
             $Admins = SearchAdmin::execute($title);
         }
 
-        Flight::render(
-            directory_separator("Panel", "manageuser.php"),
-            [
-                "logo" => $tool['logo'],
-                "footer" => $tool['footer'],
-                "title" => $tool['title'],
-                'admin_count' => $tool['admincount'],
-                'user_count' => $tool['usercount'],
-                "admin" => $tool['admin'],
-                "users" => $Users,
-                "admins" => $Admins,
-                "tab" => "manage"
-            ]
-        );
+        try {
+            Flight::render(
+                directory_separator("Panel", "manageuser.php"),
+                [
+                    "logo" => $tool['logo'],
+                    "footer" => $tool['footer'],
+                    "title" => $tool['title'],
+                    'admin_count' => $tool['admincount'],
+                    'user_count' => $tool['usercount'],
+                    "admin" => $tool['admin'],
+                    "users" => $Users,
+                    "admins" => $Admins,
+                    "tab" => "manage"
+                ]
+            );
+        } catch (Exception $exception) {
+            $exception->getMessage();
+        }
     }
 
     public function panel_manage_account(): void
     {
         $tool = tools();
-        Flight::render(
-            directory_separator("Panel", "account.php"),
-            [
-                "logo" => $tool['logo'],
-                "footer" => $tool['footer'],
-                "title" => $tool['title'],
-                'admin_count' => $tool['admincount'],
-                'user_count' => $tool['usercount'],
-                "admin" => $tool['admin'],
-                "tab" => "manage"
-            ]
-        );
+        try {
+            Flight::render(
+                directory_separator("Panel", "account.php"),
+                [
+                    "logo" => $tool['logo'],
+                    "footer" => $tool['footer'],
+                    "title" => $tool['title'],
+                    'admin_count' => $tool['admincount'],
+                    'user_count' => $tool['usercount'],
+                    "admin" => $tool['admin'],
+                    "tab" => "manage"
+                ]
+            );
+        } catch (Exception $exception) {
+            $exception->getMessage();
+        }
     }
 
     public function panel_search_users(string $title = ""): void
@@ -172,17 +193,22 @@ class UserController
 
         $tool = tools();
         $Users = SearchUser::execute($title);
-        Flight::render(
-            directory_separator("Panel", "search-result-users.php"),
-            [
-                "logo" => $tool['logo'],
-                "footer" => $tool['footer'],
-                "title" => $tool['title'],
-                "admin" => $tool['admin'],
-                "users" => $Users,
-                "tab" => "home"
-            ]
-        );
+
+        try {
+            Flight::render(
+                directory_separator("Panel", "search-result-users.php"),
+                [
+                    "logo" => $tool['logo'],
+                    "footer" => $tool['footer'],
+                    "title" => $tool['title'],
+                    "admin" => $tool['admin'],
+                    "users" => $Users,
+                    "tab" => "home"
+                ]
+            );
+        } catch (Exception $exception) {
+            $exception->getMessage();
+        }
     }
 
     public function panel_result_create_user(): void
@@ -380,17 +406,20 @@ class UserController
     {
         $tool = tools();
         $user = GetByIdUser::execute($id);
-        Flight::render(
-            directory_separator("Panel", "user.php"),
-            [
-                "logo" => $tool['logo'],
-                "footer" => $tool['footer'],
-                "title" => $tool['title'],
-                "admin" => $tool['admin'],
-                "user" => $user,
-                "tab" => "home"
-            ]
-        );
-
+        try {
+            Flight::render(
+                directory_separator("Panel", "user.php"),
+                [
+                    "logo" => $tool['logo'],
+                    "footer" => $tool['footer'],
+                    "title" => $tool['title'],
+                    "admin" => $tool['admin'],
+                    "user" => $user,
+                    "tab" => "home"
+                ]
+            );
+        } catch (Exception $exception) {
+            $exception->getMessage();
+        }
     }
 }

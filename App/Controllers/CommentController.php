@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use Flight;
+use Exception;
 
 use App\Actions\Comments\AllComments;
 use App\Actions\Comments\ConfirmComments;
@@ -15,17 +16,21 @@ class CommentController
     {
         $tool = tools();
         $comments = AllComments::execute();
-        Flight::render(
-            directory_separator("Panel", "managecomment.php"),
-            [
-                "logo" => $tool['logo'],
-                "footer" => $tool['footer'],
-                "title" => $tool['title'],
-                "admin" => $tool['admin'],
-                "comments" => $comments,
-                "tab" => "manage"
-            ],
-        );
+        try {
+            Flight::render(
+                directory_separator("Panel", "managecomment.php"),
+                [
+                    "logo" => $tool['logo'],
+                    "footer" => $tool['footer'],
+                    "title" => $tool['title'],
+                    "admin" => $tool['admin'],
+                    "comments" => $comments,
+                    "tab" => "manage"
+                ],
+            );
+        } catch (Exception $exception) {
+            $exception->getMessage();
+        }
     }
 
     public function panel_result_delete_comment(int $id): void

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use Flight;
+use Exception;
 
 use App\Actions\Posts\CountPost;
 use App\Actions\Posts\AllPosts;
@@ -80,37 +81,41 @@ class IndexController
             $AllComments["comment_user_id"][] = $comment['user_id'];
         }
 
-        Flight::render(
-            directory_separator("Panel", "index.php"),
-            [
-                "logo" => $tool['logo'],
-                "footer" => $tool['footer'],
-                "title" => $tool['title'],
-                "admin_count" => $tool['admincount'],
-                "user_count" => $tool['usercount'],
-                "post_count" => $tool['postcount'],
-                "view_count" => $tool['viewcount'],
-                "comment_count" => $tool['commentcount'],
-                "admin" => $tool['admin'],
-                "admin_activity" => $admin_activity,
-                "users" => $Users,
-                "most_visit_pages" => $MostVisit,
-                "not_confirmed_pages" => $Not_confirmed,
-                "Not_Confirmed_Comment" => $Not_Confirmed_Comment,
-                "not_confirmed_percent" => $not_confirmed_percent,
-                "user_chart_date" => $user_chart_date,
-                "user_chart_count" => $user_chart_count,
-                "view_count_chart" => $view_count_chart,
-                "title_chart" => $title_chart,
-                "not_confirmed_comment_percent" => $not_confirmed_comment_percent,
-                "AllComments" => $AllComments,
-                "posts" => $All_post,
-                "post_chart_count" => $post_chart_count,
-                "post_chart_date" => $post_chart_date,
-                "all_my_post" => $all_my_post,
-                "tab" => "home"
-            ]
-        );
+        try {
+            Flight::render(
+                directory_separator("Panel", "index.php"),
+                [
+                    "logo" => $tool['logo'],
+                    "footer" => $tool['footer'],
+                    "title" => $tool['title'],
+                    "admin_count" => $tool['admincount'],
+                    "user_count" => $tool['usercount'],
+                    "post_count" => $tool['postcount'],
+                    "view_count" => $tool['viewcount'],
+                    "comment_count" => $tool['commentcount'],
+                    "admin" => $tool['admin'],
+                    "admin_activity" => $admin_activity,
+                    "users" => $Users,
+                    "most_visit_pages" => $MostVisit,
+                    "not_confirmed_pages" => $Not_confirmed,
+                    "Not_Confirmed_Comment" => $Not_Confirmed_Comment,
+                    "not_confirmed_percent" => $not_confirmed_percent,
+                    "user_chart_date" => $user_chart_date,
+                    "user_chart_count" => $user_chart_count,
+                    "view_count_chart" => $view_count_chart,
+                    "title_chart" => $title_chart,
+                    "not_confirmed_comment_percent" => $not_confirmed_comment_percent,
+                    "AllComments" => $AllComments,
+                    "posts" => $All_post,
+                    "post_chart_count" => $post_chart_count,
+                    "post_chart_date" => $post_chart_date,
+                    "all_my_post" => $all_my_post,
+                    "tab" => "home"
+                ]
+            );
+        } catch (Exception $exception) {
+            $exception->getMessage();
+        }
     }
 
     public function panel_search_all(string $title = ""): void
@@ -118,17 +123,21 @@ class IndexController
 
         $tool = tools();
         $All = SearchAll::execute($title);
-        Flight::render(
-            directory_separator("Panel", "search-results.php"),
-            [
-                "logo" => $tool['logo'],
-                "footer" => $tool['footer'],
-                "title" => $tool['title'],
-                "admin" => $tool['admin'],
-                "posts" => $All['posts'],
-                "users" => $All['users'],
-                "tab" => "home"
-            ],
-        );
+        try {
+            Flight::render(
+                directory_separator("Panel", "search-results.php"),
+                [
+                    "logo" => $tool['logo'],
+                    "footer" => $tool['footer'],
+                    "title" => $tool['title'],
+                    "admin" => $tool['admin'],
+                    "posts" => $All['posts'],
+                    "users" => $All['users'],
+                    "tab" => "home"
+                ],
+            );
+        } catch (Exception $exception) {
+            $exception->getMessage();
+        }
     }
 }

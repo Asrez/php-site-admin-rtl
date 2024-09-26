@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use Flight;
+use Exception;
 use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
 
 use App\Actions\Settings\UpdateSetting;
@@ -17,34 +18,42 @@ class SettingController
     {
         $tool = tools();
         $settings = GetByStateSetting::execute("setting");
-        Flight::render(
-            directory_separator("Panel", "managesetting.php"),
-            [
-                "logo" => $tool['logo'],
-                "footer" => $tool['footer'],
-                "title" => $tool['title'],
-                "admin" => $tool['admin'],
-                "settings" => $settings,
-                "tab" => "manage"
-            ]
-        );
+        try {
+            Flight::render(
+                directory_separator("Panel", "managesetting.php"),
+                [
+                    "logo" => $tool['logo'],
+                    "footer" => $tool['footer'],
+                    "title" => $tool['title'],
+                    "admin" => $tool['admin'],
+                    "settings" => $settings,
+                    "tab" => "manage"
+                ]
+            );
+        } catch (Exception $exception) {
+            $exception->getMessage();
+        }
     }
 
     public function panel_manage_advers(): void
     {
         $tool = tools();
         $advers = GetByStateSetting::execute("adver");
-        Flight::render(
-            directory_separator("Panel", "manageadver.php"),
-            [
-                "logo" => $tool['logo'],
-                "footer" => $tool['footer'],
-                "title" => $tool['title'],
-                "admin" => $tool['admin'],
-                "advers" => $advers,
-                "tab" => "manage"
-            ]
-        );
+        try {
+            Flight::render(
+                directory_separator("Panel", "manageadver.php"),
+                [
+                    "logo" => $tool['logo'],
+                    "footer" => $tool['footer'],
+                    "title" => $tool['title'],
+                    "admin" => $tool['admin'],
+                    "advers" => $advers,
+                    "tab" => "manage"
+                ]
+            );
+        } catch (Exception $exception) {
+            $exception->getMessage();
+        }
     }
 
     public function panel_result_update_adver(int $id): void
