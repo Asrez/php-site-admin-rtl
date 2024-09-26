@@ -164,7 +164,7 @@ class PostController
     public function panel_result_delete_post(int $id)
     {
         DeletePost::execute($id);
-        flight::redirect("/panel/manage/posts?delete=true");
+        flight::redirect("/panel/manage/posts?postdelete=true");
 
     }
 

@@ -299,7 +299,7 @@ class UserController
     public function panel_result_delete_user(int $id)
     {
         DeleteUser::execute($id);
-        flight::redirect("/panel/manage/users?delete=true");
+        flight::redirect("/panel/manage/users?userdelete=true");
 
     }
 

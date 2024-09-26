@@ -33,12 +33,12 @@ class CommentController
     public function panel_result_delete_comment(int $id)
     {
         DeleteComment::execute($id);
-        flight::redirect("/panel/manage/comments?delete=true");
+        flight::redirect("/panel/manage/comments?commentdelete=true");
     }
 
     public function panel_result_confirm_comment(int $id)
     {
         ConfirmComments::execute($id);
-        flight::redirect("/panel/manage/comments?confirm=true");
+        flight::redirect("/panel/manage/comments?commentconfirm=true");
     }
 }

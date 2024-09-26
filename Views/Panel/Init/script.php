@@ -103,5 +103,71 @@
         else if (data === "signup=nofill") {
             window.alert("some fildes are not set yet");
         }
+        else if (data === "user_add=pass_error") {
+            window.alert("passwords are not same");
+        }
+        else if (data === "user_add=true") {
+            window.alert("new user added");
+        }
+        else if (data === "user_add=false") {
+            window.alert("new user didn't add. change username");
+        }
+        else if (data === "userupdate=pass_error") {
+            window.alert("password is incorrect");
+        }
+        else if (data === "userupdate=true") {
+            window.alert("user updated");
+        }
+        else if (data === "userupdate=false") {
+            window.alert("user didn't update. change username");
+        }
+        else if (data === "userupdate=nofill") {
+            window.alert("some fildes are not set yet");
+        }
+        else if (data === "userdelete=true") {
+            window.alert("user deleted");
+        }
+        else if (data === "setadmin=true") {
+            window.alert("user set as admin");
+        }
+        else if (data === "adverupdate=true") {
+            window.alert("advertisement updated");
+        }
+        else if (data === "adverupdate=nofill") {
+            window.alert("some fildes are not set yet");
+        }
+        else if (data === "adverdelete=true") {
+            window.alert("advertisement deleted");
+        }
+        else if (data === "settingupdate=true") {
+            window.alert("setting updated");
+        }
+        else if (data === "settingupdate=nofill") {
+            window.alert("some fildes are not set yet");
+        }
+        else if (data === "postadd=true") {
+            window.alert("new post added");
+        }
+        else if (data === "postadd=nofill") {
+            window.alert("some fildes are not set yet");
+        }
+        else if (data === "postupdate=true") {
+            window.alert("post updated");
+        }
+        else if (data === "postupdate=nofill") {
+            window.alert("some fildes are not set yet");
+        }
+        else if (data === "confirm=true") {
+            window.alert("post confirmed");
+        }
+        else if (data === "postdelete=true") {
+            window.alert("post deleted");
+        }
+        else if (data === "commentdelete=true") {
+            window.alert("comment deleted");
+        }
+        else if (data === "commentconfirm=true") {
+            window.alert("comment confirmed");
+        }
     })
 </script>
