@@ -112,6 +112,9 @@
         else if (data === "user_add=false") {
             window.alert("new user didn't add. change username");
         }
+        else if (data === "user_add=nofill") {
+            window.alert("some fildes are not set yet");
+        }
         else if (data === "userupdate=pass_error") {
             window.alert("password is incorrect");
         }
