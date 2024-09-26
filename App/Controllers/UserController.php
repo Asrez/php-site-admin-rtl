@@ -229,8 +229,7 @@ class UserController
                 }
 
             }
-        }
-        else {
+        } else {
             Flight::redirect("/panel/manage/users?user_add=nofill");
         }
 
