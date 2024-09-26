@@ -54,7 +54,7 @@
         <div class="navbar navbar-light">
             <div class="container-xl">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
+                    <li class="nav-item <?php if($tab === "home") echo "active"; ?>">
                         <a class="nav-link" href="/panel">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -71,7 +71,7 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown <?php if($tab === "posts") echo "active"; ?>">
                         <a class="nav-link" href="/panel/posts" role="button" aria-expanded="false">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -106,7 +106,7 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown <?php if($tab === "manage") echo "active"; ?>">
                         <a class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown"
                             data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -141,7 +141,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown <?php if($tab === "users") echo "active"; ?>">
                         <a class="nav-link" href="/panel/users" role="button" aria-expanded="false">
                             <span
                                 class="nav-link-icon d-md-none d-lg-inline-block">

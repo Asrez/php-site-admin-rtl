@@ -27,7 +27,8 @@ class SettingController
                 "footer" => $tool['footer'],
                 "title" => $tool['title'],
                 "admin" => $tool['admin'],
-                "settings" => $settings
+                "settings" => $settings,
+                "tab" => "manage"
             ]
         );
     }
@@ -43,7 +44,8 @@ class SettingController
                 "footer" => $tool['footer'],
                 "title" => $tool['title'],
                 "admin" => $tool['admin'],
-                "advers" => $advers
+                "advers" => $advers,
+                "tab" => "manage"
             ]
         );
     }

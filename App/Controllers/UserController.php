@@ -114,6 +114,7 @@ class UserController
                 'user_count' => $tool['usercount'],
                 "admin" => $tool['admin'],
                 "users" => $Users,
+                "tab" => "users"
             ]
         );
     }
@@ -141,6 +142,7 @@ class UserController
                 "admin" => $tool['admin'],
                 "users" => $Users,
                 "admins" => $Admins,
+                "tab" => "manage"
             ]
         );
     }
@@ -157,6 +159,7 @@ class UserController
                 'admin_count' => $tool['admincount'],
                 'user_count' => $tool['usercount'],
                 "admin" => $tool['admin'],
+                "tab" => "manage"
             ]
         );
     }
@@ -177,6 +180,7 @@ class UserController
                 "title" => $tool['title'],
                 "admin" => $tool['admin'],
                 "users" => $Users,
+                "tab" => "home"
             ]
         );
     }
@@ -383,7 +387,8 @@ class UserController
                 "footer" => $tool['footer'],
                 "title" => $tool['title'],
                 "admin" => $tool['admin'],
-                "user" => $user
+                "user" => $user,
+                "tab" => "home"
             ]
         );
 

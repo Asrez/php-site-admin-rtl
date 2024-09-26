@@ -25,7 +25,8 @@ class CommentController
                 "footer" => $tool['footer'],
                 "title" => $tool['title'],
                 "admin" => $tool['admin'],
-                "comments" => $comments
+                "comments" => $comments,
+                "tab" => "manage"
             ],
         );
     }

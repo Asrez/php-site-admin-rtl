@@ -108,39 +108,8 @@ class IndexController
                 "posts" => $All_post,
                 "post_chart_count" => $post_chart_count,
                 "post_chart_date" => $post_chart_date,
-                "all_my_post" => $all_my_post
-            ]
-        );
-    }
-
-    public function panel_manage_setting()
-    {
-        $tool = tools();
-        $settings = GetByStateSetting::execute("setting");
-        Flight::render(
-            directory_separator("Panel", "managesetting.php"),
-            [
-                "logo" => $tool['logo'],
-                "footer" => $tool['footer'],
-                "title" => $tool['title'],
-                "admin" => $tool['admin'],
-                "settings" => $settings
-            ]
-        );
-    }
-
-    public function panel_manage_advers()
-    {
-        $tool = tools();
-        $advers = GetByStateSetting::execute("adver");
-        Flight::render(
-            directory_separator("Panel", "manageadvers.php"),
-            [
-                "logo" => $tool['logo'],
-                "footer" => $tool['footer'],
-                "title" => $tool['title'],
-                "admin" => $tool['admin'],
-                "advers" => $advers
+                "all_my_post" => $all_my_post,
+                "tab" => "home"
             ]
         );
     }
@@ -159,6 +128,7 @@ class IndexController
                 "admin" => $tool['admin'],
                 "posts" => $All['posts'],
                 "users" => $All['users'],
+                "tab" => "home"
             ],
         );
     }

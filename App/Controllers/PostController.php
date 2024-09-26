@@ -32,6 +32,7 @@ class PostController
                 "not_confirmed_pages" => $Not_confirmed,
                 "admin" => $tool['admin'],
                 "posts" => $All_post,
+                "tab" => "posts"
             ]
         );
     }
@@ -52,6 +53,7 @@ class PostController
                 "title" => $tool['title'],
                 "admin" => $tool['admin'],
                 "posts" => $All_post,
+                "tab" => "manage"
             ]
         );
     }
@@ -72,6 +74,7 @@ class PostController
                 "footer" => $tool['footer'],
                 "admin" => $tool['admin'],
                 "posts" => $Posts,
+                "tab" => "home"
             ]
         );
     }
@@ -179,7 +182,8 @@ class PostController
                 "footer" => $tool['footer'],
                 "title" => $tool['title'],
                 "admin" => $tool['admin'],
-                "post" => $post
+                "post" => $post,
+                "tab" => "home"
             ]
         );
 
