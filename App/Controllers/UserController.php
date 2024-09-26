@@ -16,7 +16,7 @@ use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
 
 class UserController
 {
-    public function panel_login()
+    public function panel_login(): void
     {
         Flight::render(directory_separator("Panel", "login.php"));
     }
@@ -27,7 +27,7 @@ class UserController
         session_destroy();
     }
 
-    public function panel_result_login()
+    public function panel_result_login(): void
     {
         $validator = new Validator(Flight::request()->data->getData(), [
             'username' => ['required'],
@@ -54,12 +54,12 @@ class UserController
 
     }
 
-    public function panel_signup()
+    public function panel_signup(): void
     {
         Flight::render(directory_separator("Panel", "signup.php"));
     }
 
-    public function panel_result_signup()
+    public function panel_result_signup(): void
     {
         $validator = new Validator(Flight::request()->data->getData(), [
             'name' => ['required'],
@@ -99,7 +99,7 @@ class UserController
 
     }
 
-    public function panel_users()
+    public function panel_users(): void
     {
         $tool = tools();
         $Users = AllUsers::execute2();
@@ -119,7 +119,7 @@ class UserController
         );
     }
 
-    public function panel_manage_users()
+    public function panel_manage_users(): void
     {
         $tool = tools();
         $Users = AllUsers::execute();
@@ -147,7 +147,7 @@ class UserController
         );
     }
 
-    public function panel_manage_account()
+    public function panel_manage_account(): void
     {
         $tool = tools();
         Flight::render(
@@ -164,7 +164,7 @@ class UserController
         );
     }
 
-    public function panel_search_users(string $title = "")
+    public function panel_search_users(string $title = ""): void
     {
         if (isset($_GET['search'])) {
             $title = $_GET['search'];
@@ -185,7 +185,7 @@ class UserController
         );
     }
 
-    public function panel_result_create_user()
+    public function panel_result_create_user(): void
     {
         $validator = new Validator(Flight::request()->data->getData(), [
             'name' => [],
@@ -239,7 +239,7 @@ class UserController
 
     }
 
-    public function panel_result_update_user(int $id)
+    public function panel_result_update_user(int $id): void
     {
         $validator = new Validator(Flight::request()->data->getData(), [
             'name' => [],
@@ -301,7 +301,7 @@ class UserController
 
     }
 
-    public function panel_result_account()
+    public function panel_result_account(): void
     {
         $validator = new Validator(Flight::request()->data->getData(), [
             'name' => [],
@@ -376,7 +376,7 @@ class UserController
 
     }
 
-    public function panel_show_user(int $id)
+    public function panel_show_user(int $id): void
     {
         $tool = tools();
         $user = GetByIdUser::execute($id);

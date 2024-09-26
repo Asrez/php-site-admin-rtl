@@ -6,7 +6,7 @@ use App\Modals\Posts;
 
 class CreatePost
 {
-    public static function execute(array $data)
+    public static function execute(array $data): bool
     {
         return Posts::Create($data);
     }

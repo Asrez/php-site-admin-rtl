@@ -13,7 +13,7 @@ use App\Actions\Settings\GetByStateSetting;
 class SettingController
 {
 
-    public function panel_manage_setting()
+    public function panel_manage_setting(): void
     {
         $tool = tools();
         $settings = GetByStateSetting::execute("setting");
@@ -30,7 +30,7 @@ class SettingController
         );
     }
 
-    public function panel_manage_advers()
+    public function panel_manage_advers(): void
     {
         $tool = tools();
         $advers = GetByStateSetting::execute("adver");
@@ -47,7 +47,7 @@ class SettingController
         );
     }
 
-    public function panel_result_update_adver(int $id)
+    public function panel_result_update_adver(int $id): void
     {
         $validator = new Validator(Flight::request()->data->getData(), [
             'value_setting' => ['required'],
@@ -80,13 +80,13 @@ class SettingController
         }
     }
 
-    public function panel_result_delete_adver(int $id)
+    public function panel_result_delete_adver(int $id): void
     {
         DeleteSetting::execute($id);
         Flight::redirect("/panel/manage/advertisings?adverdelete=true");
     }
 
-    public function panel_result_update_setting(int $id)
+    public function panel_result_update_setting(int $id): void
     {
         $validator = new Validator(Flight::request()->data->getData(), [
             'value_setting' => ['required'],

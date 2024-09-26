@@ -19,7 +19,7 @@ use App\Actions\Search\SearchAll;
 
 class IndexController
 {
-    public function panel_index()
+    public function panel_index(): void
     {
         $year = date(format: "Y");
         $day = date("d");
@@ -100,7 +100,7 @@ class IndexController
         );
     }
 
-    public function panel_search_all(string $title = "")
+    public function panel_search_all(string $title = ""): void
     {
 
         $tool = tools();

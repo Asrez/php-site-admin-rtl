@@ -6,7 +6,7 @@ use App\Modals\Settings;
 
 class GetByStateSetting
 {
-    public static function execute(string $state)
+    public static function execute(string $state): array
     {
         return Settings::GetByState($state);
     }

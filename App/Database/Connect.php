@@ -31,7 +31,7 @@ class Connect
 
     }
 
-    public static function getInstance()
+    public static function getInstance(): mixed
     {
         if (!self::$instance) {
             self::$instance = new self;

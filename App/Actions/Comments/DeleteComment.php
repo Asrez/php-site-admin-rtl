@@ -6,7 +6,7 @@ use App\Modals\Comments;
 
 class DeleteComment
 {
-    public static function execute(int $id)
+    public static function execute(int $id): void
     {
         return Comments::Delete($id);
     }

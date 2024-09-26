@@ -7,14 +7,14 @@ use App\Actions\Views\CountView;
 use App\Actions\Users\CountUser;
 use App\Actions\Users\GetByIdUser;
 
-function directory_separator(string $folder, string $file_name)
+function directory_separator(string $folder, string $file_name): string
 {
     $path = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . $file_name;
 
     return $path;
 }
 
-function tools()
+function tools(): array
 {
 
     $logo = GetByKeySetting::execute('logo');
@@ -40,7 +40,8 @@ function tools()
     ];
 }
 
-function makeRandomSlug() {
+function makeRandomSlug(): string
+{
     
     $length = 8;
     $characters = 'abcdefghijklmnopqrstuvwxyzZXCVBNMASDFGHJKLQWERTYUIOP%$#@!^*+-0123456789';

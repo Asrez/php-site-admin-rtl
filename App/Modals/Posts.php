@@ -84,7 +84,7 @@ class Posts
         return $stms->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function GetAll()
+    public static function GetAll(): mixed
     {
         $db = Connect::getInstance()->getConnection();
 
@@ -96,7 +96,7 @@ class Posts
         return $stms->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function Innerjoin()
+    public static function Innerjoin(): mixed
     {
         $db = Connect::getInstance()->getConnection();
 
@@ -115,7 +115,7 @@ class Posts
         return $stms->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function Mostvisit()
+    public static function Mostvisit(): mixed
     {
         $db = Connect::getInstance()->getConnection();
 
@@ -127,7 +127,7 @@ class Posts
         return $stms->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function NotConfirmed()
+    public static function NotConfirmed(): mixed
     {
         $db = Connect::getInstance()->getConnection();
 

@@ -6,7 +6,7 @@ use App\Modals\Posts;
 
 class DeletePost
 {
-    public static function execute(int $id)
+    public static function execute(int $id): void
     {
         return Posts::Delete($id);
     }

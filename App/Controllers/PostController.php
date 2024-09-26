@@ -16,7 +16,7 @@ use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
 class PostController
 {
 
-    public function panel_posts()
+    public function panel_posts(): void
     {
         $tool = tools();
         $All_post = AllPosts::execute();
@@ -37,7 +37,7 @@ class PostController
         );
     }
 
-    public function panel_manage_posts()
+    public function panel_manage_posts(): void
     {
         $tool = tools();
         $All_post = AllPosts::execute();
@@ -58,7 +58,7 @@ class PostController
         );
     }
 
-    public function panel_search_posts(string $title = "")
+    public function panel_search_posts(string $title = ""): void
     {
         $tool = tools();
         if (isset($_GET['search'])) {
@@ -79,7 +79,7 @@ class PostController
         );
     }
 
-    public function panel_result_create_post()
+    public function panel_result_create_post(): void
     {
         $validator = new Validator(Flight::request()->data->getData(), [
             'title' => ['required'],
@@ -119,7 +119,7 @@ class PostController
 
     }
 
-    public function panel_result_update_post(int $id)
+    public function panel_result_update_post(int $id): void
     {
         $validator = new Validator(Flight::request()->data->getData(), [
             'title' => ['required'],
@@ -157,21 +157,21 @@ class PostController
 
     }
 
-    public function panel_result_confirm_post(int $id)
+    public function panel_result_confirm_post(int $id): void
     {
         Confirm_Post::execute($id);
         flight::redirect("/panel/manage/posts?confirm=true");
 
     }
 
-    public function panel_result_delete_post(int $id)
+    public function panel_result_delete_post(int $id): void
     {
         DeletePost::execute($id);
         flight::redirect("/panel/manage/posts?postdelete=true");
 
     }
 
-    public function panel_show_post(int $id)
+    public function panel_show_post(int $id): void
     {
         $tool = tools();
         $post = GetByIdPost::execute($id);

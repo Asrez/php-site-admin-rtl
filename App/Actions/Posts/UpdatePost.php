@@ -6,7 +6,7 @@ use App\Modals\Posts;
 
 class UpdatePost
 {
-    public static function execute(array $data)
+    public static function execute(array $data): void
     {
         return Posts::Update($data);
     }

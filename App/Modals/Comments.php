@@ -6,7 +6,7 @@ use PDO;
 use App\Database\Connect;
 class Comments
 {
-    public static function Delete(int $id)
+    public static function Delete(int $id): void
     {
         $db = Connect::getInstance()->getConnection();
 
@@ -17,7 +17,7 @@ class Comments
         $stmt->execute();
     }
 
-    public static function Confirmed(int $id)
+    public static function Confirmed(int $id): void
     {
         $db = Connect::getInstance()->getConnection();
 

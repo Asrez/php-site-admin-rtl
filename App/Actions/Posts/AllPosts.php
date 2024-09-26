@@ -6,7 +6,7 @@ use App\Modals\Posts;
 
 class AllPosts
 {
-    public static function execute()
+    public static function execute(): array
     {
         return Posts::GetAll();
     }
