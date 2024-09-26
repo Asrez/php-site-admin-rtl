@@ -27,6 +27,9 @@ class IndexController
         $last_month = $month - 1;
         $date1 = date($year . $day . $last_month);
 
+        $user_chart_count = [];
+        $user_chart_date = [];
+
         $array = Get_In_MonthUser::execute($date1);
         foreach ($array as $filed) {
             $user_chart_count[] = $filed['count'];
@@ -35,6 +38,9 @@ class IndexController
 
         $array2 = Post_in_month::execute($date1);
         $all_my_post = 0;
+        $post_chart_count = [];
+        $post_chart_date = [];
+
         foreach ($array2 as $filed1) {
             $post_chart_count[] = $filed1['count'];
             $post_chart_date[] = $filed1['date'];
@@ -42,6 +48,9 @@ class IndexController
         }
 
         $All_post = AllPosts::execute();
+        $view_count_chart = [];
+        $title_chart = [];
+
         foreach ($All_post as $view) {
             $view_count_chart[] = $view['viewcount'];
             $title_chart[] = $view['id'];
@@ -61,6 +70,10 @@ class IndexController
         $not_confirmed_comment_percent = (count($Not_Confirmed_Comment) * 100) / $tool['commentcount'];
 
         $AllCommentss = AllComments::execute();
+        $AllComments["comment_post_id"] = [];
+        $AllComments["comment_title"] = [];
+        $AllComments["comment_user_id"] = [];
+        
         foreach ($AllCommentss as $comment) {
             $AllComments["comment_post_id"][] = $comment['post_id'];
             $AllComments["comment_title"][] = $comment['title'];
