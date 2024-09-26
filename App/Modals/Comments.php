@@ -65,9 +65,4 @@ class Comments
 
         return $stmt['count'];
     }
-
-    public static function Creat(array $data)
-    {
-
-    }
 }

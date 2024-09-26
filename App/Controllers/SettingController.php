@@ -2,12 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Modals\Posts;
-use Exception;
 use Flight;
 use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
 
-use App\Actions\Settings\GetByKeySetting;
 use App\Actions\Settings\UpdateSetting;
 use App\Actions\Settings\DeleteSetting;
 use App\Actions\Settings\GetByStateSetting;

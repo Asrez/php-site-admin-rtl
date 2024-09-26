@@ -84,11 +84,6 @@ class Posts
         return $stms->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function GetBySlug(string $slug)
-    {
-
-    }
-
     public static function GetAll()
     {
         $db = Connect::getInstance()->getConnection();

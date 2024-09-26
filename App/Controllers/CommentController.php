@@ -2,10 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Modals\Posts;
-use Exception;
 use Flight;
-use GeekGroveOfficial\PhpSmartValidator\Validator\Validator;
 
 use App\Actions\Comments\AllComments;
 use App\Actions\Comments\ConfirmComments;
