@@ -173,14 +173,14 @@ class PostController
     public function panel_result_confirm_post(int $id): void
     {
         Confirm_Post::execute($id);
-        flight::redirect("/panel/manage/posts?confirm=true");
+        Flight::redirect("/panel/manage/posts?confirm=true");
 
     }
 
     public function panel_result_delete_post(int $id): void
     {
         DeletePost::execute($id);
-        flight::redirect("/panel/manage/posts?postdelete=true");
+        Flight::redirect("/panel/manage/posts?postdelete=true");
 
     }
 
