@@ -77,7 +77,6 @@ class Posts
             return true;
         } else
             return false;
-
     }
 
     public static function GetById(int $id): array

@@ -30,7 +30,6 @@ class Comments
             $stmt = $db->prepare($sql);
             $stmt->bindParam("id", $id);
             $stmt->execute();
-
         }
     }
 

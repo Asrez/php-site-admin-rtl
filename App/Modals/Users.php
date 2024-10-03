@@ -47,6 +47,7 @@ class Users
     public static function Create(array $data)
     {
         $date = date("Y-m-d");
+        
         try {
             $db = BaseModal::getDbConnection();
 
@@ -106,7 +107,6 @@ class Users
         }
 
         return $result;
-
     }
 
     public static function GetAllUsers(): array
@@ -201,5 +201,4 @@ class Users
             $stmt->execute();
         }
     }
-
 }

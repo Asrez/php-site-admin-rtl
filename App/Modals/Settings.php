@@ -17,7 +17,6 @@ class Settings
             $stmt->bindParam("id", $id);
             $stmt->execute();
         }
-
     }
 
     public static function Update(array $data): void

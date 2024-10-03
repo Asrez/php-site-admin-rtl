@@ -43,7 +43,6 @@ function tools(): array
 
 function makeRandomSlug(): string
 {
-    
     $length = 8;
     $characters = 'abcdefghijklmnopqrstuvwxyzZXCVBNMASDFGHJKLQWERTYUIOP%$#@!^*+-0123456789';
     
