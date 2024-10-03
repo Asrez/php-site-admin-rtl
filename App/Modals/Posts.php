@@ -96,7 +96,7 @@ class Posts
             return [];
     }
 
-    public static function GetAll(): mixed
+    public static function GetAll(): array
     {
         $db = BaseModal::getDbConnection();
 
@@ -111,7 +111,7 @@ class Posts
             return [];
     }
 
-    public static function Innerjoin(): mixed
+    public static function Innerjoin(): array
     {
         $db = BaseModal::getDbConnection();
 
@@ -133,7 +133,7 @@ class Posts
             return [];
     }
 
-    public static function Mostvisit(): mixed
+    public static function Mostvisit(): array
     {
         $db = BaseModal::getDbConnection();
 
@@ -148,7 +148,7 @@ class Posts
             return [];
     }
 
-    public static function NotConfirmed(): mixed
+    public static function NotConfirmed(): array
     {
         $db = BaseModal::getDbConnection();
 
