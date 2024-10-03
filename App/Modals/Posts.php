@@ -48,27 +48,30 @@ class Posts
 
     public static function Create(array $data): bool
     {
-        $slug = makeRandomSlug();
-        $date = date("y-m-d");
+        if (isset($_SESSION['admin_id'])) {
+            $slug = makeRandomSlug();
+            $date = date("y-m-d");
 
-        $db = BaseModal::getDbConnection();
+            $db = BaseModal::getDbConnection();
 
-        $sql = "INSERT INTO `posts`(`id`, `title`, `content`, `image`, `admin_id`, `date`, `viewcount`, `state`, `slug`)
+            $sql = "INSERT INTO `posts`(`id`, `title`, `content`, `image`, `admin_id`, `date`, `viewcount`, `state`, `slug`)
                 VALUES (null, :title, :content, :image, :admin_id, :date, 0, 0, :slug);";
 
-        $stms = $db->prepare($sql);
+            $stms = $db->prepare($sql);
 
-        $stms->bindParam('title', $data['title']);
-        $stms->bindParam('content', $data['content']);
-        $stms->bindParam('image', $data['image']);
-        $stms->bindParam('admin_id', $_SESSION['admin_id']);
-        $stms->bindParam('date', $date);
-        $stms->bindParam('slug', $slug);
-        $stms->execute();
+            $stms->bindParam('title', $data['title']);
+            $stms->bindParam('content', $data['content']);
+            $stms->bindParam('image', $data['image']);
+            $stms->bindParam('admin_id', $_SESSION['admin_id']);
+            $stms->bindParam('date', $date);
+            $stms->bindParam('slug', $slug);
+            $stms->execute();
 
-        $stms = $stms->fetch(PDO::FETCH_ASSOC);
+            $stms = $stms->fetch(PDO::FETCH_ASSOC);
+            return true;
+        } else
+            return false;
 
-        return true;
     }
 
     public static function GetById(int $id): array
