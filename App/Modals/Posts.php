@@ -167,13 +167,13 @@ class Posts
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "SELECT Count(*) as count FROM `posts`;";
+        $sql = "SELECT COUNT(*) as count FROM `posts`;";
 
         $stmt = $db->prepare($sql);
         $stmt->execute();
         $stmt = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $sql1 = "SELECT Count(*) as count FROM `posts` WHERE `state` = 0;";
+        $sql1 = "SELECT COUNT(*) as count FROM `posts` WHERE `state` = 0;";
 
         $stmt1 = $db->prepare($sql1);
         $stmt1->execute();
@@ -186,7 +186,7 @@ class Posts
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "SELECT `date` , Count(*) as count FROM `posts` WHERE `admin_id` = :id AND `date` >= :date GROUP BY `date`;";
+        $sql = "SELECT `date` , COUNT(*) as count FROM `posts` WHERE `admin_id` = :id AND `date` >= :date GROUP BY `date`;";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam("id", $_SESSION['admin_id']);

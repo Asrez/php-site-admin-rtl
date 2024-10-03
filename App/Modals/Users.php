@@ -158,13 +158,13 @@ class Users
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "SELECT Count(*) as count FROM `users` WHERE `state` = 0;";
+        $sql = "SELECT COUNT(*) as count FROM `users` WHERE `state` = 0;";
 
         $stmt = $db->prepare($sql);
         $stmt->execute();
         $stmt = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $sql1 = "SELECT Count(*) as count FROM `users` WHERE `state` = 1;";
+        $sql1 = "SELECT COUNT(*) as count FROM `users` WHERE `state` = 1;";
 
         $stmt1 = $db->prepare($sql1);
         $stmt1->execute();
@@ -177,7 +177,7 @@ class Users
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "SELECT `date`,Count(*) as count FROM `users` WHERE `date` >= :date GROUP BY date;";
+        $sql = "SELECT `date`,COUNT(*) as count FROM `users` WHERE `date` >= :date GROUP BY date;";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam("date", $date);

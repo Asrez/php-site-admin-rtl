@@ -68,7 +68,7 @@ class Comments
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "SELECT Count(*) as count FROM `comments`;";
+        $sql = "SELECT COUNT(*) as count FROM `comments`;";
 
         $stmt = $db->prepare($sql);
         $stmt->execute();
