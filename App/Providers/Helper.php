@@ -62,6 +62,7 @@ function env(string $key, $default = null): mixed
     foreach ($env as $line) {
         $line = explode('=', $line);
         if ($line[0] === $key) {
+            $line[1] = substr($line[1], 0, -1);
             return $line[1] ?? $default;
         }
     }
