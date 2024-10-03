@@ -20,8 +20,9 @@ function tools(): array
     $logo = GetByKeySetting::execute('logo');
     $footer = GetByKeySetting::execute('footer');
     $title = GetByKeySetting::execute('title');
-    $admincount = CountUser::execute()['count_admin'];
-    $usercount = CountUser::execute()['count_user'];
+    $countadminuser = CountUser::execute();
+    $admincount = $countadminuser['count_admin'];
+    $usercount = $countadminuser['count_user'];
     $postcount = CountPost::execute()['count_all'];
     $commentcount = CountComment::execute();
     $viewcount = CountView::execute();
