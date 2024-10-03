@@ -186,7 +186,7 @@ class Posts
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "SELECT *,Count(*) as count FROM `posts` WHERE `admin_id` = :id AND `date` >= :date GROUP BY `date`;";
+        $sql = "SELECT `date` , Count(*) as count FROM `posts` WHERE `admin_id` = :id AND `date` >= :date GROUP BY `date`;";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam("id", $_SESSION['admin_id']);
