@@ -11,7 +11,7 @@ class Views
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "SELECT Count(*) as count FROM `views` ;";
+        $sql = "SELECT Count(*) as count FROM `views`;";
 
         $stmt = $db->prepare($sql);
         $stmt->execute();

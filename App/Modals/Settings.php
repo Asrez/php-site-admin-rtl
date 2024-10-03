@@ -53,7 +53,7 @@ class Settings
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "SELECT * FROM `settings` WHERE `key_setting`= :key";
+        $sql = "SELECT * FROM `settings` WHERE `key_setting`= :key;";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam("key", $key);
@@ -66,7 +66,7 @@ class Settings
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "SELECT * FROM `settings` WHERE `type`= :state";
+        $sql = "SELECT * FROM `settings` WHERE `type`= :state;";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam("state", $state);

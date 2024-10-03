@@ -34,7 +34,7 @@ class Comments
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "SELECT * FROM `comments` WHERE `state` = 0 ;";
+        $sql = "SELECT * FROM `comments` WHERE `state` = 0;";
 
         $stmt = $db->prepare($sql);
         $stmt->execute();
@@ -46,7 +46,7 @@ class Comments
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "SELECT * FROM `comments` ;";
+        $sql = "SELECT * FROM `comments`;";
 
         $stmt = $db->prepare($sql);
         $stmt->execute();
@@ -58,7 +58,7 @@ class Comments
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "SELECT Count(*) as count FROM `comments` ;";
+        $sql = "SELECT Count(*) as count FROM `comments`;";
 
         $stmt = $db->prepare($sql);
         $stmt->execute();

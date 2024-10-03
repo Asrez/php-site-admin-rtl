@@ -49,7 +49,7 @@ class Search
     {
         $db = BaseModal::getDbConnection();
 
-        $posts_sql = 'SELECT * FROM `posts` WHERE `posts`.`title` LIKE :title ;';
+        $posts_sql = 'SELECT * FROM `posts` WHERE `posts`.`title` LIKE :title;';
 
         $title = '%' . $title . '%';
         $posts = $db->prepare($posts_sql);
