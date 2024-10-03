@@ -60,8 +60,8 @@ class Posts
 
             $db = BaseModal::getDbConnection();
 
-            $sql = "INSERT INTO `posts`(`id`, `title`, `content`, `image`, `admin_id`, `date`, `viewcount`, `state`, `slug`)
-                VALUES (null, :title, :content, :image, :admin_id, :date, 0, 0, :slug);";
+            $sql = "INSERT INTO `posts`(`id`, `title`, `content`, `image`, `admin_id`, `date`, `slug`)
+                VALUES (null, :title, :content, :image, :admin_id, :date, :slug);";
 
             $stms = $db->prepare($sql);
 
