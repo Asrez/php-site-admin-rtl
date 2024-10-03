@@ -17,9 +17,7 @@ class Users
             $stmt = $db->prepare($sql);
             $stmt->bindParam("id", $id);
             $stmt->execute();
-        }
-        catch (Exception $e)
-        {
+        } catch (Exception $e) {
             echo $e->getMessage();
         }
     }
@@ -49,7 +47,8 @@ class Users
 
     public static function Create(array $data)
     {
-        $date = date("Y-m-d");
+        try {
+            $date = date("Y-m-d");
 
             $db = BaseModal::getDbConnection();
 
@@ -65,14 +64,14 @@ class Users
             $stmt->bindParam("state", $data['state']);
             $stmt->execute();
 
-            if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $_SESSION['admin_id'] = $row['id'];
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $_SESSION['admin_id'] = $row['id'];
+            
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+
     }
 
     public static function GetById(int $id): array
@@ -85,10 +84,12 @@ class Users
         $stmt->bindParam("id", $id);
         $stmt->execute();
 
-        if ($stmt = $stmt->fetch(PDO::FETCH_ASSOC))
+        if ($stmt = $stmt->fetch(PDO::FETCH_ASSOC)) {
             return $stmt;
-        else
+        } else {
             return [];
+        }
+
     }
 
     public static function Login(string $username, string $password): bool
@@ -121,10 +122,12 @@ class Users
         $stmt = $db->prepare($sql);
         $stmt->execute();
 
-        if ($stmt = $stmt->fetchAll(PDO::FETCH_ASSOC))
+        if ($stmt = $stmt->fetchAll(PDO::FETCH_ASSOC)) {
             return $stmt;
-        else
+        } else {
             return [];
+        }
+
     }
 
     public static function GetAll(): array
@@ -136,10 +139,12 @@ class Users
         $stmt = $db->prepare($sql);
         $stmt->execute();
 
-        if ($stmt = $stmt->fetchAll(PDO::FETCH_ASSOC))
+        if ($stmt = $stmt->fetchAll(PDO::FETCH_ASSOC)) {
             return $stmt;
-        else
+        } else {
             return [];
+        }
+
     }
 
     public static function GetAllAdmins(): array
@@ -151,10 +156,12 @@ class Users
         $stmt = $db->prepare($sql);
         $stmt->execute();
 
-        if ($stmt = $stmt->fetchAll(PDO::FETCH_ASSOC))
+        if ($stmt = $stmt->fetchAll(PDO::FETCH_ASSOC)) {
             return $stmt;
-        else
+        } else {
             return [];
+        }
+
     }
 
     public static function Count(): array
@@ -186,10 +193,12 @@ class Users
         $stmt->bindParam("date", $date);
         $stmt->execute();
 
-        if ($stmt = $stmt->fetchAll(PDO::FETCH_ASSOC))
+        if ($stmt = $stmt->fetchAll(PDO::FETCH_ASSOC)) {
             return $stmt;
-        else
+        } else {
             return [];
+        }
+
     }
 
     public static function SetAsAdmin(int $id): void
@@ -202,9 +211,7 @@ class Users
             $stmt = $db->prepare($sql);
             $stmt->bindParam("id", $id);
             $stmt->execute();
-        }
-        catch (Exception $e)
-        {
+        } catch (Exception $e) {
             echo $e->getMessage();
         }
     }
