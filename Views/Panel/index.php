@@ -248,19 +248,19 @@
                   <div class="card" style="height: 28rem">
                     <div class="card-body card-body-scrollable card-body-scrollable-shadow">
                       <div class="divide-y">
-                        <?php foreach ($users as $user) { ?>
+                        <?php foreach ($users as $users_item) { ?>
                           <div>
                             <div class="row">
                               <div class="col-auto">
                                 <span class="avatar"
-                                  style="background-image: url(../../static/avatars/<?= $user['image'] ?>)"></span>
+                                  style="background-image: url(../../static/avatars/<?= $users_item['image'] ?>)"></span>
                               </div>
                               <div class="col">
                                 <div class="text-truncate">
-                                  Name : <strong><?= $user['name'] ?></strong> Username :
-                                  <strong><?= $user['username'] ?></strong>
+                                  Name : <strong><?= $users_item['name'] ?></strong> Username :
+                                  <strong><?= $users_item['username'] ?></strong>
                                 </div>
-                                <div class="text-muted"><?= date($user['date']) ?></div>
+                                <div class="text-muted"><?= date($users_item['date']) ?></div>
                               </div>
                             </div>
                           </div>
@@ -353,10 +353,10 @@
                       </tr>
                     </thead>
                     <tr>
-                      <?php foreach ($most_visit_pages as $page) { ?>
+                      <?php foreach ($most_visit_pages as $most_visit_pages_item) { ?>
                         <td>
-                          /panel/posts/<?= $page['id'] ?>
-                          <a href="/panel/posts/<?= $page['id'] ?>" class="ms-1" aria-label="Open website">
+                          /panel/posts/<?= $most_visit_pages_item['id'] ?>
+                          <a href="/panel/posts/<?= $most_visit_pages_item['id'] ?>" class="ms-1" aria-label="Open website">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                               viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                               stroke-linecap="round" stroke-linejoin="round">
@@ -366,9 +366,9 @@
                             </svg>
                           </a>
                         </td>
-                        <td class="text-muted"><?= $page['title'] ?></td>
-                        <td class="text-muted"><?= $page['viewcount'] ?></td>
-                        <td class="text-muted"><?= date($page['date']) ?></td>
+                        <td class="text-muted"><?= $most_visit_pages_item['title'] ?></td>
+                        <td class="text-muted"><?= $most_visit_pages_item['viewcount'] ?></td>
+                        <td class="text-muted"><?= date($most_visit_pages_item['date']) ?></td>
                       </tr>
                     <?php } ?>
                   </table>
@@ -441,10 +441,10 @@
                 </div>
                 <div class="table-responsive">
                   <table class="table card-table table-vcenter">
-                    <?php foreach ($not_confirmed_pages as $page) { ?>
+                    <?php foreach ($not_confirmed_pages as $not_confirmed_pages_item) { ?>
                       <tr>
                         <td class="text-nowrap" title="Post" data-bs-toggle="modal"
-                          data-bs-target="#modal-simple<?= $page['id'] ?>">
+                          data-bs-target="#modal-simple<?= $not_confirmed_pages_item['id'] ?>">
                           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
                             stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
                             stroke-linejoin="round">
@@ -462,17 +462,17 @@
                             <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport"
                               data-bs-toggle="dropdown">Actions</button>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" href="/panel/result/post/confirm/<?= $page['id'] ?>">
+                              <a class="dropdown-item" href="/panel/result/post/confirm/<?= $not_confirmed_pages_item['id'] ?>">
                                 Confirm
                               </a>
-                              <a class="dropdown-item" href="/panel/result/post/delete/<?= $page['id'] ?>">
+                              <a class="dropdown-item" href="/panel/result/post/delete/<?= $not_confirmed_pages_item['id'] ?>">
                                 Delete
                               </a>
                             </div>
                           </span>
                         </td>
                         <td class="w-100">
-                          <a href="/panel/posts/<?= $page['id'] ?>" class="text-reset"><?= $page['title'] ?></a>
+                          <a href="/panel/posts/<?= $not_confirmed_pages_item['id'] ?>" class="text-reset"><?= $not_confirmed_pages_item['title'] ?></a>
                         </td>
                         <td class="text-nowrap text-muted">
                           <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
@@ -486,11 +486,11 @@
                             <line x1="11" y1="15" x2="12" y2="15" />
                             <line x1="12" y1="15" x2="12" y2="18" />
                           </svg>
-                          <?= date($page['date']) ?>
+                          <?= date($not_confirmed_pages_item['date']) ?>
                         </td>
                         <td>
                           <span class="avatar avatar-sm"
-                            style="background-image: url(../../static/photos/<?= $page['image'] ?>)"></span>
+                            style="background-image: url(../../static/photos/<?= $not_confirmed_pages_item['image'] ?>)"></span>
                         </td>
                       </tr>
                     <?php } ?>

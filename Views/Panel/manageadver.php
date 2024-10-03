@@ -26,23 +26,23 @@
           <div class="col-lg-13">
             <div class="card">
               <div class="list-group card-list-group">
-                <?php foreach ($advers as $adver) { ?>
+                <?php foreach ($advers as $advers_item) { ?>
                   <div class="list-group-item">
                     <div class="row g-6 align-items-center">
                       <div class="col-auto fs-3">
-                        <?= $adver['id'] ?>
+                        <?= $advers_item['id'] ?>
                       </div>
                       <div class="col-auto">
-                        <img src="/static/photos/<?= $adver['value_setting'] ?>" class="rounded"
-                          alt="<?= $adver['title'] ?>" width="60" height="60">
+                        <img src="/static/photos/<?= $advers_item['value_setting'] ?>" class="rounded"
+                          alt="<?= $advers_item['title'] ?>" width="60" height="60">
                       </div>
                       <div class="col">
                         <div class="text-muted">
-                          <?= $adver['text'] ?>
+                          <?= $advers_item['text'] ?>
                         </div>
                       </div>
                       <div class="col-auto text-muted">
-                        <?= $adver['link'] ?>
+                        <?= $advers_item['link'] ?>
                       </div>
                       <div class="col-auto">
                         <a href="#" class="link-secondary">
@@ -73,10 +73,10 @@
                             </svg>
                           </a>
                           <div class="dropdown-menu dropdown-menu-end">
-                            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-report-update-adver<?= $adver['id'] ?>">
+                            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-report-update-adver<?= $advers_item['id'] ?>">
                               Update
                             </a>
-                            <a class="dropdown-item" href="/panel/result/adver/delete/<?= $adver['id'] ?>">
+                            <a class="dropdown-item" href="/panel/result/adver/delete/<?= $advers_item['id'] ?>">
                               Delete
                             </a>
                           </div>
@@ -84,10 +84,10 @@
                       </div>
                     </div>
                   </div>
-                  <div class="modal modal-blur fade" id="modal-report-update-adver<?= $adver['id'] ?>" tabindex="-1" role="dialog"
+                  <div class="modal modal-blur fade" id="modal-report-update-adver<?= $advers_item['id'] ?>" tabindex="-1" role="dialog"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
-                      <form method="post" action="/panel/result/adver/update/<?= $adver['id'] ?>" >
+                      <form method="post" action="/panel/result/adver/update/<?= $advers_item['id'] ?>" >
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title">Update Advertising</h5>
