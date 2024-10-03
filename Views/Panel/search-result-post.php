@@ -52,8 +52,8 @@
     <?php include 'Includes/footer.php' ?>
   </div>
   </div>
-  <?php include 'Init/script.php'; ?>
-  <?php include 'Init/modals.php'; ?>
+  <?php include 'Init/script.php' ?>
+  <?php include 'Init/modals.php' ?>
 </body>
 
 </html>

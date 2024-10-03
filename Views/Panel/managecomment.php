@@ -2,11 +2,11 @@
 <html lang="en" dir="rtl">
   <head>
     <title>Manage Comments</title>
-    <?php include "Init/style.php"; ?>
+    <?php include "Init/style.php" ?>
   </head>
   <body >
     <div class="page">
-      <?php include "Includes/header.php"; ?>
+      <?php include "Includes/header.php" ?>
         <div class="page-header d-print-none">
           <div class="container-xl">
             <div class="row g-2 align-items-center">
@@ -161,10 +161,10 @@
             </div>
           </div>
         </div>
-        <?php include "Includes/footer.php"; ?>
+        <?php include "Includes/footer.php" ?>
       </div>
     </div>
-    <?php include "Init/script.php"; ?>
-    <?php include "Init/modals.php"; ?>
+    <?php include "Init/script.php" ?>
+    <?php include "Init/modals.php" ?>
   </body>
 </html>

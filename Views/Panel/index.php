@@ -3,11 +3,11 @@
 
 <head>
   <title><?= $title['value_setting']; ?></title>
-  <?php include "Init/style.php"; ?>
+  <?php include "Init/style.php" ?>
 </head>
 
 <body>
-  <?php include "Includes/header.php"; ?>
+  <?php include "Includes/header.php" ?>
   <div class="page">
     <div class="page-wrapper">
       <div class="page-header d-print-none">
@@ -758,12 +758,12 @@
           </div>
         </div>
       </div>
-      <?php include "Includes/footer.php"; ?>
+      <?php include "Includes/footer.php" ?>
     </div>
   </div>
-  <?php include "Init/modals.php"; ?>
+  <?php include "Init/modals.php" ?>
 
-  <?php include "Init/script.php"; ?>
+  <?php include "Init/script.php" ?>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {

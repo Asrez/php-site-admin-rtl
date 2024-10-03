@@ -3,7 +3,7 @@
 
 <head>
   <title>Result</title>
-  <?php include 'Init/style.php'; ?>
+  <?php include 'Init/style.php' ?>
 </head>
 
 <body>
@@ -74,8 +74,8 @@
     <?php include 'Includes/footer.php' ?>
   </div>
   </div>
-  <?php include 'Init/script.php'; ?>
-  <?php include 'Init/modals.php'; ?>
+  <?php include 'Init/script.php' ?>
+  <?php include 'Init/modals.php' ?>
 </body>
 
 </html>

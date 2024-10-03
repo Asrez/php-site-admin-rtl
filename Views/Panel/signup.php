@@ -2,7 +2,7 @@
 <html lang="en" dir="rtl">
   <head>
     <title>Sign UP</title>
-    <?php include 'init/style.php'; ?>
+    <?php include 'init/style.php' ?>
   </head>
   <body  class=" border-top-wide border-primary d-flex flex-column">
     <script src="./dist/js/demo-theme.min.js?1668287865"></script>
@@ -46,6 +46,6 @@
         </div>
       </div>
     </div>
-    <?php include 'init/script.php'; ?>
+    <?php include 'init/script.php' ?>
   </body>
 </html>
