@@ -16,19 +16,15 @@ class Connect
         $info = require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'database.php';
 
         try {
-
             $db = "mysql:host={$info['host']};dbname={$info['dbname']}";
 
             $this->connect = new PDO($db, $info['username'], $info['password']);
             $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+            
         } catch (PDOException $e) {
-
             echo $e->getMessage();
             exit();
-
         }
-
     }
 
     public static function getInstance(): mixed
