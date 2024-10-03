@@ -23,7 +23,7 @@ class Posts
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "UPDATE `posts` SET `title`=:title, `content`=:content, `image`=:image WHERE `id` = :id;";
+        $sql = "UPDATE `posts` SET `title` = :title, `content` = :content, `image` = :image WHERE `id` = :id;";
 
         $stms = $db->prepare($sql);
 

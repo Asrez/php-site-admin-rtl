@@ -24,7 +24,7 @@ class Users
         try {
             $db = BaseModal::getDbConnection();
 
-            $sql = "UPDATE `users` SET `name`= :name,`username`= :username,`email`= :email,`password`= :password,`image`= :image WHERE `id` = :id;";
+            $sql = "UPDATE `users` SET `name` = :name,`username` = :username,`email` = :email,`password` = :password,`image` = :image WHERE `id` = :id;";
 
             $stmt = $db->prepare($sql);
             $stmt->bindParam("name", $data['name']);
@@ -73,7 +73,7 @@ class Users
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "SELECT * FROM `users` WHERE `id`= :id;";
+        $sql = "SELECT * FROM `users` WHERE `id` = :id;";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam("id", $id);
@@ -108,7 +108,7 @@ class Users
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "SELECT * FROM `users` WHERE `state`= 0;";
+        $sql = "SELECT * FROM `users` WHERE `state` = 0;";
 
         $stmt = $db->prepare($sql);
         $stmt->execute();
@@ -132,7 +132,7 @@ class Users
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "SELECT * FROM `users` WHERE `state`= 1;";
+        $sql = "SELECT * FROM `users` WHERE `state` = 1;";
 
         $stmt = $db->prepare($sql);
         $stmt->execute();
@@ -176,7 +176,7 @@ class Users
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "UPDATE `users` SET `state`= 1 WHERE `id` = :id;";
+        $sql = "UPDATE `users` SET `state` = 1 WHERE `id` = :id;";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam("id", $id);

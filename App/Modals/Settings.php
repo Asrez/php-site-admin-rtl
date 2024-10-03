@@ -10,7 +10,7 @@ class Settings
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "UPDATE `settings` SET `value_setting`= '',`link`= '',`title`= '',`text`= '' WHERE id = :id;";
+        $sql = "UPDATE `settings` SET `value_setting` = '', `link` = '',`title` = '',`text` = '' WHERE id = :id;";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam("id", $id);
@@ -22,7 +22,7 @@ class Settings
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "UPDATE `settings` SET `value_setting`= :value,`link`= :link,`title`= :title,`text`=:text WHERE id = :id;";
+        $sql = "UPDATE `settings` SET `value_setting` = :value,`link`= :link,`title` = :title,`text` = :text WHERE id = :id;";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam("title", $data['title']);
@@ -38,7 +38,7 @@ class Settings
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "UPDATE `settings` SET `value_setting`= :value,`link`= :link,`title`= :title WHERE id = :id;";
+        $sql = "UPDATE `settings` SET `value_setting` = :value,`link` = :link,`title` = :title WHERE id = :id;";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam("title", $data['title']);
@@ -53,7 +53,7 @@ class Settings
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "SELECT * FROM `settings` WHERE `key_setting`= :key;";
+        $sql = "SELECT * FROM `settings` WHERE `key_setting` = :key;";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam("key", $key);
@@ -66,7 +66,7 @@ class Settings
     {
         $db = BaseModal::getDbConnection();
 
-        $sql = "SELECT * FROM `settings` WHERE `type`= :state;";
+        $sql = "SELECT * FROM `settings` WHERE `type` = :state;";
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam("state", $state);
