@@ -53,3 +53,17 @@ function makeRandomSlug(): string
     
     return $randomSlug;
 }
+
+function env(string $key, $default = null): mixed
+{
+    $env = file_get_contents(__DIR__ ."/../../.env");
+    $env = explode("\n", $env);
+
+    foreach ($env as $line) {
+        $line = explode('=', $line);
+        if ($line[0] === $key) {
+            return $line[1] ?? $default;
+        }
+    }
+    return null;
+}

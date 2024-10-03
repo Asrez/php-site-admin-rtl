@@ -2,7 +2,6 @@
 
 namespace App\Modals;
 
-use App\Database\Connect;
 use Exception;
 use PDO;
 
@@ -18,6 +17,10 @@ class Users
             $stmt = $db->prepare($sql);
             $stmt->bindParam("id", $id);
             $stmt->execute();
+        }
+        catch (Exception $e)
+        {
+            echo $e->getMessage();
         }
     }
 
@@ -47,8 +50,7 @@ class Users
     public static function Create(array $data)
     {
         $date = date("Y-m-d");
-        
-        try {
+
             $db = BaseModal::getDbConnection();
 
             $sql = "INSERT INTO `users`(`id`, `name`, `username`, `email`, `password`, `image`, `date`, `state`) VALUES (null, :name, :username, :email, :password, :image, :date, :state);";
@@ -67,9 +69,10 @@ class Users
                 $_SESSION['admin_id'] = $row['id'];
                 return true;
             }
-        } catch (Exception $e) {
-            return false;
-        }
+            else
+            {
+                return false;
+            }
     }
 
     public static function GetById(int $id): array
@@ -199,6 +202,10 @@ class Users
             $stmt = $db->prepare($sql);
             $stmt->bindParam("id", $id);
             $stmt->execute();
+        }
+        catch (Exception $e)
+        {
+            echo $e->getMessage();
         }
     }
 }

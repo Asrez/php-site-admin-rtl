@@ -2,7 +2,6 @@
 
 namespace App\Modals;
 
-use App\Database\Connect;
 use PDO;
 
 class Search

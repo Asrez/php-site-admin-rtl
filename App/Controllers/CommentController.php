@@ -28,6 +28,8 @@ class CommentController
                     "tab" => "manage"
                 ],
             );
+        } catch (Exception $exception) {
+            echo $exception->getMessage();
         }
     }
 

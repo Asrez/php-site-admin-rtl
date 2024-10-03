@@ -3,7 +3,7 @@
 namespace App\Modals;
 
 use PDO;
-use App\Database\Connect;
+use Exception;
 class Settings
 {
     public static function Delete(int $id): void
@@ -16,6 +16,10 @@ class Settings
             $stmt = $db->prepare($sql);
             $stmt->bindParam("id", $id);
             $stmt->execute();
+        }
+        catch (Exception $e)
+        {
+            echo $e->getMessage();
         }
     }
 
@@ -33,7 +37,10 @@ class Settings
             $stmt->bindParam("value", $data['value_setting']);
             $stmt->bindParam("id", $data['id']);
             $stmt->execute();
-
+        }
+        catch (Exception $e)
+        {
+            echo $e->getMessage();
         }
     }
 
@@ -51,7 +58,10 @@ class Settings
             $stmt->bindParam("id", $data['id']);
             $stmt->execute();
         }
-
+        catch (Exception $e)
+        {
+            echo $e->getMessage();
+        }
     }
 
     public static function GetByKey(string $key): array

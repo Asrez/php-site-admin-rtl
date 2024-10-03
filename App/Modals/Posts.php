@@ -2,8 +2,8 @@
 
 namespace App\Modals;
 
-use App\Database\Connect;
 use PDO;
+use Exception;
 
 class Posts
 {
@@ -18,6 +18,10 @@ class Posts
             $stms->bindParam('id', $id);
 
             $stms->execute();
+        }
+        catch (Exception $e)
+        {
+            echo $e->getMessage();
         }
     }
 
@@ -36,6 +40,10 @@ class Posts
             $stms->bindParam('id', $data['id']);
             $stms->execute();
         }
+        catch (Exception $e)
+        {
+            echo $e->getMessage();
+        }
     }
 
     public static function Confirm(int $id): void
@@ -49,6 +57,10 @@ class Posts
 
             $stms->bindParam('id', $id);
             $stms->execute();
+        }
+        catch (Exception $e)
+        {
+            echo $e->getMessage();
         }
     }
 

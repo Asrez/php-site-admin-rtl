@@ -97,7 +97,7 @@ class UserController
 
                 if ($result === true) {
                     Flight::redirect("/panel/signup?signup=true");
-                } else {
+                } else if ($result === false) {
                     Flight::redirect("/panel/signup?signup=false");
                 }
 

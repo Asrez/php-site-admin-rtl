@@ -3,7 +3,6 @@
 namespace App\Modals;
 
 use PDO;
-use App\Database\Connect;
 
 class Views
 {

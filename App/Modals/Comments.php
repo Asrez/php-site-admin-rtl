@@ -2,8 +2,8 @@
 
 namespace App\Modals;
 
+use Exception;
 use PDO;
-use App\Database\Connect;
 use App\Modals\BaseModal;
 class Comments
 {
@@ -18,6 +18,10 @@ class Comments
             $stmt->bindParam("id", $id);
             $stmt->execute();
         }
+        catch (Exception $e)
+        {
+            echo $e->getMessage();
+        }
     }
 
     public static function Confirmed(int $id): void
@@ -30,6 +34,10 @@ class Comments
             $stmt = $db->prepare($sql);
             $stmt->bindParam("id", $id);
             $stmt->execute();
+        }
+        catch (Exception $e)
+        {
+            echo $e->getMessage();
         }
     }
 
