@@ -40,9 +40,11 @@ class Search
         $users = $db->prepare($users_sql);
         $users->bindParam('title', $title);
         $users->execute();
-        $users = $users->fetchAll(PDO::FETCH_ASSOC);
-
-        return $users;
+        
+        if ($stmt = $users->fetchAll(PDO::FETCH_ASSOC))
+            return $stmt;
+        else
+            return [];
     }
 
     public static function SearchPost(string $title): array
@@ -55,9 +57,11 @@ class Search
         $posts = $db->prepare($posts_sql);
         $posts->bindParam('title', $title);
         $posts->execute();
-        $posts = $posts->fetchAll(PDO::FETCH_ASSOC);
-
-        return $posts;
+        
+        if ($stmt = $posts->fetchAll(PDO::FETCH_ASSOC))
+            return $stmt;
+        else
+            return [];
     }
 
     public static function SearchAdmin(string $title): array
@@ -70,9 +74,11 @@ class Search
         $users = $db->prepare($users_sql);
         $users->bindParam('title', $title);
         $users->execute();
-        $admins = $users->fetchAll(PDO::FETCH_ASSOC);
-
-        return $admins;
+        
+        if ($stmt = $users->fetchAll(PDO::FETCH_ASSOC))
+            return $stmt;
+        else
+            return [];
     }
 
     public static function SearchUser2(string $title): array
@@ -85,8 +91,10 @@ class Search
         $users = $db->prepare($users_sql);
         $users->bindParam('title', $title);
         $users->execute();
-        $users = $users->fetchAll(PDO::FETCH_ASSOC);
-
-        return $users;
+        
+        if ($stmt = $users->fetchAll(PDO::FETCH_ASSOC))
+            return $stmt;
+        else
+            return [];
     }
 }

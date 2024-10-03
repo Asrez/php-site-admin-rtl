@@ -65,7 +65,10 @@ class Settings
         $stmt->bindParam("key", $key);
         $stmt->execute();
 
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($stmt = $stmt->fetch(PDO::FETCH_ASSOC))
+            return $stmt;
+        else
+            return [];
     }
 
     public static function GetByState(string $state): array
@@ -78,6 +81,9 @@ class Settings
         $stmt->bindParam("state", $state);
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($stmt = $stmt->fetchAll(PDO::FETCH_ASSOC))
+            return $stmt;
+        else
+            return [];
     }
 }

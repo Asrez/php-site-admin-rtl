@@ -90,7 +90,10 @@ class Posts
         $stms->bindParam('id', $id);
         $stms->execute();
 
-        return $stms->fetch(PDO::FETCH_ASSOC);
+        if ($stms = $stms->fetch(PDO::FETCH_ASSOC))
+            return $stms;
+        else
+            return [];
     }
 
     public static function GetAll(): mixed
@@ -102,7 +105,10 @@ class Posts
         $stms = $db->prepare($sql);
         $stms->execute();
 
-        return $stms->fetchAll(PDO::FETCH_ASSOC);
+        if ($stms = $stms->fetchAll(PDO::FETCH_ASSOC))
+            return $stms;
+        else
+            return [];
     }
 
     public static function Innerjoin(): mixed
@@ -121,7 +127,10 @@ class Posts
         $stms = $db->prepare($sql);
         $stms->execute();
 
-        return $stms->fetchAll(PDO::FETCH_ASSOC);
+        if ($stms = $stms->fetchAll(PDO::FETCH_ASSOC))
+            return $stms;
+        else
+            return [];
     }
 
     public static function Mostvisit(): mixed
@@ -133,7 +142,10 @@ class Posts
         $stms = $db->prepare($sql);
         $stms->execute();
 
-        return $stms->fetchAll(PDO::FETCH_ASSOC);
+        if ($stms = $stms->fetchAll(PDO::FETCH_ASSOC))
+            return $stms;
+        else
+            return [];
     }
 
     public static function NotConfirmed(): mixed
@@ -145,7 +157,10 @@ class Posts
         $stms = $db->prepare($sql);
         $stms->execute();
 
-        return $stms->fetchAll(PDO::FETCH_ASSOC);
+        if ($stms = $stms->fetchAll(PDO::FETCH_ASSOC))
+            return $stms;
+        else
+            return [];
     }
 
     public static function Count(): array
@@ -178,6 +193,9 @@ class Posts
         $stmt->bindParam("date", $date);
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($stmt = $stmt->fetchAll(PDO::FETCH_ASSOC))
+            return $stmt;
+        else
+            return [];
     }
 }
