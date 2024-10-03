@@ -10,13 +10,15 @@ class Users
 {
     public static function Delete(int $id): void
     {
-        $db = BaseModal::getDbConnection();
+        try {
+            $db = BaseModal::getDbConnection();
 
-        $sql = "DELETE FROM `users` WHERE `id` = :id;";
+            $sql = "DELETE FROM `users` WHERE `id` = :id;";
 
-        $stmt = $db->prepare($sql);
-        $stmt->bindParam("id", $id);
-        $stmt->execute();
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam("id", $id);
+            $stmt->execute();
+        }
     }
 
     public static function Update(array $data): bool
@@ -174,13 +176,15 @@ class Users
 
     public static function SetAsAdmin(int $id): void
     {
-        $db = BaseModal::getDbConnection();
+        try {
+            $db = BaseModal::getDbConnection();
 
-        $sql = "UPDATE `users` SET `state` = 1 WHERE `id` = :id;";
+            $sql = "UPDATE `users` SET `state` = 1 WHERE `id` = :id;";
 
-        $stmt = $db->prepare($sql);
-        $stmt->bindParam("id", $id);
-        $stmt->execute();
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam("id", $id);
+            $stmt->execute();
+        }
     }
 
 }

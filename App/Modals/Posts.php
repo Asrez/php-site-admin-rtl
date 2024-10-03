@@ -9,41 +9,47 @@ class Posts
 {
     public static function Delete(int $id): void
     {
-        $db = BaseModal::getDbConnection();
+        try {
+            $db = BaseModal::getDbConnection();
 
-        $sql = "DELETE FROM `posts` WHERE `id` = :id;";
+            $sql = "DELETE FROM `posts` WHERE `id` = :id;";
 
-        $stms = $db->prepare($sql);
-        $stms->bindParam('id', $id);
+            $stms = $db->prepare($sql);
+            $stms->bindParam('id', $id);
 
-        $stms->execute();
+            $stms->execute();
+        }
     }
 
     public static function Update(array $data): void
     {
-        $db = BaseModal::getDbConnection();
+        try {
+            $db = BaseModal::getDbConnection();
 
-        $sql = "UPDATE `posts` SET `title` = :title, `content` = :content, `image` = :image WHERE `id` = :id;";
+            $sql = "UPDATE `posts` SET `title` = :title, `content` = :content, `image` = :image WHERE `id` = :id;";
 
-        $stms = $db->prepare($sql);
+            $stms = $db->prepare($sql);
 
-        $stms->bindParam('title', $data['title']);
-        $stms->bindParam('content', $data['content']);
-        $stms->bindParam('image', $data['image']);
-        $stms->bindParam('id', $data['id']);
-        $stms->execute();
+            $stms->bindParam('title', $data['title']);
+            $stms->bindParam('content', $data['content']);
+            $stms->bindParam('image', $data['image']);
+            $stms->bindParam('id', $data['id']);
+            $stms->execute();
+        }
     }
 
     public static function Confirm(int $id): void
     {
-        $db = BaseModal::getDbConnection();
+        try {
+            $db = BaseModal::getDbConnection();
 
-        $sql = "UPDATE `posts` SET `state` = 1 WHERE `id` = :id;";
+            $sql = "UPDATE `posts` SET `state` = 1 WHERE `id` = :id;";
 
-        $stms = $db->prepare($sql);
+            $stms = $db->prepare($sql);
 
-        $stms->bindParam('id', $id);
-        $stms->execute();
+            $stms->bindParam('id', $id);
+            $stms->execute();
+        }
     }
 
     public static function Create(array $data): bool

@@ -9,25 +9,29 @@ class Comments
 {
     public static function Delete(int $id): void
     {
-        $db = BaseModal::getDbConnection();
+        try {
+            $db = BaseModal::getDbConnection();
 
-        $sql = "DELETE FROM `comments` WHERE `id` = :id;";
+            $sql = "DELETE FROM `comments` WHERE `id` = :id;";
 
-        $stmt = $db->prepare($sql);
-        $stmt->bindParam("id", $id);
-        $stmt->execute();
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam("id", $id);
+            $stmt->execute();
+        }
     }
 
     public static function Confirmed(int $id): void
     {
-        $db = BaseModal::getDbConnection();
+        try {
+            $db = BaseModal::getDbConnection();
 
-        $sql = "UPDATE `comments` SET `state`= 1 WHERE `id` = :id;";
+            $sql = "UPDATE `comments` SET `state`= 1 WHERE `id` = :id;";
 
-        $stmt = $db->prepare($sql);
-        $stmt->bindParam("id", $id);
-        $stmt->execute();
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam("id", $id);
+            $stmt->execute();
 
+        }
     }
 
     public static function NotConfirmed(): array
