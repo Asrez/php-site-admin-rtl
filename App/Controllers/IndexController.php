@@ -20,7 +20,7 @@ use App\Actions\Search\SearchAll;
 
 class IndexController
 {
-    public function panel_index(): void
+    public static function panel_user_chart(): array
     {
         $year = date(format: "Y");
         $day = date("d");
@@ -37,6 +37,17 @@ class IndexController
             $user_chart_date[] = $filed['date'];
         }
 
+        return [$user_chart_count, $user_chart_date];
+    }
+
+    public static  function panel_post_chart(): array
+    {
+        $year = date(format: "Y");
+        $day = date("d");
+        $month = date("m");
+        $last_month = $month - 1;
+        $date1 = date($year . $day . $last_month);
+ 
         $array2 = Post_in_month::execute($date1);
         $all_my_post = 0;
         $post_chart_count = [];
@@ -48,6 +59,11 @@ class IndexController
             $all_my_post += $filed1['count'];
         }
 
+        return [$post_chart_count, $post_chart_date,$all_my_post];
+    }
+
+    public static  function panel_all_post_chart(): array
+    {
         $All_post = AllPosts::execute();
         $view_count_chart = [];
         $title_chart = [];
@@ -57,19 +73,11 @@ class IndexController
             $title_chart[] = $view['id'];
         }
 
-        $tool = tools();
-        $admin_activity = Innerjoin::execute();
-        $Users = AllUsers::execute();
-        $MostVisit = Mostvisit::execute();
-        $Not_confirmed = NotConfirmed::execute();
-        $Not_Confirmed_Comment = NotConfirmedComment::execute();
+        return [$view_count_chart, $title_chart,$All_post];
+    }
 
-        $postnoconfirmed = CountPost::execute()['count_no_confirmed'];
-
-        $not_confirmed_percent = ($postnoconfirmed * 100) / $tool['postcount'];
-
-        $not_confirmed_comment_percent = (count($Not_Confirmed_Comment) * 100) / $tool['commentcount'];
-
+    public static  function panel_comment_chart(): array
+    {
         $AllCommentss = AllComments::execute();
         $AllComments["comment_post_id"] = [];
         $AllComments["comment_title"] = [];
@@ -80,6 +88,29 @@ class IndexController
             $AllComments["comment_title"][] = $comment['title'];
             $AllComments["comment_user_id"][] = $comment['user_id'];
         }
+
+        return $AllComments;
+    }
+
+    public function panel_index(): void
+    {
+        $user_chart = IndexController::panel_user_chart();
+        $post_chart = IndexController::panel_post_chart();
+        $all_post_chart = IndexController::panel_all_post_chart();
+        $comment_chart = IndexController::panel_comment_chart();
+        
+        $tool = tools();
+        $admin_activity = Innerjoin::execute();
+        $Users = AllUsers::execute();
+        $MostVisit = Mostvisit::execute();
+        $Not_confirmed = NotConfirmed::execute();
+        $Not_Confirmed_Comment = NotConfirmedComment::execute();
+        $postnoconfirmed = CountPost::execute()['count_no_confirmed'];
+
+        $not_confirmed_percent = ($postnoconfirmed * 100) / $tool['postcount'];
+
+        $not_confirmed_comment_percent = (count($Not_Confirmed_Comment) * 100) / $tool['commentcount'];
+
 
         try {
             Flight::render(
@@ -100,16 +131,16 @@ class IndexController
                     "not_confirmed_pages" => $Not_confirmed,
                     "Not_Confirmed_Comment" => $Not_Confirmed_Comment,
                     "not_confirmed_percent" => $not_confirmed_percent,
-                    "user_chart_date" => $user_chart_date,
-                    "user_chart_count" => $user_chart_count,
-                    "view_count_chart" => $view_count_chart,
-                    "title_chart" => $title_chart,
+                    "user_chart_date" => $user_chart[1],
+                    "user_chart_count" => $user_chart[0],
+                    "view_count_chart" => $all_post_chart[0],
+                    "title_chart" => $all_post_chart[1],
                     "not_confirmed_comment_percent" => $not_confirmed_comment_percent,
-                    "AllComments" => $AllComments,
-                    "posts" => $All_post,
-                    "post_chart_count" => $post_chart_count,
-                    "post_chart_date" => $post_chart_date,
-                    "all_my_post" => $all_my_post,
+                    "AllComments" => $comment_chart,
+                    "posts" => $post_chart[2],
+                    "post_chart_count" => $post_chart[0],
+                    "post_chart_date" => $post_chart[1],
+                    "all_my_post" => $post_chart[2],
                     "tab" => "home"
                 ]
             );
