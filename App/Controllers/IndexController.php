@@ -36,7 +36,6 @@ class IndexController
             $user_chart_count[] = $filed['count'];
             $user_chart_date[] = $filed['date'];
         }
-
         return [$user_chart_count, $user_chart_date];
     }
 
@@ -111,7 +110,6 @@ class IndexController
 
         $not_confirmed_comment_percent = (count($Not_Confirmed_Comment) * 100) / $tool['commentcount'];
 
-
         try {
             Flight::render(
                 directory_separator("Panel", "index.php"),
@@ -137,7 +135,7 @@ class IndexController
                     "title_chart" => $all_post_chart[1],
                     "not_confirmed_comment_percent" => $not_confirmed_comment_percent,
                     "AllComments" => $comment_chart,
-                    "posts" => $post_chart[2],
+                    "posts" => $all_post_chart[2],
                     "post_chart_count" => $post_chart[0],
                     "post_chart_date" => $post_chart[1],
                     "all_my_post" => $post_chart[2],
