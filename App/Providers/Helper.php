@@ -56,7 +56,7 @@ function makeRandomSlug(): string
 
 function env(string $key, $default = null): mixed
 {
-    $env = file_get_contents(__DIR__ ."/../../.env");
+    static $env = file_get_contents(__DIR__ ."/../../.env");
     $env = explode("\n", $env);
 
     foreach ($env as $line) {

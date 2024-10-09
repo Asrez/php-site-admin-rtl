@@ -1,3 +1,4 @@
 .env
 Public/static/photos
 vendor
+Public/static/avatars
