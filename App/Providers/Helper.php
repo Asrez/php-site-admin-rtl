@@ -16,7 +16,6 @@ function directory_separator(string $folder, string $file_name): string
 
 function tools(): array
 {
-
     $logo = GetByKeySetting::execute('logo');
     $footer = GetByKeySetting::execute('footer');
     $title = GetByKeySetting::execute('title');
@@ -56,15 +55,18 @@ function makeRandomSlug(): string
 
 function env(string $key, $default = null): mixed
 {
-    static $env = file_get_contents(__DIR__ ."/../../.env");
-    $env = explode("\n", $env);
-
-    foreach ($env as $line) {
-        $line = explode('=', $line);
-        if ($line[0] === $key) {
-            $line[1] = substr($line[1], 0, -1);
-            return $line[1] ?? $default;
+    static $env = null;
+    
+    if ($env === null) {
+        $env = [];
+        $lines = file(__DIR__ . "/../../.env", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        foreach ($lines as $line) {
+            if (strpos($line, '=') !== false) {
+                list($k, $v) = explode('=', $line, 2);
+                $env[trim($k)] = trim($v);
+            }
         }
     }
-    return null;
+
+    return $env[$key] ?? $default;
 }
